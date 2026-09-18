@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function OmnichannelMarketing({ onOpenDemo }) {
+const channels = [
+  { icon: '📸', name: 'Meta Ads (Instagram / FB)', share: '32%', desc: 'Carousel lead ads & stories targeted at 12th standard engineering aspirants' },
+  { icon: '🔍', name: 'Google Search & Ads', share: '28%', desc: 'High-intent search queries for top engineering programs & cutoff criteria' },
+  { icon: '💬', name: 'WhatsApp Business Broadcast', share: '18%', desc: 'Direct counselor chat, instant prospectus delivery, and automated admission updates' },
+  { icon: '🏫', name: 'School Expos & Melas', share: '14%', desc: 'Science exhibitions, career guidance fairs, and on-ground marksheet evaluation' },
+  { icon: '🚶', name: 'Campus Walk-ins & Counseling', share: '8%', desc: 'Direct administrative enquiries at Campus 01 and Campus 02 admission desks' }
+];
+
+export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpenDemo }) {
   return (
     <section className="section" id="marketing">
       <div className="container">
@@ -8,61 +16,61 @@ export default function OmnichannelMarketing({ onOpenDemo }) {
           <div className="feature-text-block">
             <div className="section-eyebrow">
               <span className="dot"></span>
-              ATTRIBUTION &amp; ROI
+              MODULE 5 &bull; OMNICHANNEL MARKETING HUB
             </div>
-            <h2>Turn Every Marketing Channel Into Measurable Admissions.</h2>
+            <h2>Turn Every Campaign Channel Into Measurable Enrolments.</h2>
             <p>
-              Understand which channels generate enquiries and how those enquiries move through your admission funnel. Never wonder which advertisement or school outreach campaign delivered your best students.
+              Capture candidate inquiries from Google Ads, Meta (Instagram/Facebook) Ads, WhatsApp campaigns, School Science Expos, Direct Walk-ins, and Counseling desks into one centralized repository.
             </p>
             <p>
-              Track conversion from first touch to verified payment, calculating exact cost-per-admitted student across all digital and offline investments.
+              Permanent attribution tags prevent lead overwriting, calculating the exact cost-per-admitted student across all institutional campuses.
             </p>
-            <button className="btn btn-primary" onClick={() => onOpenDemo('Marketing Intelligence CTA')}>
-              Explore Marketing Intelligence &rarr;
-            </button>
+            <a 
+              href="https://cal.com/sphere-x-5kss8s/30min" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-primary"
+            >
+              📅 Book Campus Setup Meeting &rarr;
+            </a>
           </div>
 
           <div className="feature-preview-block">
             <div className="channels-flow-box">
               <div className="widget-title">
                 <span>Multi-Source Ingestion Grid</span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>Omnichannel Connectors</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>9 Official Ingestion Streams</span>
               </div>
 
               <div className="channels-pills-wrap">
-                <span className="channel-pill">&#128269; Google</span>
-                <span className="channel-pill">&#9654; YouTube</span>
-                <span className="channel-pill">&#128247; Instagram</span>
-                <span className="channel-pill">&#128222; Facebook</span>
-                <span className="channel-pill">&#128172; WhatsApp</span>
-                <span className="channel-pill">&#9993; Email</span>
-                <span className="channel-pill">&#128241; SMS</span>
-                <span className="channel-pill">&#127760; Website</span>
-                <span className="channel-pill">&#127979; Events</span>
-                <span className="channel-pill">&#128099; Walk-ins</span>
+                <span className="channel-pill">📸 Meta (Instagram / FB)</span>
+                <span className="channel-pill">🔍 Google Search</span>
+                <span className="channel-pill">▶️ YouTube Ads</span>
+                <span className="channel-pill">💬 WhatsApp Broadcast</span>
+                <span className="channel-pill">🏫 School Science Expos</span>
+                <span className="channel-pill">🎓 TNEA Counselling</span>
+                <span className="channel-pill">🚶 Campus Walk-in</span>
+                <span className="channel-pill">👥 Alumni Referral</span>
+                <span className="channel-pill">📰 Newspaper &amp; Hoardings</span>
               </div>
 
-              <div className="flow-funnel-pipeline">
-                <div className="pipeline-stage-bar">
-                  <span className="stage-bar-name">Aggregated Ingestion &bull; SPHEREX</span>
-                  <span className="stage-bar-count">100% Leads</span>
-                </div>
-                <div style={{ textAlign: 'center', color: 'var(--accent-cyan)', fontSize: '1rem' }}>&darr;</div>
-                <div className="pipeline-stage-bar">
-                  <span className="stage-bar-name">Verified Student Leads</span>
-                  <span className="stage-bar-count">4,820</span>
-                </div>
-                <div style={{ textAlign: 'center', color: 'var(--accent-cyan)', fontSize: '1rem' }}>&darr;</div>
-                <div className="pipeline-stage-bar">
-                  <span className="stage-bar-name">Completed Applications</span>
-                  <span className="stage-bar-count">1,450</span>
-                </div>
-                <div style={{ textAlign: 'center', color: 'var(--accent-cyan)', fontSize: '1rem' }}>&darr;</div>
-                <div className="pipeline-stage-bar" style={{ background: 'rgba(0, 242, 254, 0.08)', borderColor: 'rgba(0, 242, 254, 0.3)' }}>
-                  <span className="stage-bar-name" style={{ color: 'var(--accent-cyan)' }}>Confirmed Admissions</span>
-                  <span className="stage-bar-count" style={{ color: '#fff' }}>820 Enrolled</span>
-                </div>
+              <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {channels.map((ch, i) => (
+                  <div key={i} style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <span style={{ fontSize: '1.2rem' }}>{ch.icon}</span>
+                      <div>
+                        <strong style={{ fontSize: '0.86rem', color: '#fff' }}>{ch.name}</strong>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{ch.desc}</div>
+                      </div>
+                    </div>
+                    <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-light)', fontWeight: 700, fontSize: '0.9rem' }}>
+                      {ch.share}
+                    </span>
+                  </div>
+                ))}
               </div>
+
             </div>
           </div>
         </div>

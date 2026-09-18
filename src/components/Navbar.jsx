@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar({ onOpenDemo }) {
+export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -17,27 +17,35 @@ export default function Navbar({ onOpenDemo }) {
       <div className="container navbar-inner">
         <a href="#hero" className="brand-logo" id="nav-brand-logo">
           <img src="/logo.png" alt="SPHEREX" className="brand-icon-img" />
-          <span>SPHEREX</span>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1 }}>SPHEREX</span>
+            <span style={{ fontSize: '0.62rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)', letterSpacing: '0.04em' }}>
+              ADMISSION MANAGEMENT OS
+            </span>
+          </div>
         </a>
 
         <nav>
           <ul className="nav-links">
             <li><a href="#platform" className="nav-link">Platform</a></li>
-            <li><a href="#features" className="nav-link">Features</a></li>
-            <li><a href="#journey" className="nav-link">How It Works</a></li>
-            <li><a href="#solutions" className="nav-link">Solutions</a></li>
-            <li><a href="#showcase" className="nav-link">Resources</a></li>
-            <li><a href="#meeting" className="nav-link" style={{ color: 'var(--accent-cyan)' }}>Assign Meeting</a></li>
+            <li><a href="#lead-management" className="nav-link">Candidate Entry</a></li>
+            <li><a href="#lead-assignment" className="nav-link">Faculty Allocation</a></li>
+            <li><a href="#nora-ai" className="nav-link" style={{ color: '#c084fc' }}>Nora AI</a></li>
+            <li><a href="#mobile-app" className="nav-link">Mobile App</a></li>
+            <li><a href="#multi-campus" className="nav-link">Campuses</a></li>
           </ul>
         </nav>
 
         <div className="nav-actions">
-          <a href="#meeting" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.85rem', borderColor: 'rgba(0, 242, 254, 0.35)' }}>
-            📅 Assign Meeting
+          <a 
+            href="https://cal.com/sphere-x-5kss8s/30min" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="btn btn-primary" 
+            style={{ padding: '8px 18px', fontSize: '0.84rem' }}
+          >
+            📅 Book Meeting
           </a>
-          <span className="nav-login" id="nav-login-btn" onClick={() => onOpenDemo('Navbar Login')}>
-            Login
-          </span>
           <button 
             className="mobile-toggle" 
             id="mobile-toggle-btn" 
@@ -52,14 +60,21 @@ export default function Navbar({ onOpenDemo }) {
       {/* Mobile Drawer Menu */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} id="mobile-menu">
         <a href="#platform" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Platform</a>
-        <a href="#features" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Features</a>
-        <a href="#journey" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>How It Works</a>
-        <a href="#solutions" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Solutions</a>
-        <a href="#showcase" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Resources</a>
-        <a href="#meeting" className="nav-link mobile-link" style={{ color: 'var(--accent-cyan)' }} onClick={() => setMobileOpen(false)}>📅 Assign Meeting</a>
-        <span className="nav-login mobile-link" onClick={() => { setMobileOpen(false); onOpenDemo('Mobile Login'); }}>
-          Login
-        </span>
+        <a href="#lead-management" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Candidate Entry</a>
+        <a href="#lead-assignment" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Faculty Allocation</a>
+        <a href="#nora-ai" className="nav-link mobile-link" style={{ color: '#c084fc' }} onClick={() => setMobileOpen(false)}>Nora AI &amp; Cutoff</a>
+        <a href="#mobile-app" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Mobile App Preview</a>
+        <a href="#multi-campus" className="nav-link mobile-link" onClick={() => setMobileOpen(false)}>Dual Campuses</a>
+        <a 
+          href="https://cal.com/sphere-x-5kss8s/30min" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="nav-link mobile-link" 
+          style={{ color: 'var(--accent-cyan)' }}
+          onClick={() => setMobileOpen(false)}
+        >
+          📅 Book Meeting
+        </a>
       </div>
     </header>
   );

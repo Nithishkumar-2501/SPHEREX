@@ -11,7 +11,7 @@ export default function Problem() {
           </div>
           <h2>Admissions Are Too Important to Run Across Disconnected Tools.</h2>
           <p>
-            Colleges receive enquiries from websites, advertisements, social media, WhatsApp, events, walk-ins and other channels. But when those leads are managed across spreadsheets, messaging apps and disconnected systems, valuable opportunities can be missed.
+            Institutions receive enquiries from websites, advertisements, social media, WhatsApp, events, walk-ins and other channels. But when those leads are managed across spreadsheets, messaging apps and disconnected systems, valuable opportunities can be missed.
           </p>
         </div>
 

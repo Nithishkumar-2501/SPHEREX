@@ -1,13 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-export default function DemoModal({ isOpen, onClose }) {
+const rbacRoles = [
+  { role: 'Campus 01 System Admin', user: 'admincampus01@123', pass: 'spherex@123', campus: 'Campus 01 (Main)', scope: 'Master admin control, lead splitting, quotas' },
+  { role: 'Campus 02 System Admin', user: 'admincampus02@123', pass: 'spherex@1213', campus: 'Campus 02 (City)', scope: 'Campus 02 admin, faculty allocations' },
+  { role: 'Faculty Lead (Dr. Arulmurugan)', user: 'arulmurugan.cse@spherex.edu', pass: 'arul@spx2026', campus: 'Campus 01', scope: 'HOD CSE; counseling & cutoff evaluations' },
+  { role: 'Faculty Lead (P. Rajesh)', user: 'rajesh.mech@spherex.edu', pass: 'rajesh@spx2026', campus: 'Campus 01', scope: 'HOD Mechanical; manages contact batches' },
+  { role: 'Faculty Lead (Dr. Meenakshi)', user: 'meenakshi.ece@spherex.edu', pass: 'meenakshi@spx2026', campus: 'Campus 02', scope: 'HOD ECE; admissions & counseling' },
+  { role: 'Faculty Lead (Dr. Gayathri)', user: 'gayathri.it@spherex.edu', pass: 'gayathri@spx2026', campus: 'Campus 01', scope: 'HOD IT; candidate conversion monitoring' },
+  { role: 'General Counselor (Campus 01)', user: 'counselor01@123', pass: 'spherex@c123', campus: 'Campus 01', scope: 'Counselor access to student directories' },
+  { role: 'General Counselor (Campus 02)', user: 'counselor02@123', pass: 'spherex@c1213', campus: 'Campus 02', scope: 'Counselor access to student directories' }
+];
+
+export default function DemoModal({ isOpen, onClose, onOpenBooking }) {
+  const [modalTab, setModalTab] = useState('credentials'); // 'credentials' | 'consultation'
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    collegeName: '',
-    officerName: '',
-    email: '',
-    phone: '',
-    volume: '5k-20k'
+    name: 'Dr. K. Arulmurugan',
+    department: 'Computer Science & Engineering',
+    campus: 'SPHEREX Campus 01 (Main)',
+    email: 'arulmurugan.cse@spherex.edu',
+    phone: '+91 94433 22111'
   });
 
   useEffect(() => {
@@ -29,136 +41,172 @@ export default function DemoModal({ isOpen, onClose }) {
 
   const handleReset = () => {
     setSubmitted(false);
-    setFormData({
-      collegeName: '',
-      officerName: '',
-      email: '',
-      phone: '',
-      volume: '5k-20k'
-    });
     onClose();
-  };
-
-  const fillDemoValues = () => {
-    setFormData({
-      collegeName: 'Apex Institute of Technology',
-      officerName: 'Dr. A. Sharma',
-      email: 'admissions@apexinstitute.edu',
-      phone: '+91 98765 43210',
-      volume: '5k-20k'
-    });
   };
 
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-card" style={{ maxWidth: '780px' }} onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">&times;</button>
 
-        <div className="section-eyebrow" style={{ marginBottom: '12px' }}>
+        <div className="section-eyebrow" style={{ marginBottom: '8px' }}>
           <span className="dot"></span>
-          INSTITUTIONAL CONSULTATION
+          SPHEREX INSTITUTIONAL ACCESS CONSOLE
         </div>
-        <h3>Transform Your Admissions</h3>
-        <p>Schedule an institutional demonstration or explore how SPHEREX centralizes your admission funnel.</p>
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '6px' }}>SPHEREX Institutional Admission Portals</h3>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '18px' }}>
+          Role-Based Access Control (RBAC) segregated by campus and administrative privilege.
+        </p>
 
-        {!submitted ? (
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label htmlFor="form-inst-name" style={{ margin: 0 }}>College / University Name</label>
-                <span 
-                  onClick={fillDemoValues} 
-                  style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', cursor: 'pointer', fontFamily: 'var(--font-mono)' }}
-                >
-                  ⚡ Autofill Demo Data
-                </span>
-              </div>
-              <input 
-                type="text" 
-                id="form-inst-name" 
-                className="form-input" 
-                placeholder="e.g. Apex Institute of Technology" 
-                value={formData.collegeName}
-                onChange={(e) => setFormData({ ...formData, collegeName: e.target.value })}
-                required 
-              />
+        {/* Switcher */}
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', background: 'rgba(255, 255, 255, 0.04)', padding: '4px', borderRadius: 'var(--radius-sm)' }}>
+          <button
+            type="button"
+            className={`btn ${modalTab === 'credentials' ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ flex: 1, padding: '8px 14px', fontSize: '0.82rem' }}
+            onClick={() => setModalTab('credentials')}
+          >
+            🔑 Role Access &amp; Default Credentials (Section 4)
+          </button>
+          <button
+            type="button"
+            className={`btn ${modalTab === 'consultation' ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ flex: 1, padding: '8px 14px', fontSize: '0.82rem' }}
+            onClick={() => setModalTab('consultation')}
+          >
+            📋 Faculty / Counselor Onboarding Form
+          </button>
+        </div>
+
+        {/* TAB 1: Credentials Matrix */}
+        {modalTab === 'credentials' && (
+          <div>
+            <div className="table-responsive" style={{ maxHeight: '340px', overflowY: 'auto' }}>
+              <table className="leads-table" style={{ fontSize: '0.82rem' }}>
+                <thead>
+                  <tr>
+                    <th>Role &amp; Campus</th>
+                    <th>User ID / Email</th>
+                    <th>Default Password</th>
+                    <th>Scope</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rbacRoles.map((r, i) => (
+                    <tr key={i}>
+                      <td>
+                        <strong style={{ color: '#fff' }}>{r.role}</strong>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--primary-light)' }}>{r.campus}</div>
+                      </td>
+                      <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)' }}>{r.user}</td>
+                      <td style={{ fontFamily: 'var(--font-mono)', color: '#34d399' }}>{r.pass}</td>
+                      <td style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>{r.scope}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="form-contact-name">Admission Officer / Official Name</label>
-              <input 
-                type="text" 
-                id="form-contact-name" 
-                className="form-input" 
-                placeholder="e.g. Dr. A. Sharma" 
-                value={formData.officerName}
-                onChange={(e) => setFormData({ ...formData, officerName: e.target.value })}
-                required 
-              />
-            </div>
-
-            <div className="form-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              <div>
-                <label htmlFor="form-email">Official Email</label>
-                <input 
-                  type="email" 
-                  id="form-email" 
-                  className="form-input" 
-                  placeholder="admissions@college.edu" 
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required 
-                />
-              </div>
-              <div>
-                <label htmlFor="form-phone">Phone Number</label>
-                <input 
-                  type="tel" 
-                  id="form-phone" 
-                  className="form-input" 
-                  placeholder="+91 98765 00000" 
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  required 
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="form-volume">Annual Student Enquiry Volume</label>
-              <select 
-                id="form-volume" 
-                className="form-select"
-                value={formData.volume}
-                onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+                Target System: SPHEREX Engine &bull; SQLite Dual-Cloud Synchronization
+              </span>
+              <a 
+                href="https://cal.com/sphere-x-5kss8s/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ padding: '8px 20px', fontSize: '0.86rem' }}
               >
-                <option value="1k-5k">1,000 &ndash; 5,000 Enquiries / Year</option>
-                <option value="5k-20k">5,000 &ndash; 20,000 Enquiries / Year</option>
-                <option value="20k-50k">20,000 &ndash; 50,000 Enquiries / Year</option>
-                <option value="50k+">50,000+ Multi-Campus Enquiries</option>
-              </select>
+                📅 Book Setup Meeting to Deploy Portals &rarr;
+              </a>
             </div>
-
-            <div style={{ marginTop: '24px' }}>
-              <button type="submit" className="btn btn-primary" style={{ width: '100%', fontSize: '1rem' }}>
-                Confirm Institutional Consultation &rarr;
-              </button>
-            </div>
-          </form>
-        ) : (
-          <div style={{ textAlign: 'center', padding: '20px 0' }}>
-            <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', border: '2px solid #10b981', color: '#34d399', fontSize: '1.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px auto' }}>
-              &#10003;
-            </div>
-            <h4 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Consultation Confirmed!</h4>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-              Thank you, {formData.officerName || 'Officer'}. Our higher education onboarding team will reach out to demonstrate the SPHEREX admission operating system for {formData.collegeName || 'your institution'}.
-            </p>
-            <button className="btn btn-secondary" style={{ marginTop: '18px' }} onClick={handleReset}>
-              Close
-            </button>
           </div>
         )}
+
+        {/* TAB 2: Onboarding Consultation Form */}
+        {modalTab === 'consultation' && (
+          <div>
+            {!submitted ? (
+              <form onSubmit={handleSubmit}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="form-group">
+                    <label>Official Name</label>
+                    <input 
+                      type="text" 
+                      className="form-input" 
+                      value={formData.name} 
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required 
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Department</label>
+                    <input 
+                      type="text" 
+                      className="form-input" 
+                      value={formData.department} 
+                      onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                      required 
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Assigned Campus</label>
+                    <select 
+                      className="form-select" 
+                      value={formData.campus} 
+                      onChange={(e) => setFormData({ ...formData, campus: e.target.value })}
+                    >
+                      <option value="SPHEREX Campus 01 (Main)">SPHEREX Campus 01 (Main)</option>
+                      <option value="SPHEREX Campus 02 (City)">SPHEREX Campus 02 (City)</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>Mobile Number (+91-)</label>
+                    <input 
+                      type="tel" 
+                      className="form-input" 
+                      value={formData.phone} 
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      required 
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Institutional Email</label>
+                  <input 
+                    type="email" 
+                    className="form-input" 
+                    value={formData.email} 
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required 
+                  />
+                </div>
+
+                <div style={{ marginTop: '20px' }}>
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%', fontSize: '0.95rem' }}>
+                    Confirm Faculty / Counselor Registration &rarr;
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '24px 0' }}>
+                <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(52, 211, 153, 0.15)', border: '2px solid #34d399', color: '#34d399', fontSize: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
+                  &#10003;
+                </div>
+                <h4 style={{ fontSize: '1.2rem', marginBottom: '6px' }}>Registration Recorded!</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>
+                  Welcome, {formData.name}. Your counselor allocation account has been registered for {formData.campus}.
+                </p>
+                <button className="btn btn-secondary" style={{ marginTop: '16px' }} onClick={handleReset}>
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
       </div>
     </div>
   );

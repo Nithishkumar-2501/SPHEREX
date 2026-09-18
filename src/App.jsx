@@ -1,49 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import ValueProps from './components/ValueProps';
 import AdmissionJourney from './components/AdmissionJourney';
 import LeadManagement from './components/LeadManagement';
+import NoraAISection from './components/NoraAISection';
 import LeadAllocation from './components/LeadAllocation';
-import OmnichannelMarketing from './components/OmnichannelMarketing';
-import VoiceCalling from './components/VoiceCalling';
-import ApplicationPayment from './components/ApplicationPayment';
 import MultiCampus from './components/MultiCampus';
+import VoiceCalling from './components/VoiceCalling';
+import MobileAppSection from './components/MobileAppSection';
+import OmnichannelMarketing from './components/OmnichannelMarketing';
+import ApplicationPayment from './components/ApplicationPayment';
 import DashboardShowcase from './components/DashboardShowcase';
 import WhoIsItFor from './components/WhoIsItFor';
 import HowItWorks from './components/HowItWorks';
 import WhySpherex from './components/WhySpherex';
 import TechStack from './components/TechStack';
-import FinalCTA from './components/FinalCTA';
 import MeetingScheduler from './components/MeetingScheduler';
+import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import DemoModal from './components/DemoModal';
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState(null);
 
-  const handleOpenDemo = (source = 'General') => {
+  const handleOpenDemo = (_source = 'General') => {
     setModalOpen(true);
   };
 
   const handleCloseDemo = () => {
     setModalOpen(false);
   };
-
-  const handleSimulateAction = (actionName) => {
-    setToastMessage(`${actionName} Executed in SPHEREX Demo Engine`);
-  };
-
-  useEffect(() => {
-    if (toastMessage) {
-      const timer = setTimeout(() => {
-        setToastMessage(null);
-      }, 2500);
-      return () => clearTimeout(timer);
-    }
-  }, [toastMessage]);
 
   return (
     <div className="app-root">
@@ -53,32 +41,27 @@ export default function App() {
         <Hero onOpenDemo={handleOpenDemo} />
         <Problem />
         <ValueProps />
-        <AdmissionJourney onOpenDemo={handleOpenDemo} />
-        <LeadManagement onOpenDemo={handleOpenDemo} />
-        <LeadAllocation onOpenDemo={handleOpenDemo} onSimulateAction={handleSimulateAction} />
-        <OmnichannelMarketing onOpenDemo={handleOpenDemo} />
-        <VoiceCalling onOpenDemo={handleOpenDemo} onSimulateAction={handleSimulateAction} />
-        <ApplicationPayment />
+        <LeadManagement />
+        <NoraAISection />
+        <LeadAllocation />
         <MultiCampus />
+        <AdmissionJourney onOpenDemo={handleOpenDemo} />
+        <VoiceCalling />
+        <MobileAppSection />
+        <OmnichannelMarketing onOpenDemo={handleOpenDemo} />
+        <ApplicationPayment />
         <DashboardShowcase />
         <WhoIsItFor />
         <HowItWorks />
         <WhySpherex />
         <TechStack />
         <MeetingScheduler />
-        <FinalCTA onOpenDemo={handleOpenDemo} />
+        <FinalCTA />
       </main>
 
-      <Footer onOpenDemo={handleOpenDemo} />
+      <Footer />
 
       <DemoModal isOpen={modalOpen} onClose={handleCloseDemo} />
-
-      {toastMessage && (
-        <div className="toast-notification">
-          <span style={{ color: 'var(--accent-cyan)' }}>&#10003;</span>
-          <span>{toastMessage}</span>
-        </div>
-      )}
     </div>
   );
 }

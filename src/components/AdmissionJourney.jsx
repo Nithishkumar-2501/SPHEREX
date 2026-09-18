@@ -23,36 +23,36 @@ const journeyStagesData = {
     triggerDesc: 'Structured intake forms capture student goals, departmental questions, and follow-up milestones in the shared institutional ledger.'
   },
   4: {
-    pill: 'STAGE 04 • ELIGIBILITY ASSESSMENT',
-    title: '04 — QUALIFIED',
-    desc: 'Academic scores, 10th/12th marks, and state entrance/TNEA cutoffs are reviewed against institutional eligibility thresholds and department quota availability.',
-    triggerTitle: 'Automated Cutoff Calculator',
-    triggerDesc: 'Integrated cutoff engine automatically computes PCM/aggregate percentages and indicates branch eligibility across open and reserved quotas.'
+    pill: 'STAGE 04 • TNEA CUTOFF & NORA AI OCR',
+    title: '04 — IN_REVIEW (ELIGIBILITY)',
+    desc: 'Academic scores and 10th/12th marksheets are analyzed via Nora AI OCR. The official TNEA cutoff (Maths + Physics/2 + Chemistry/2) is calculated automatically out of 200 to establish departmental eligibility.',
+    triggerTitle: 'Nora AI Marksheet OCR Scanner',
+    triggerDesc: 'Instant extraction of PCM marks, automated community quota evaluation (BC, MBC, SC, SCA, ST, OC), and branch allotment viability check.'
   },
   5: {
     pill: 'STAGE 05 • FORMAL REGISTRATION',
-    title: '05 — APPLICATION',
-    desc: 'Student moves into the formal application process, submitting digital certificates, identification records, and choice preferences through the applicant portal.',
+    title: '05 — 3-SHEET APPLICATION',
+    desc: 'Candidate completes the comprehensive 3-sheet registration covering student identity, parent occupations, and residential address with locked +91- mobile verification.',
     triggerTitle: 'Document Review Desk Workflow',
     triggerDesc: 'Institutional registrars review certificates, issue document checklist alerts, and approve application packets for final admission.'
   },
   6: {
     pill: 'STAGE 06 • SEAT ALLOCATION',
-    title: '06 — ADMITTED',
-    desc: 'Admission is confirmed by the academic department. Provisional admission letter is dispatched and seat allocation is locked in institutional registry.',
-    triggerTitle: 'Provisional Letter Dispatch',
+    title: '06 — ADMITTED & CONFIRMED',
+    desc: 'Admission confirmed for candidate\'s chosen campus and department. Provisional admission letter generated with student folio number, branch choice, and fee acceptance deadline.',
+    triggerTitle: 'Provisional Letter & WhatsApp Dispatch',
     triggerDesc: 'Digital offer letter generated with verified student folio number, allotted campus, department, and deadline for fee acceptance.'
   },
   7: {
     pill: 'STAGE 07 • FINANCIAL RECONCILIATION',
-    title: '07 — PAYMENT',
-    desc: 'Tuition fees, seat reservation charges, and hostel advances are verified by finance teams, completing enrolment with official digital receipts.',
-    triggerTitle: 'Finance & Ledger Reconciliation',
-    triggerDesc: 'Payment status transitions from Pending to Verified to Completed, officially matriculating the applicant into the enrolled student register.'
+    title: '07 — PAYMENT RECONCILED',
+    desc: 'Tuition fees, seat reservation advances, and hostel deposits are reconciled into SQLite and Firebase with official digital receipts.',
+    triggerTitle: 'Dual-Cloud Finance Ledger',
+    triggerDesc: 'Payment status transitions from Pending to Processing to Verified to Completed, officially matriculating the student into the institutional register.'
   }
 };
 
-export default function AdmissionJourney({ onOpenDemo }) {
+export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDemo }) {
   const [activeStage, setActiveStage] = useState(1);
   const currentData = journeyStagesData[activeStage];
 
@@ -94,9 +94,14 @@ export default function AdmissionJourney({ onOpenDemo }) {
               <div className="journey-metrics-pill">{currentData.pill}</div>
               <h3>{currentData.title}</h3>
               <p>{currentData.desc}</p>
-              <button className="btn btn-primary" onClick={() => onOpenDemo('Admission Journey CTA')}>
-                Explore the Admission Journey &rarr;
-              </button>
+              <a 
+                href="https://cal.com/sphere-x-5kss8s/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-primary"
+              >
+                📅 Book Campus Setup Meeting &rarr;
+              </a>
             </div>
             <div className="journey-detail-preview">
               <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)', marginBottom: '8px' }}>

@@ -1,63 +1,89 @@
 import React from 'react';
 
-export default function Footer({ onOpenDemo }) {
+export default function Footer({ onOpenBooking }) {
   return (
     <footer className="site-footer">
       <div className="container">
         <div className="footer-top-grid">
-          <div className="footer-brand-col">
-            <div className="brand-logo">
+          <div className="footer-brand-col" style={{ maxWidth: '360px' }}>
+            <div className="brand-logo" style={{ marginBottom: '12px' }}>
               <img src="/logo.png" alt="SPHEREX" className="brand-icon-img" />
-              <span>SPHEREX</span>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800 }}>SPHEREX</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)' }}>
+                  ADMISSION MANAGEMENT OS
+                </span>
+              </div>
             </div>
-            <p>College Admission CRM &amp; Lead Management Platform</p>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginTop: '8px' }}>
-              The Operating System for Modern College Admissions. Capture. Assign. Engage. Track. Convert.
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              Intelligent Multi-Campus Admission CRM &amp; Omnichannel Lead Management System.
+            </p>
+            <p style={{ fontSize: '0.76rem', color: 'var(--text-dim)', marginTop: '8px', lineHeight: 1.5 }}>
+              Engineered by the <strong>SPHEREX Core Architecture Team</strong> &bull; 2026–2027 Admissions Operating System.
             </p>
           </div>
 
           <div className="footer-col">
-            <h4>Navigation</h4>
+            <h4>Institutional Campuses</h4>
             <ul>
-              <li><a href="#hero">Platform</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#journey">How It Works</a></li>
-              <li><a href="#solutions">Solutions</a></li>
-              <li><a href="#showcase">Resources</a></li>
-              <li><span style={{ cursor: 'pointer', color: 'var(--text-secondary)' }} onClick={() => onOpenDemo('Footer Login')}>Login</span></li>
+              <li><a href="#multi-campus">Campus 01 (Main Campus)</a></li>
+              <li><a href="#multi-campus">Campus 02 (City Campus)</a></li>
+              <li><a href="#lead-assignment">16+ Faculty Portals</a></li>
+              <li><a href="#nora-ai">TNEA Cutoff Calculator</a></li>
+              <li><a href="#mobile-app">Mobile App Options</a></li>
+              <li>
+                <a 
+                  href="https://cal.com/sphere-x-5kss8s/30min" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: 'var(--accent-cyan)' }}
+                >
+                  Schedule On-Campus Setup
+                </a>
+              </li>
             </ul>
           </div>
 
           <div className="footer-col">
-            <h4>Product</h4>
+            <h4>System Modules</h4>
             <ul>
-              <li><a href="#lead-management">Lead Management</a></li>
-              <li><a href="#features">Admission CRM</a></li>
-              <li><a href="#marketing">Marketing</a></li>
-              <li><a href="#voice-calling">Calling</a></li>
-              <li><a href="#applications">Applications</a></li>
-              <li><a href="#applications">Payments</a></li>
-              <li><a href="#showcase">Analytics</a></li>
+              <li><a href="#lead-management">3-Sheet Candidate Entry</a></li>
+              <li><a href="#lead-assignment">Batch Quota Splitting</a></li>
+              <li><a href="#marketing">Omnichannel Marketing</a></li>
+              <li><a href="#voice-calling">WebRTC Telephony (Port 5000)</a></li>
+              <li><a href="#nora-ai">Nora AI OCR Engine</a></li>
+              <li><a href="#tech-stack">Prisma SQLite &amp; Firebase</a></li>
             </ul>
           </div>
 
           <div className="footer-col">
-            <h4>Institutional</h4>
-            <ul>
-              <li><a href="#multi-campus">Multi-Campus</a></li>
-              <li><a href="#solutions">Faculty Portals</a></li>
-              <li><a href="#features">Cutoff Intelligence</a></li>
-              <li><span style={{ cursor: 'pointer', color: 'var(--accent-cyan)' }} onClick={() => onOpenDemo('Footer Consultation')}>Book Consultation</span></li>
-            </ul>
+            <h4>Campus Deployment</h4>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              <div style={{ marginBottom: '6px' }}>&bull; High Availability <strong>Multi-Tenant Architecture</strong></div>
+              <div style={{ marginBottom: '6px' }}>&bull; Built for <strong>Autonomous Campuses &amp; Institutions</strong></div>
+              <div style={{ marginBottom: '6px' }}>&bull; Full <strong>SQLite &amp; Firebase Dual-Cloud Sync</strong></div>
+              <div style={{ marginBottom: '14px' }}>&bull; On-Premise <strong>Setup by SPHEREX Creator</strong></div>
+              <a 
+                href="https://cal.com/sphere-x-5kss8s/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-primary" 
+                style={{ padding: '8px 16px', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+              >
+                📅 Schedule Setup Meeting
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <div>&copy; 2026 SPHEREX. All rights reserved.</div>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <span>Enterprise Grade</span>
-            <span>Institutional Privacy</span>
-            <span>Modern Higher Ed CRM</span>
+          <div>
+            &copy; 2026 SPHEREX. All rights reserved. Intelligent Admission Operating System.
+          </div>
+          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+            <span>Multi-Campus Deployment</span>
+            <span>Dual-Cloud Data Security</span>
+            <span>On-Site Setup by SPHEREX Creator</span>
           </div>
         </div>
       </div>
