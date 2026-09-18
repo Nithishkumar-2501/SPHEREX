@@ -17,9 +17,9 @@ export default function Navbar({ onOpenBooking }) {
       <div className="container navbar-inner">
         <a href="#hero" className="brand-logo" id="nav-brand-logo">
           <img src="/logo.png" alt="SPHEREX" className="brand-icon-img" />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1 }}>SPHEREX</span>
-            <span style={{ fontSize: '0.62rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)', letterSpacing: '0.04em' }}>
+          <div className="brand-title-wrap">
+            <span className="brand-name">SPHEREX</span>
+            <span className="brand-sub">
               ADMISSION MANAGEMENT OS
             </span>
           </div>
@@ -41,10 +41,10 @@ export default function Navbar({ onOpenBooking }) {
             href="https://cal.com/sphere-x-5kss8s/30min" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn btn-primary" 
-            style={{ padding: '8px 18px', fontSize: '0.84rem' }}
+            className="btn btn-primary nav-book-btn" 
           >
-            📅 Book Meeting
+            <span className="nav-book-text-full">📅 Book Meeting</span>
+            <span className="nav-book-text-short">📅 Book</span>
           </a>
           <button 
             className="mobile-toggle" 

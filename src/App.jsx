@@ -72,32 +72,10 @@ export default function App() {
   return (
     <div className="app-root">
       {/* Floating preview toggle to view the new Hero31 UI anytime */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: '24px',
-          right: '24px',
-          zIndex: 999,
-        }}
-      >
+      <div className="hero31-floating-trigger">
         <button
           onClick={() => setShowHero31Demo(true)}
-          style={{
-            padding: '10px 18px',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(15, 23, 42, 0.85)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(56, 189, 248, 0.4)',
-            color: '#38bdf8',
-            fontSize: '13px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.7), 0 0 16px rgba(56, 189, 248, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-          }}
+          className="hero31-floating-btn"
           title="Preview new Hero31 UI component"
         >
           <span>✨</span>

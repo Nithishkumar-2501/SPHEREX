@@ -30,7 +30,7 @@ export default function TechStack() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+        <div className="tech-stack-grid">
           {technologies.map((tech, idx) => (
             <div 
               key={idx} 

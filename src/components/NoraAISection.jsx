@@ -49,7 +49,7 @@ export default function NoraAISection({ onOpenBooking }) {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px', alignItems: 'start', maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="nora-ai-grid">
           
           {/* Left Column: Interactive TNEA Cutoff Calculator */}
           <div className="cutoff-card">

@@ -15,8 +15,8 @@ export default function MobileAppSection({ onOpenBooking }) {
           </p>
         </div>
 
-        <div className="mobile-app-banner" style={{ padding: '36px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px', alignItems: 'center' }}>
+        <div className="mobile-app-banner">
+          <div className="mobile-app-grid">
             
             {/* Left Column: App Features & Deployment Workflow */}
             <div>

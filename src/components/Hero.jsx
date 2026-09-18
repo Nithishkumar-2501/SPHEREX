@@ -177,7 +177,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
                   <span>SPHEREX &bull; Multi-Campus Admission Management OS</span>
                 </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div className="topbar-right">
                 <span className="badge-firebase-live">
                   <span className="pulse-orange"></span>
                   Firebase Live Sync
@@ -189,51 +189,25 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
             </div>
 
             {/* Campus Selector Bar inside Hero */}
-            <div style={{ padding: '12px 20px', background: 'rgba(7, 12, 30, 0.7)', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-              <div style={{ display: 'flex', gap: '8px' }}>
+            <div className="hero-campus-bar">
+              <div className="hero-campus-btns">
                 <button
                   type="button"
                   onClick={() => setHeroCampus('CAMPUS_01')}
-                  style={{
-                    padding: '6px 14px',
-                    borderRadius: 'var(--radius-sm)',
-                    border: '1px solid',
-                    borderColor: heroCampus === 'CAMPUS_01' ? 'var(--primary)' : 'var(--border)',
-                    background: heroCampus === 'CAMPUS_01' ? 'rgba(56, 189, 248, 0.2)' : 'transparent',
-                    color: heroCampus === 'CAMPUS_01' ? '#ffffff' : 'var(--text-muted)',
-                    fontWeight: 700,
-                    fontSize: '0.8rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px'
-                  }}
+                  className={`hero-campus-btn ${heroCampus === 'CAMPUS_01' ? 'active' : ''}`}
                 >
                   <span>🏛️</span> Campus 01 <span className="badge-tnea-code">Main Campus</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setHeroCampus('CAMPUS_02')}
-                  style={{
-                    padding: '6px 14px',
-                    borderRadius: 'var(--radius-sm)',
-                    border: '1px solid',
-                    borderColor: heroCampus === 'CAMPUS_02' ? 'var(--primary)' : 'var(--border)',
-                    background: heroCampus === 'CAMPUS_02' ? 'rgba(56, 189, 248, 0.2)' : 'transparent',
-                    color: heroCampus === 'CAMPUS_02' ? '#ffffff' : 'var(--text-muted)',
-                    fontWeight: 700,
-                    fontSize: '0.8rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px'
-                  }}
+                  className={`hero-campus-btn ${heroCampus === 'CAMPUS_02' ? 'active' : ''}`}
                 >
                   <span>🏛️</span> Campus 02 <span className="badge-tnea-code">City Campus</span>
                 </button>
               </div>
 
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+              <div className="hero-campus-viewing">
                 Viewing: <strong style={{ color: 'var(--primary-light)' }}>{heroCampus === 'CAMPUS_01' ? 'Campus 01 (Main Campus)' : 'Campus 02 (City Campus)'}</strong>
               </div>
             </div>

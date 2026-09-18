@@ -87,7 +87,7 @@ export default function LeadManagement({ onOpenBooking }) {
                   <span className="badge-range-tag">Step 1 of 3</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+                <div className="sheet-form-grid">
                   <div className="form-group">
                     <label>Full Legal Name</label>
                     <input type="text" className="form-input" value="S. Vignesh" readOnly />
@@ -125,7 +125,7 @@ export default function LeadManagement({ onOpenBooking }) {
                     </select>
                   </div>
 
-                  <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <div className="form-group form-group-span-2">
                     <label>Higher Secondary / Matriculation School</label>
                     <input type="text" className="form-input" value="St. Joseph Higher Secondary School" readOnly />
                   </div>
@@ -167,7 +167,7 @@ export default function LeadManagement({ onOpenBooking }) {
                   <span className="badge-range-tag">Step 2 of 3</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+                <div className="sheet-form-grid">
                   <div className="form-group">
                     <label>Father's Name</label>
                     <input type="text" className="form-input" value="K. Subramanian" readOnly />
@@ -194,12 +194,12 @@ export default function LeadManagement({ onOpenBooking }) {
                     </div>
                   </div>
 
-                  <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <div className="form-group form-group-span-2">
                     <label>Parents' Occupation</label>
                     <input type="text" className="form-input" value="Agriculture / Farming" readOnly />
                   </div>
 
-                  <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <div className="form-group form-group-span-2">
                     <label>Residential Street Address</label>
                     <input type="text" className="form-input" value="45/2, Gandhi Road, Thanthonimalai, Karur - 639005" readOnly />
                   </div>
@@ -227,7 +227,7 @@ export default function LeadManagement({ onOpenBooking }) {
                   <span className="badge-range-tag">Step 3 of 3</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+                <div className="sheet-form-grid">
                   <div className="form-group">
                     <label>Community Category</label>
                     <input type="text" className="form-input" value="BC (Backward Class)" readOnly />
@@ -248,12 +248,12 @@ export default function LeadManagement({ onOpenBooking }) {
                     <input type="text" className="form-input" value="SPHEREX Campus 01 (Main Campus)" readOnly />
                   </div>
 
-                  <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <div className="form-group form-group-span-2">
                     <label>Course Preference</label>
                     <input type="text" className="form-input" value="B.Tech Artificial Intelligence and Data Science (AI & DS)" readOnly />
                   </div>
 
-                  <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                  <div className="form-group form-group-span-2">
                     <label>Referral Attribution Channel</label>
                     <input type="text" className="form-input" value="📢 Online Ads (Instagram / Facebook / YouTube)" readOnly />
                   </div>
