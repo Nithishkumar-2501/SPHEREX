@@ -21,7 +21,7 @@ export default function Hero31({
     subtitle = "Watermelon empowers teams to build, scale, and transform with technology that drives real results.",
     ctaText = "Request a Demo",
     trustedByText = "TRUSTED BY AMBITIOUS TEAMS",
-    backgroundImage = "https://assets.watermelon.sh/hero-31-bg.avif",
+    backgroundImage = "/landing-bg.jpg",
 }: Hero31Props) {
     // Nav: slides down from top, soft spring
     const navContainerVariants: Variants = {

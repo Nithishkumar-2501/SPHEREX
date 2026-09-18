@@ -11,7 +11,7 @@ export default function Demo() {
         subtitle="Watermelon empowers teams to build, scale, and transform with technology that drives real results."
         ctaText="Request a Demo"
         trustedByText="TRUSTED BY AMBITIOUS TEAMS"
-        backgroundImage="https://assets.watermelon.sh/hero-31-bg.avif"
+        backgroundImage="/landing-bg.jpg"
       />
     </div>
   );

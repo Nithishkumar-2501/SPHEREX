@@ -20,8 +20,13 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
 
   return (
     <section className="hero-section" id="hero">
-      {/* Cinematic Earth Sphere Looping Video */}
+      {/* Cinematic Earth Sphere Looping Video & Mountain Sunset Backdrop */}
       <div className="hero-video-wrapper">
+        <img
+          className="hero-background-img"
+          src="/landing-bg.jpg"
+          alt="Landing Background"
+        />
         <video
           ref={videoRef}
           className="hero-background-video"
@@ -29,7 +34,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
           loop
           muted
           playsInline
-          poster="/hero-poster.jpg"
+          poster="/landing-bg.jpg"
         >
           <source src="/hero-sphere.mp4" type="video/mp4" />
           <source src="/hero-scenic.mp4" type="video/mp4" />
