@@ -3214,15 +3214,71 @@ body {
 /* ==========================================================================
    Responsive Grid & Form Layout Utilities (Mobile Layout Fixes)
    ========================================================================== */
+.sheet-main-card {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.directory-main-card {
+  padding: 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.sheet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  gap: 12px;
+}
+
+.sheet-card-header h4 {
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.sheet-card-header p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 .sheet-form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   width: 100%;
 }
 
+.form-col-full {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.form-col-half {
+  grid-column: span 1;
+  min-width: 0;
+}
+
 .form-group-span-2 {
   grid-column: span 2;
+}
+
+.sheet-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sheet-helper-text {
+  font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
 .nora-ai-grid {
@@ -3291,18 +3347,94 @@ body {
   .section {
     padding: 60px 0;
   }
-  
-  .sheet-form-grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+
+  #lead-management {
+    padding-bottom: 84px;
   }
-  
-  .form-group-span-2 {
-    grid-column: span 1 !important;
+
+  .sheet-main-card {
+    padding: 16px 12px !important;
+    border-radius: var(--radius-md) !important;
   }
-  
+
+  .directory-main-card {
+    padding: 16px 12px !important;
+  }
+
+  /* Seamless inner sheet body on mobile - eliminates nested double border box */
   .sheet-card-body {
-    padding: 18px 14px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .sheet-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .sheet-card-header h4 {
+    font-size: 1.05rem !important;
+    line-height: 1.3;
+  }
+
+  .sheet-card-header p {
+    font-size: 0.76rem !important;
+  }
+
+  /* True 2-column mobile grid with zero overflow */
+  .sheet-form-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px 10px !important;
+    width: 100% !important;
+  }
+
+  .form-col-full {
+    grid-column: span 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .form-col-half {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .form-group-span-2 {
+    grid-column: span 2 !important;
+  }
+
+  .form-group {
+    min-width: 0 !important;
+  }
+
+  .sheet-form-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .sheet-form-footer .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .sheet-helper-text {
+    text-align: center;
+    font-size: 0.76rem;
+    line-height: 1.4;
   }
   
   .sheet-nav-wrapper {
@@ -3311,6 +3443,11 @@ body {
     flex-wrap: nowrap;
     gap: 6px;
     padding: 4px;
+    scrollbar-width: none;
+  }
+
+  .sheet-nav-wrapper::-webkit-scrollbar {
+    display: none;
   }
   
   .sheet-nav-item {
@@ -3401,20 +3538,38 @@ body {
     font-size: 0.74rem;
     line-height: 1.4;
   }
+
+  .sheet-main-card {
+    padding: 14px 10px !important;
+  }
+
+  .sheet-form-grid {
+    gap: 10px 8px !important;
+  }
+
+  .form-group label {
+    font-size: 0.74rem !important;
+    margin-bottom: 4px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
   
   .phone-input-field {
-    font-size: 0.84rem;
-    padding: 10px 10px;
+    font-size: 0.82rem;
+    padding: 9px 8px;
   }
   
   .phone-prefix-locked {
-    padding: 10px 10px;
-    font-size: 0.82rem;
+    padding: 9px 8px;
+    font-size: 0.8rem;
   }
   
   .form-input, .form-select {
-    padding: 10px 12px;
-    font-size: 0.85rem;
+    padding: 9px 8px;
+    font-size: 0.82rem;
   }
 }
+
 

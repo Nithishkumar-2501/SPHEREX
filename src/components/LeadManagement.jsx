@@ -46,7 +46,7 @@ export default function LeadManagement({ onOpenBooking }) {
 
         {/* MODE 1: 3-Sheet Candidate Entry Form Preview */}
         {activeMode === 'entryForm' && (
-          <div className="glass-card" style={{ maxWidth: '980px', margin: '0 auto', padding: '32px' }}>
+          <div className="glass-card sheet-main-card">
             
             {/* Sheet Steps Navigation */}
             <div className="sheet-nav-wrapper">
@@ -79,26 +79,26 @@ export default function LeadManagement({ onOpenBooking }) {
             {/* SHEET 1 PREVIEW */}
             {activeSheet === 1 && (
               <div className="sheet-card-body">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+                <div className="sheet-card-header">
                   <div>
-                    <h4 style={{ fontSize: '1.15rem', color: '#fff' }}>Sheet 1: Student Personal Details Options</h4>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Compulsory 10-digit Indian mobile format (+91-) locked</p>
+                    <h4>Sheet 1: Student Personal Details Options</h4>
+                    <p>Compulsory 10-digit Indian mobile format (+91-) locked</p>
                   </div>
                   <span className="badge-range-tag">Step 1 of 3</span>
                 </div>
 
                 <div className="sheet-form-grid">
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Full Legal Name</label>
                     <input type="text" className="form-input" value="S. Vignesh" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Student Email Address</label>
                     <input type="email" className="form-input" value="vignesh.s@gmail.com" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Student Mobile (+91- Locked)</label>
                     <div className="phone-input-group">
                       <span className="phone-prefix-locked">+91-</span>
@@ -106,31 +106,36 @@ export default function LeadManagement({ onOpenBooking }) {
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Gender</label>
                     <select className="form-select" value="Male" disabled>
                       <option value="Male">Male</option>
                     </select>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Date of Birth</label>
                     <input type="text" className="form-input" value="2008-05-14" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Blood Group</label>
                     <select className="form-select" value="O+" disabled>
                       <option value="O+">O+ Positive</option>
                     </select>
                   </div>
 
-                  <div className="form-group form-group-span-2">
+                  <div className="form-group form-col-half">
+                    <label>State</label>
+                    <input type="text" className="form-input" value="Tamil Nadu" readOnly />
+                  </div>
+
+                  <div className="form-group form-col-full">
                     <label>Higher Secondary / Matriculation School</label>
                     <input type="text" className="form-input" value="St. Joseph Higher Secondary School" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Tamil Nadu District (38 Districts)</label>
                     <select className="form-select" defaultValue="Karur">
                       {tnDistricts.map(d => (
@@ -138,18 +143,13 @@ export default function LeadManagement({ onOpenBooking }) {
                       ))}
                     </select>
                   </div>
-
-                  <div className="form-group">
-                    <label>State</label>
-                    <input type="text" className="form-input" value="Tamil Nadu" readOnly />
-                  </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '24px', flexWrap: 'wrap', gap: '12px' }}>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+                <div className="sheet-form-footer">
+                  <span className="sheet-helper-text">
                     👁️ Interactive Form Preview (Actual system installed during campus setup)
                   </span>
-                  <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(2)}>
+                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(2)}>
                     View Sheet 2 (Parent Details) &rarr;
                   </button>
                 </div>
@@ -159,21 +159,21 @@ export default function LeadManagement({ onOpenBooking }) {
             {/* SHEET 2 PREVIEW */}
             {activeSheet === 2 && (
               <div className="sheet-card-body">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+                <div className="sheet-card-header">
                   <div>
-                    <h4 style={{ fontSize: '1.15rem', color: '#fff' }}>Sheet 2: Parent Details &amp; Residence Options</h4>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Parent contact validation for counseling follow-ups</p>
+                    <h4>Sheet 2: Parent Details &amp; Residence Options</h4>
+                    <p>Parent contact validation for counseling follow-ups</p>
                   </div>
                   <span className="badge-range-tag">Step 2 of 3</span>
                 </div>
 
                 <div className="sheet-form-grid">
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Father's Name</label>
                     <input type="text" className="form-input" value="K. Subramanian" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Father's Mobile (+91- Locked)</label>
                     <div className="phone-input-group">
                       <span className="phone-prefix-locked">+91-</span>
@@ -181,12 +181,12 @@ export default function LeadManagement({ onOpenBooking }) {
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Mother's Name</label>
                     <input type="text" className="form-input" value="S. Lakshmi" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-full">
                     <label>Mother's Mobile (+91- Locked)</label>
                     <div className="phone-input-group">
                       <span className="phone-prefix-locked">+91-</span>
@@ -194,22 +194,22 @@ export default function LeadManagement({ onOpenBooking }) {
                     </div>
                   </div>
 
-                  <div className="form-group form-group-span-2">
+                  <div className="form-group form-col-full">
                     <label>Parents' Occupation</label>
                     <input type="text" className="form-input" value="Agriculture / Farming" readOnly />
                   </div>
 
-                  <div className="form-group form-group-span-2">
+                  <div className="form-group form-col-full">
                     <label>Residential Street Address</label>
                     <input type="text" className="form-input" value="45/2, Gandhi Road, Thanthonimalai, Karur - 639005" readOnly />
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '24px', flexWrap: 'wrap', gap: '12px' }}>
+                <div className="sheet-form-footer">
                   <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(1)}>
                     &larr; Back to Sheet 1
                   </button>
-                  <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(3)}>
+                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(3)}>
                     View Sheet 3 (Category &amp; Attribution) &rarr;
                   </button>
                 </div>
@@ -219,49 +219,52 @@ export default function LeadManagement({ onOpenBooking }) {
             {/* SHEET 3 PREVIEW */}
             {activeSheet === 3 && (
               <div className="sheet-card-body">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+                <div className="sheet-card-header">
                   <div>
-                    <h4 style={{ fontSize: '1.15rem', color: '#fff' }}>Sheet 3: Category, Preferences &amp; Attribution Options</h4>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Community quotas and 9-channel marketing attribution tracking</p>
+                    <h4>Sheet 3: Category, Preferences &amp; Attribution Options</h4>
+                    <p>Community quotas and 9-channel marketing attribution tracking</p>
                   </div>
                   <span className="badge-range-tag">Step 3 of 3</span>
                 </div>
 
                 <div className="sheet-form-grid">
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Community Category</label>
                     <input type="text" className="form-input" value="BC (Backward Class)" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Religion</label>
                     <input type="text" className="form-input" value="Hindu" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Interest Status</label>
-                    <input type="text" className="form-input" value="🔥 Interested (Ready to admit)" readOnly />
+                    <input type="text" className="form-input" value="🔥 Interested (Ready)" readOnly />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group form-col-half">
                     <label>Preferred Campus</label>
-                    <input type="text" className="form-input" value="SPHEREX Campus 01 (Main Campus)" readOnly />
+                    <input type="text" className="form-input" value="Campus 01 (Main)" readOnly />
                   </div>
 
-                  <div className="form-group form-group-span-2">
+                  <div className="form-group form-col-full">
                     <label>Course Preference</label>
                     <input type="text" className="form-input" value="B.Tech Artificial Intelligence and Data Science (AI & DS)" readOnly />
                   </div>
 
-                  <div className="form-group form-group-span-2">
+                  <div className="form-group form-col-full">
                     <label>Referral Attribution Channel</label>
                     <input type="text" className="form-input" value="📢 Online Ads (Instagram / Facebook / YouTube)" readOnly />
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '24px' }}>
+                <div className="sheet-form-footer">
                   <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(2)}>
                     &larr; Back to Sheet 2
+                  </button>
+                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(1)}>
+                    ↺ Review Sheet 1
                   </button>
                 </div>
               </div>
@@ -272,7 +275,7 @@ export default function LeadManagement({ onOpenBooking }) {
 
         {/* MODE 2: Contact Directory Options Preview */}
         {activeMode === 'directory' && (
-          <div className="glass-card" style={{ padding: '24px', maxWidth: '1180px', margin: '0 auto' }}>
+          <div className="glass-card directory-main-card">
             <div style={{ marginBottom: '18px' }}>
               <div>
                 <h3 style={{ fontSize: '1.25rem', color: '#fff' }}>Candidate Directory Options &amp; Communication Layout</h3>
