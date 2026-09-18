@@ -68,22 +68,13 @@ export default function LeadAllocation({ onOpenBooking }) {
 
         {/* Workflow Showcase Box */}
         <div className="glass-card" style={{ padding: '28px', marginBottom: '32px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+          <div style={{ marginBottom: '16px' }}>
             <div>
               <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--primary-light)', textTransform: 'uppercase' }}>
                 Batch Splitting Architecture
               </span>
               <h3 style={{ fontSize: '1.2rem', color: '#fff', margin: '4px 0 0 0' }}>How Administrators Split Leads in SPHEREX</h3>
             </div>
-            <a 
-              href="https://cal.com/sphere-x-5kss8s/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn btn-primary" 
-              style={{ padding: '8px 18px', fontSize: '0.84rem' }}
-            >
-              📅 Schedule Setup to Deploy Faculty Quotas &rarr;
-            </a>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
@@ -148,20 +139,7 @@ export default function LeadAllocation({ onOpenBooking }) {
           })}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '32px' }}>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '14px' }}>
-            Want this faculty allocation system customized for your department heads?
-          </p>
-          <a 
-            href="https://cal.com/sphere-x-5kss8s/30min" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn btn-primary" 
-            style={{ padding: '12px 28px', fontSize: '0.92rem' }}
-          >
-            📅 Book Discovery Meeting &amp; Campus Installation &rarr;
-          </a>
-        </div>
+
 
       </div>
     </section>

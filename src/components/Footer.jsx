@@ -31,16 +31,7 @@ export default function Footer({ onOpenBooking }) {
               <li><a href="#lead-assignment">16+ Faculty Portals</a></li>
               <li><a href="#nora-ai">TNEA Cutoff Calculator</a></li>
               <li><a href="#mobile-app">Mobile App Options</a></li>
-              <li>
-                <a 
-                  href="https://cal.com/sphere-x-5kss8s/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  style={{ color: 'var(--accent-cyan)' }}
-                >
-                  Schedule On-Campus Setup
-                </a>
-              </li>
+
             </ul>
           </div>
 
@@ -62,16 +53,7 @@ export default function Footer({ onOpenBooking }) {
               <div style={{ marginBottom: '6px' }}>&bull; High Availability <strong>Multi-Tenant Architecture</strong></div>
               <div style={{ marginBottom: '6px' }}>&bull; Built for <strong>Autonomous Campuses &amp; Institutions</strong></div>
               <div style={{ marginBottom: '6px' }}>&bull; Full <strong>SQLite &amp; Firebase Dual-Cloud Sync</strong></div>
-              <div style={{ marginBottom: '14px' }}>&bull; On-Premise <strong>Setup by SPHEREX Creator</strong></div>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary" 
-                style={{ padding: '8px 16px', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-              >
-                📅 Schedule Setup Meeting
-              </a>
+              <div>&bull; On-Premise <strong>Setup by SPHEREX Creator</strong></div>
             </div>
           </div>
         </div>

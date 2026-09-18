@@ -94,14 +94,7 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
               <div className="journey-metrics-pill">{currentData.pill}</div>
               <h3>{currentData.title}</h3>
               <p>{currentData.desc}</p>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary"
-              >
-                📅 Book Campus Setup Meeting &rarr;
-              </a>
+
             </div>
             <div className="journey-detail-preview">
               <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)', marginBottom: '8px' }}>

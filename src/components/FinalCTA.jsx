@@ -21,20 +21,11 @@ export default function FinalCTA({ onOpenBooking }) {
 
           <div className="final-cta-group">
             <a 
-              href="https://cal.com/sphere-x-5kss8s/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+              href="#mobile-app" 
               className="btn btn-primary" 
               style={{ fontSize: '1.05rem', padding: '16px 36px', display: 'inline-block' }}
             >
-              📅 Schedule On-Campus Setup Meeting &rarr;
-            </a>
-            <a 
-              href="#mobile-app" 
-              className="btn btn-secondary" 
-              style={{ fontSize: '1rem', padding: '16px 32px', display: 'inline-block' }}
-            >
-              📱 View Mobile &amp; Web App Previews
+              📱 View Mobile &amp; Web App Previews &rarr;
             </a>
           </div>
 

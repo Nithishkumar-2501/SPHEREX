@@ -259,19 +259,10 @@ export default function LeadManagement({ onOpenBooking }) {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '24px', flexWrap: 'wrap', gap: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '24px' }}>
                   <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(2)}>
                     &larr; Back to Sheet 2
                   </button>
-                  <a 
-                    href="https://cal.com/sphere-x-5kss8s/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-primary" 
-                    style={{ padding: '10px 22px', fontSize: '0.88rem' }}
-                  >
-                    📅 Schedule On-Campus Setup to Deploy This Form &rarr;
-                  </a>
                 </div>
               </div>
             )}
@@ -282,20 +273,11 @@ export default function LeadManagement({ onOpenBooking }) {
         {/* MODE 2: Contact Directory Options Preview */}
         {activeMode === 'directory' && (
           <div className="glass-card" style={{ padding: '24px', maxWidth: '1180px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '12px' }}>
+            <div style={{ marginBottom: '18px' }}>
               <div>
                 <h3 style={{ fontSize: '1.25rem', color: '#fff' }}>Candidate Directory Options &amp; Communication Layout</h3>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Preview how counselors view student dossiers with quick action triggers</p>
               </div>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-primary" 
-                style={{ padding: '8px 18px', fontSize: '0.82rem' }}
-              >
-                📅 Book Setup Meeting
-              </a>
             </div>
 
             <div className="table-responsive">

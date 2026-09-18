@@ -107,19 +107,10 @@ export default function DemoModal({ isOpen, onClose, onOpenBooking }) {
               </table>
             </div>
 
-            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
               <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
                 Target System: SPHEREX Engine &bull; SQLite Dual-Cloud Synchronization
               </span>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                style={{ padding: '8px 20px', fontSize: '0.86rem' }}
-              >
-                📅 Book Setup Meeting to Deploy Portals &rarr;
-              </a>
             </div>
           </div>
         )}

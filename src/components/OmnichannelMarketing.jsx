@@ -25,14 +25,7 @@ export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpe
             <p>
               Permanent attribution tags prevent lead overwriting, calculating the exact cost-per-admitted student across all institutional campuses.
             </p>
-            <a 
-              href="https://cal.com/sphere-x-5kss8s/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn btn-primary"
-            >
-              📅 Book Campus Setup Meeting &rarr;
-            </a>
+
           </div>
 
           <div className="feature-preview-block">

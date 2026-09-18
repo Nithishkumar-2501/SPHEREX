@@ -164,17 +164,7 @@ export default function NoraAISection({ onOpenBooking }) {
               ))}
             </div>
 
-            <div style={{ marginTop: '22px' }}>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary" 
-                style={{ width: '100%', background: 'linear-gradient(135deg, #7c3aed, #2563eb)', border: 'none', padding: '12px', display: 'inline-block', textAlign: 'center' }}
-              >
-                📅 Schedule Campus Setup to Deploy Nora AI OCR &rarr;
-              </a>
-            </div>
+
           </div>
 
         </div>

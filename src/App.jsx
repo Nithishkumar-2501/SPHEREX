@@ -17,7 +17,6 @@ import WhoIsItFor from './components/WhoIsItFor';
 import HowItWorks from './components/HowItWorks';
 import WhySpherex from './components/WhySpherex';
 import TechStack from './components/TechStack';
-import MeetingScheduler from './components/MeetingScheduler';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import DemoModal from './components/DemoModal';
@@ -55,7 +54,6 @@ export default function App() {
         <HowItWorks />
         <WhySpherex />
         <TechStack />
-        <MeetingScheduler />
         <FinalCTA />
       </main>
 

@@ -67,24 +67,7 @@ export default function MobileAppSection({ onOpenBooking }) {
                 </div>
               </div>
 
-              {/* Meeting Booking CTA */}
-              <div style={{ background: 'rgba(56, 189, 248, 0.08)', border: '1px solid rgba(56, 189, 248, 0.25)', borderRadius: 'var(--radius-md)', padding: '18px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div style={{ fontSize: '0.85rem', color: '#fff', fontWeight: 700 }}>
-                  Interested in deploying SPHEREX for your institution?
-                </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                  Book a 30-minute discovery consultation on our live calendar to discuss your admission requirements and schedule on-campus installation.
-                </div>
-                <a 
-                  href="https://cal.com/sphere-x-5kss8s/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-primary"
-                  style={{ alignSelf: 'flex-start', padding: '10px 22px', fontSize: '0.88rem', marginTop: '6px' }}
-                >
-                  📅 Book On-Campus Setup Meeting &rarr;
-                </a>
-              </div>
+
 
             </div>
 

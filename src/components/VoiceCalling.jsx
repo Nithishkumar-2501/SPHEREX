@@ -75,17 +75,7 @@ export default function VoiceCalling({ onOpenBooking }) {
             <p>
               Features dynamic waveform logging, audio audit players, structured call disposition notes, and an automated 30-day retention purge engine to ensure complete privacy compliance.
             </p>
-            <div style={{ marginTop: '24px' }}>
-              <a 
-                href="https://cal.com/sphere-x-5kss8s/30min" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary" 
-                style={{ padding: '12px 26px', fontSize: '0.9rem' }}
-              >
-                📅 Schedule Campus Setup for WebRTC Telephony &rarr;
-              </a>
-            </div>
+
           </div>
 
           <div className="feature-preview-block">
