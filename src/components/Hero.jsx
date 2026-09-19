@@ -2,21 +2,8 @@ import React, { useState, useRef } from 'react';
 import LightRays from './LightRays';
 
 export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [heroCampus, setHeroCampus] = useState('CAMPUS_01');
   const videoRef = useRef(null);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsPlaying(true);
-      }
-    }
-  };
 
   return (
     <section className="hero-section" id="hero">
@@ -42,34 +29,6 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
         </video>
         <div className="hero-video-scrim"></div>
         <div className="hero-video-mist"></div>
-      </div>
-
-      {/* Atmospheric Video Motion Toggle */}
-      <div className="hero-video-controls">
-        <button
-          type="button"
-          className="btn-video-control"
-          onClick={togglePlay}
-          aria-label={isPlaying ? "Pause orbital motion" : "Play orbital motion"}
-        >
-          <span className={`control-indicator ${isPlaying ? 'active' : ''}`}></span>
-          {isPlaying ? (
-            <>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16" rx="1" />
-                <rect x="14" y="4" width="4" height="16" rx="1" />
-              </svg>
-              <span>Orbital Live Sphere</span>
-            </>
-          ) : (
-            <>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-              <span>Resume Orbit</span>
-            </>
-          )}
-        </button>
       </div>
 
       <div className="hero-light-rays-wrapper">
