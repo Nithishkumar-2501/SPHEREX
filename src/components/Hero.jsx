@@ -137,32 +137,6 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
 
         {/* Realistic Hero Dashboard */}
         <div className="hero-dashboard-wrapper" id="dashboard-preview">
-          
-          {/* Floating UI Badges */}
-          <div className="floating-badge badge-1">
-            <div className="badge-icon-wrap bg-cyan-glow">&#10003;</div>
-            <div>
-              <span className="floating-badge-text">New Lead Captured</span>
-              <span className="floating-badge-sub">S. Vignesh (+91-9876543210) &bull; AI &amp; DS &bull; Cutoff 194.5</span>
-            </div>
-          </div>
-
-          <div className="floating-badge badge-2">
-            <div className="badge-icon-wrap bg-purple-glow">&rarr;</div>
-            <div>
-              <span className="floating-badge-text">Lead Batch Allocated</span>
-              <span className="floating-badge-sub">Contacts #1–#100 &rarr; Dr. K. Arulmurugan (HOD CSE)</span>
-            </div>
-          </div>
-
-          <div className="floating-badge badge-3">
-            <div className="badge-icon-wrap bg-cyan-glow">&#9733;</div>
-            <div>
-              <span className="floating-badge-text">Dual-Cloud Synced</span>
-              <span className="floating-badge-sub">SQLite Prisma &bull; Firestore &amp; RTDB Live</span>
-            </div>
-          </div>
-
           <div className="hero-dashboard">
             {/* Topbar Mock */}
             <div className="dashboard-topbar">
