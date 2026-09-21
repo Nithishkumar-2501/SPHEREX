@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CosmicButton from './CosmicButton';
 
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
@@ -87,15 +88,7 @@ export default function Navbar({ onOpenBooking }) {
         </nav>
 
         <div className="nav-actions">
-          <a 
-            href="https://cal.com/sphere-x-5kss8s/30min" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="btn btn-primary nav-book-btn" 
-          >
-            <span className="nav-book-text-full">📅 Book Meeting</span>
-            <span className="nav-book-text-short">📅 Book</span>
-          </a>
+          <CosmicButton />
           <button 
             className="mobile-toggle" 
             id="mobile-toggle-btn" 
