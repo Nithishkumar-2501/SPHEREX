@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import LightRays from './LightRays';
+import CosmicButton from './CosmicButton';
 
 export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
   const [heroCampus, setHeroCampus] = useState('CAMPUS_01');
@@ -66,16 +67,15 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
           </p>
 
           <div className="hero-cta-group">
-            <a 
+            <CosmicButton 
               href="https://cal.com/sphere-x-5kss8s/30min" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn btn-primary" 
               id="hero-primary-cta"
-              style={{ padding: '14px 28px', fontSize: '1rem' }}
+              size="hero"
             >
               📅 Book Meeting &rarr;
-            </a>
+            </CosmicButton>
             <a 
               href="#mobile-app" 
               className="btn btn-secondary" 

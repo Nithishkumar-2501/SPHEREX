@@ -88,7 +88,7 @@ export default function Navbar({ onOpenBooking }) {
         </nav>
 
         <div className="nav-actions">
-          <CosmicButton />
+          <CosmicButton size="navbar" />
           <button 
             className="mobile-toggle" 
             id="mobile-toggle-btn" 
