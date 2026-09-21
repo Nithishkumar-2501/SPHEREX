@@ -126,9 +126,9 @@ export default function NoraAISection({ onOpenBooking }) {
           </div>
 
           {/* Right Column: Nora AI Prediction & Branch Viability */}
-          <div className="glass-card" style={{ padding: '28px', border: '1px solid rgba(168, 85, 247, 0.3)' }}>
+          <div className="glass-card nora-ai-card" style={{ padding: '28px', border: '1px solid rgba(168, 85, 247, 0.3)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #9333ea, #6366f1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.2rem' }}>
+              <div className="nora-robot-icon" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #9333ea, #6366f1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.2rem' }}>
                 🤖
               </div>
               <div>

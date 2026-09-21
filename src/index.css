@@ -1541,9 +1541,175 @@ section[id] {
 }
 
 .comparison-card {
-  border-radius: var(--radius-lg);
   padding: 36px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Base styling for interactive cards across key sections */
+.comparison-card,
+.prop-card,
+.faculty-quota-card,
+.sheet-main-card,
+.cutoff-card,
+.nora-ai-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease;
+}
+
+/* Gradient layer that rotates -90deg and morphs on hover (Uiverse Card Signature) */
+.comparison-card::before,
+.prop-card::before,
+.faculty-quota-card::before,
+.sheet-main-card::before,
+.cutoff-card::before,
+.nora-ai-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Blurred ambient neon glow layer */
+.comparison-card::after,
+.prop-card::after,
+.faculty-quota-card::after,
+.sheet-main-card::after,
+.cutoff-card::after,
+.nora-ai-card::after {
+  content: "";
+  z-index: -3;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+  transform: translate3d(0, 0, 0) scale(0.96);
+  filter: blur(20px);
+  opacity: 0.18;
+  pointer-events: none;
+  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Card Hover States: Rotating -90deg with spring scale and amplified blur */
+.comparison-card:hover::before,
+.prop-card:hover::before,
+.faculty-quota-card:hover::before,
+.sheet-main-card:hover::before,
+.cutoff-card:hover::before,
+.nora-ai-card:hover::before {
+  transform: rotate(-90deg) scaleX(1.04) scaleY(0.96);
+  opacity: 0.95;
+}
+
+.comparison-card:hover::after,
+.prop-card:hover::after,
+.faculty-quota-card:hover::after,
+.sheet-main-card:hover::after,
+.cutoff-card:hover::after,
+.nora-ai-card:hover::after {
+  filter: blur(30px);
+  opacity: 0.75;
+  transform: translate3d(0, 0, 0) scale(1.02);
+}
+
+.comparison-card:hover,
+.prop-card:hover,
+.faculty-quota-card:hover,
+.sheet-main-card:hover,
+.cutoff-card:hover,
+.nora-ai-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(64, 201, 255, 0.6) !important;
+}
+
+/* ==========================================================================
+   Signature Uiverse Rotating Gradient & Glow Animation for Section Icons
+   ========================================================================== */
+.comparison-icon,
+.faculty-avatar-circle,
+.nora-robot-icon,
+.prop-card-num {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              color 0.3s ease;
+}
+
+.comparison-icon::before,
+.faculty-avatar-circle::before,
+.nora-robot-icon::before,
+.prop-card-num::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comparison-icon::after,
+.faculty-avatar-circle::after,
+.nora-robot-icon::after,
+.prop-card-num::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+  z-index: -2;
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+/* On hover of icon directly or parent card hover */
+.comparison-icon:hover,
+.comparison-card:hover .comparison-icon,
+.faculty-avatar-circle:hover,
+.faculty-quota-card:hover .faculty-avatar-circle,
+.nora-robot-icon:hover,
+.nora-ai-card:hover .nora-robot-icon,
+.prop-card-num:hover,
+.prop-card:hover .prop-card-num {
+  transform: rotate(-90deg) scale(1.15);
+}
+
+.comparison-icon:hover::before,
+.comparison-card:hover .comparison-icon::before,
+.faculty-avatar-circle:hover::before,
+.faculty-quota-card:hover .faculty-avatar-circle::before,
+.nora-robot-icon:hover::before,
+.nora-ai-card:hover .nora-robot-icon::before,
+.prop-card-num:hover::before,
+.prop-card:hover .prop-card-num::before {
+  opacity: 1;
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+}
+
+.comparison-icon:hover::after,
+.comparison-card:hover .comparison-icon::after,
+.faculty-avatar-circle:hover::after,
+.faculty-quota-card:hover .faculty-avatar-circle::after,
+.nora-robot-icon:hover::after,
+.nora-ai-card:hover .nora-robot-icon::after,
+.prop-card-num:hover::after,
+.prop-card:hover .prop-card-num::after {
+  opacity: 0.9;
+  filter: blur(20px);
 }
 
 .card-without {
@@ -1555,12 +1721,6 @@ section[id] {
   background: var(--bg-surface-elevated);
   box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.2), 0 0 20px rgba(56, 189, 248, 0.1);
   border: 2px solid var(--primary);
-  box-shadow: 0 16px 40px -10px rgba(37, 99, 235, 0.16);
-}
-
-.card-with:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px -10px rgba(37, 99, 235, 0.22);
 }
 
 .comparison-header {
@@ -1582,6 +1742,19 @@ section[id] {
   font-size: 1.4rem;
   font-weight: 800;
   flex-shrink: 0;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comparison-card:hover .comparison-icon {
+  transform: rotate(-90deg) scale(1.15);
+}
+
+.card-with:hover .comparison-icon {
+  box-shadow: 0 0 20px rgba(64, 201, 255, 0.7);
+}
+
+.card-without:hover .comparison-icon {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.7);
 }
 
 .icon-cross {
@@ -1651,10 +1824,17 @@ section[id] {
 
 .prop-card-num {
   font-family: var(--font-mono);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: var(--primary);
-  display: block;
+  color: #40c9ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(11, 19, 43, 0.9);
+  border: 1px solid rgba(64, 201, 255, 0.3);
   margin-bottom: 12px;
 }
 
@@ -3011,6 +3191,7 @@ section[id] {
 }
 
 /* TNEA Cutoff Calculator Widget */
+
 .cutoff-card {
   background: linear-gradient(145deg, rgba(13, 20, 39, 0.95), rgba(7, 12, 30, 0.95));
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -3090,8 +3271,8 @@ section[id] {
 }
 
 .faculty-avatar-circle {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: linear-gradient(135deg, #0284c7, #4f46e5);
   display: flex;
@@ -3100,6 +3281,7 @@ section[id] {
   font-weight: 800;
   font-size: 0.95rem;
   color: #fff;
+  flex-shrink: 0;
 }
 
 .progress-track {
