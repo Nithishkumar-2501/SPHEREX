@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarButton from './StarButton';
 
 const tnDistricts = [
   'Karur', 'Coimbatore', 'Tiruchirappalli', 'Namakkal', 'Salem', 'Dindigul', 
@@ -9,6 +10,7 @@ const tnDistricts = [
 export default function LeadManagement({ onOpenBooking }) {
   const [activeMode, setActiveMode] = useState('entryForm'); // 'entryForm' | 'directory'
   const [activeSheet, setActiveSheet] = useState(1);
+  const [selectedDistrict, setSelectedDistrict] = useState('Karur');
 
   return (
     <section className="section" id="lead-management">
@@ -24,24 +26,22 @@ export default function LeadManagement({ onOpenBooking }) {
           </p>
         </div>
 
-        {/* View Switcher: 3-Sheet Entry vs Contact Directory */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            type="button"
-            className={`btn ${activeMode === 'entryForm' ? 'btn-primary' : 'btn-secondary'}`}
-            style={{ padding: '10px 22px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}
+        {/* View Switcher: 3-Sheet Entry vs Contact Directory (StarButton UI) */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px', gap: '16px', flexWrap: 'wrap' }}>
+          <StarButton
+            variant="tab"
+            active={activeMode === 'entryForm'}
             onClick={() => setActiveMode('entryForm')}
           >
             <span>📝</span> 3-Sheet Entry Options Preview
-          </button>
-          <button
-            type="button"
-            className={`btn ${activeMode === 'directory' ? 'btn-primary' : 'btn-secondary'}`}
-            style={{ padding: '10px 22px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}
+          </StarButton>
+          <StarButton
+            variant="tab"
+            active={activeMode === 'directory'}
             onClick={() => setActiveMode('directory')}
           >
             <span>📇</span> Contact Directory &amp; Quick Trigger Preview
-          </button>
+          </StarButton>
         </div>
 
         {/* MODE 1: 3-Sheet Candidate Entry Form Preview */}
@@ -137,7 +137,11 @@ export default function LeadManagement({ onOpenBooking }) {
 
                   <div className="form-group form-col-full">
                     <label>Tamil Nadu District (38 Districts)</label>
-                    <select className="form-select" defaultValue="Karur">
+                    <select 
+                      className="form-select" 
+                      value={selectedDistrict}
+                      onChange={(e) => setSelectedDistrict(e.target.value)}
+                    >
                       {tnDistricts.map(d => (
                         <option key={d} value={d}>{d} District</option>
                       ))}
@@ -149,9 +153,9 @@ export default function LeadManagement({ onOpenBooking }) {
                   <span className="sheet-helper-text">
                     👁️ Interactive Form Preview (Actual system installed during campus setup)
                   </span>
-                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(2)}>
+                  <StarButton onClick={() => setActiveSheet(2)}>
                     View Sheet 2 (Parent Details) &rarr;
-                  </button>
+                  </StarButton>
                 </div>
               </div>
             )}
@@ -206,12 +210,12 @@ export default function LeadManagement({ onOpenBooking }) {
                 </div>
 
                 <div className="sheet-form-footer">
-                  <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(1)}>
+                  <StarButton variant="tab" onClick={() => setActiveSheet(1)}>
                     &larr; Back to Sheet 1
-                  </button>
-                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(3)}>
+                  </StarButton>
+                  <StarButton onClick={() => setActiveSheet(3)}>
                     View Sheet 3 (Category &amp; Attribution) &rarr;
-                  </button>
+                  </StarButton>
                 </div>
               </div>
             )}
@@ -260,12 +264,12 @@ export default function LeadManagement({ onOpenBooking }) {
                 </div>
 
                 <div className="sheet-form-footer">
-                  <button type="button" className="btn btn-secondary" onClick={() => setActiveSheet(2)}>
+                  <StarButton variant="tab" onClick={() => setActiveSheet(2)}>
                     &larr; Back to Sheet 2
-                  </button>
-                  <button type="button" className="btn btn-primary" onClick={() => setActiveSheet(1)}>
+                  </StarButton>
+                  <StarButton onClick={() => setActiveSheet(1)}>
                     ↺ Review Sheet 1
-                  </button>
+                  </StarButton>
                 </div>
               </div>
             )}
@@ -312,9 +316,9 @@ export default function LeadManagement({ onOpenBooking }) {
                     <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>194.50</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <span className="action-btn-pill action-btn-call">📞 Native Call</span>
-                        <span className="action-btn-pill action-btn-wa">💬 WhatsApp</span>
-                        <span className="action-btn-pill action-btn-ai">🤖 Nora AI Review</span>
+                        <a href="tel:+919876543210" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
+                        <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
+                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
                       </div>
                     </td>
                   </tr>
@@ -335,9 +339,9 @@ export default function LeadManagement({ onOpenBooking }) {
                     <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>196.00</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <span className="action-btn-pill action-btn-call">📞 Native Call</span>
-                        <span className="action-btn-pill action-btn-wa">💬 WhatsApp</span>
-                        <span className="action-btn-pill action-btn-ai">🤖 Nora AI Review</span>
+                        <a href="tel:+919443322110" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
+                        <a href="https://wa.me/919443322110" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
+                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
                       </div>
                     </td>
                   </tr>
@@ -358,9 +362,9 @@ export default function LeadManagement({ onOpenBooking }) {
                     <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>188.50</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <span className="action-btn-pill action-btn-call">📞 Native Call</span>
-                        <span className="action-btn-pill action-btn-wa">💬 WhatsApp</span>
-                        <span className="action-btn-pill action-btn-ai">🤖 Nora AI Review</span>
+                        <a href="tel:+919442211009" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
+                        <a href="https://wa.me/919442211009" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
+                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
                       </div>
                     </td>
                   </tr>

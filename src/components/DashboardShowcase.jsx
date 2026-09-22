@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarButton from './StarButton';
 
 export default function DashboardShowcase() {
   const [activeTab, setActiveTab] = useState('lead');
@@ -18,44 +19,50 @@ export default function DashboardShowcase() {
         </div>
 
         <div className="showcase-wrapper">
-          {/* Showcase Tabs */}
-          <div className="showcase-nav-tabs">
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'lead' ? 'active' : ''}`}
+          {/* Showcase Tabs (StarButton UI) */}
+          <div className="showcase-nav-tabs" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '32px' }}>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'lead'}
               onClick={() => setActiveTab('lead')}
             >
               Lead Intelligence
-            </button>
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'funnel' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'funnel'}
               onClick={() => setActiveTab('funnel')}
             >
               Admission Funnel
-            </button>
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'allocation' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'allocation'}
               onClick={() => setActiveTab('allocation')}
             >
               Team Allocation
-            </button>
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'campaigns' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'campaigns'}
               onClick={() => setActiveTab('campaigns')}
             >
               Campaign Analytics
-            </button>
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'applications' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'applications'}
               onClick={() => setActiveTab('applications')}
             >
               Application Tracking
-            </button>
-            <button 
-              className={`showcase-nav-btn ${activeTab === 'payments' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeTab === 'payments'}
               onClick={() => setActiveTab('payments')}
             >
               Payment Monitoring
-            </button>
+            </StarButton>
           </div>
 
           {/* Panel 1: Lead Intelligence */}

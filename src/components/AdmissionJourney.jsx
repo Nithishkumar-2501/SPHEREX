@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarButton from './StarButton';
 
 const journeyStagesData = {
   1: {
@@ -71,19 +72,37 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
         </div>
 
         <div className="journey-container">
-          {/* Stepper Buttons (01 to 07) */}
-          <div className="journey-stepper" id="journey-stepper">
+          {/* Stepper Buttons (01 to 07 with StarButton UI) */}
+          <div className="journey-stepper" id="journey-stepper" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', margin: '24px 0' }}>
             {[1, 2, 3, 4, 5, 6, 7].map((num) => {
               const labels = ['New Enquiry', 'Contacted', 'Counselling', 'Qualified', 'Application', 'Admitted', 'Payment'];
+              const isActive = activeStage === num;
               return (
-                <button
+                <StarButton
                   key={num}
-                  className={`journey-step-btn ${activeStage === num ? 'active' : ''}`}
+                  size="sm"
+                  variant="tab"
+                  active={isActive}
                   onClick={() => setActiveStage(num)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                  <div className="step-circle">{String(num).padStart(2, '0')}</div>
-                  <div className="step-label">{labels[num - 1]}</div>
-                </button>
+                  <span style={{ 
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '22px',
+                    height: '22px',
+                    borderRadius: '50%',
+                    background: isActive ? '#181818' : 'rgba(254, 193, 149, 0.2)',
+                    color: isActive ? '#fec195' : '#fff',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 700,
+                    fontSize: '0.72rem'
+                  }}>
+                    {String(num).padStart(2, '0')}
+                  </span>
+                  <span>{labels[num - 1]}</span>
+                </StarButton>
               );
             })}
           </div>

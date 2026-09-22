@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import StarButton from './StarButton';
 
 const campuses = {
   CAMPUS_01: {
@@ -55,22 +56,22 @@ export default function MultiCampus() {
         </div>
 
         <div className="campus-hierarchy-box">
-          {/* Interactive Campus Selector Tabs */}
-          <div className="campus-tabs">
-            <button 
-              type="button"
-              className={`campus-tab-btn ${activeCampus === 'CAMPUS_01' ? 'active' : ''}`}
+          {/* Interactive Campus Selector Tabs (StarButton UI) */}
+          <div className="campus-tabs" style={{ display: 'flex', gap: '12px', padding: '12px 20px', flexWrap: 'wrap' }}>
+            <StarButton 
+              variant="tab"
+              active={activeCampus === 'CAMPUS_01'}
               onClick={() => setActiveCampus('CAMPUS_01')}
             >
               🏛️ Main Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 01</span>
-            </button>
-            <button 
-              type="button"
-              className={`campus-tab-btn ${activeCampus === 'CAMPUS_02' ? 'active' : ''}`}
+            </StarButton>
+            <StarButton 
+              variant="tab"
+              active={activeCampus === 'CAMPUS_02'}
               onClick={() => setActiveCampus('CAMPUS_02')}
             >
               🏛️ City Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 02</span>
-            </button>
+            </StarButton>
           </div>
 
           {/* Campus Header Card */}
