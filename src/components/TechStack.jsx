@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const technologies = [
   { name: 'Next.js 14', category: 'App Router & RSC', desc: 'React Server Components, server route handlers, edge caching' },
@@ -30,27 +31,43 @@ export default function TechStack() {
           </p>
         </div>
 
-        <div className="tech-stack-grid">
-          {technologies.map((tech, idx) => (
-            <div 
-              key={idx} 
-              className="glass-card" 
-              style={{ padding: '18px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', transition: 'all 0.2s ease' }}
-            >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <strong style={{ color: '#fff', fontSize: '1rem' }}>{tech.name}</strong>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--primary-light)', background: 'rgba(56, 189, 248, 0.12)', padding: '2px 8px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
-                    {tech.category}
-                  </span>
+        <StyledTechWrapper>
+          <div className="tech-stack-grid">
+            {technologies.map((tech, idx) => (
+              <div className="card" key={idx}>
+                <b />
+                <div className="card-content-wrap">
+                  {/* Top Section: Tech Name and Category Badge */}
+                  <div className="card-top-section">
+                    <div className="tech-badge-row">
+                      <span className="tech-category-badge">{tech.category}</span>
+                    </div>
+                    <h3 className="tech-name">{tech.name}</h3>
+                  </div>
+
+                  {/* Subtle resting cue */}
+                  <div className="card-hint">
+                    <span>Hover for spec &darr;</span>
+                  </div>
+
+                  {/* Reveal Drawer on Hover */}
+                  <div className="card-reveal-section">
+                    <p className="tech-desc">{tech.desc}</p>
+                    <ul className="sci">
+                      <li>
+                        <a href="#architecture" title="Architecture Spec">
+                          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-                  {tech.desc}
-                </p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </StyledTechWrapper>
 
         <p className="tech-supporting-text" style={{ marginTop: '28px', textAlign: 'center' }}>
           Dual-Persistence: Local-First <strong>SQLite (Prisma)</strong> for rapid transaction speed + Background <strong>Firebase Dual-Sync</strong> for real-time live replication across all counselor smartphones and desk PCs.
@@ -59,3 +76,197 @@ export default function TechStack() {
     </section>
   );
 }
+
+const StyledTechWrapper = styled.div`
+  .tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    min-height: 170px;
+    background: #000;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    overflow: visible;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Radiant dual-tone neon gradient frame */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(315deg, #03a9f4, #ff0058);
+  }
+
+  /* Blooming ambient neon blur layer */
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(315deg, #03a9f4, #ff0058);
+    filter: blur(24px);
+    opacity: 0.25;
+    transition: filter 0.5s ease, opacity 0.5s ease;
+    z-index: 0;
+  }
+
+  .card:hover::after {
+    filter: blur(32px);
+    opacity: 0.85;
+  }
+
+  /* Dark frosted inner plate for high text contrast */
+  .card b {
+    position: absolute;
+    inset: 4px;
+    background: rgba(7, 12, 28, 0.95);
+    border-radius: 12px;
+    z-index: 2;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .card-content-wrap {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: all 0.4s ease;
+    margin: auto 0;
+  }
+
+  .card:hover .card-top-section {
+    margin: 0 0 8px 0;
+  }
+
+  .tech-badge-row {
+    margin-bottom: 6px;
+  }
+
+  .tech-category-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+
+  .tech-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .card-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.45);
+    transition: opacity 0.3s ease;
+    margin-top: 4px;
+  }
+
+  .card:hover .card-hint {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Reveal drawer on hover */
+  .card-reveal-section {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease,
+                transform 0.4s ease;
+  }
+
+  .card:hover .card-reveal-section {
+    max-height: 160px;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0);
+    margin-top: 6px;
+  }
+
+  .tech-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+  }
+
+  .sci {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sci li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sci li a:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #03a9f4, #ff0058);
+    border-color: transparent;
+    transform: scale(1.1);
+    box-shadow: 0 4px 14px rgba(255, 0, 88, 0.4);
+  }
+`;
