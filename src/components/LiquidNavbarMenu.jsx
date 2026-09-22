@@ -46,7 +46,7 @@ const navItems = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path d="M10.5 18.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" />
-        <path fillRule="evenodd" d="M6.75 2.25A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25h10.5A2.25 2.25 0 0 0 19.5 19.5V4.5A2.25 2.25 0 0 0 17.25 2.25H6.75Zm.75 3a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
+        <path fillRule="evenodd" d="M6.75 2.25A2.25 2.25 0 0 0 4.5 4.5v15a2.25 2.25 0 0 0 2.25 2.25h10.5A2.25 2.25 0 0 0 19.5 19.5V4.5A2.25 2.25 0 0 0 17.25 2.25H6.75Zm.75 3a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75v10.5a.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
       </svg>
     )
   },
@@ -92,14 +92,14 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 
   .menu {
     position: relative;
-    width: auto;
-    min-width: 500px;
-    max-width: 660px;
-    backdrop-filter: blur(12px) saturate(180%) contrast(200%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%) contrast(200%);
+    width: max-content;
+    max-width: 100%;
+    backdrop-filter: blur(14px) saturate(180%) contrast(200%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%) contrast(200%);
     background: rgba(0, 122, 255, 0.404);
     border: 1px solid var(--glass-border);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -108,8 +108,10 @@ const StyledWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     z-index: 50;
+    overflow: hidden; /* Fix: Guarantees active and hover content never leaks outside the border */
+    box-sizing: border-box;
   }
 
   .menu::after {
@@ -118,11 +120,11 @@ const StyledWrapper = styled.div`
     inset: 0;
     border-radius: inherit;
     box-shadow:
-      inset 2px 2px 5px -2px rgba(255, 255, 255, 0.4),
-      inset -2px -2px 5px 2px rgba(255, 255, 255, 0.4),
+      inset 2px 2px 5px -2px rgba(255, 255, 255, 0.45),
+      inset -2px -2px 5px 2px rgba(255, 255, 255, 0.45),
       inset 0 -2px 0 rgba(255, 255, 255, 0.2);
     pointer-events: none;
-    z-index: -1;
+    z-index: 2;
   }
 
   .menu a {
@@ -130,19 +132,21 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1 1 0;
-    min-width: 0;
-    color: rgba(255, 255, 255, 90%);
+    flex: 0 0 auto; /* Fix: Give each item its natural width so text never collides or overflows */
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    padding: 7px 10px;
+    padding: 6px 14px;
     border-radius: 999rem;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
     transition:
       background 0.18s var(--ease-spring),
       color 0.18s var(--ease-spring),
       transform 0.18s var(--ease-spring),
-      box-shadow 0.3s ease-in-out;
+      box-shadow 0.25s ease-in-out;
   }
 
   .menu a:hover {
@@ -150,13 +154,13 @@ const StyledWrapper = styled.div`
       background 0.18s var(--ease-spring),
       color 0.18s var(--ease-spring),
       transform 0.18s var(--ease-spring),
-      box-shadow 0.3s ease-in-out;
-    background-color: rgba(255, 255, 255, 30%);
+      box-shadow 0.25s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow:
       inset 2px 2px 5px -2px rgba(255, 255, 255, 0.4),
       inset -2px -1px 5px 0 rgba(255, 255, 255, 0.4),
       inset 0 -2px 0 rgba(255, 255, 255, 0.2);
-    transform: rotate(2.2deg);
+    transform: scale(1.02); /* Fix: scale cleanly without tilting corners out of border */
     color: #38bdf8;
   }
 
@@ -169,17 +173,18 @@ const StyledWrapper = styled.div`
   }
 
   .menu a svg {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.25rem;
+    height: 1.25rem;
     flex-shrink: 0;
   }
 
   .menu a span {
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.1;
     margin-top: 3px;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
 
   .menu a.active {
@@ -197,24 +202,36 @@ const StyledWrapper = styled.div`
   }
 
   .menu a:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     .menu {
-      min-width: 440px;
-      gap: 3px;
       padding: 5px 6px;
+      gap: 2px;
     }
     .menu a {
-      padding: 6px 8px;
+      padding: 5px 10px;
     }
     .menu a span {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
     }
     .menu a svg {
       width: 1.15rem;
       height: 1.15rem;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .menu a {
+      padding: 4px 7px;
+    }
+    .menu a span {
+      font-size: 0.65rem;
+    }
+    .menu a svg {
+      width: 1.05rem;
+      height: 1.05rem;
     }
   }
 `;
