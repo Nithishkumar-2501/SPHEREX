@@ -37,14 +37,11 @@ export default function App() {
   const handleOpenBooking = () => {
     setIsBookingLoading(true);
     setTimeout(() => {
-      const win = window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank', 'noopener,noreferrer');
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        window.location.href = 'https://cal.com/sphere-x-5kss8s/30min';
-      }
+      window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank');
       setTimeout(() => {
         setIsBookingLoading(false);
-      }, 600);
-    }, 1800);
+      }, 400);
+    }, 1400);
   };
 
   return (
