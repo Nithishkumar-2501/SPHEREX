@@ -125,28 +125,35 @@ export default function ValueProps() {
             {capabilities.map((cap) => (
               <div className="card" key={cap.num}>
                 <b />
-                
-                {/* Visual Element: Displays in center and slides upward on hover */}
-                <div className="card-visual">
-                  <div className="cap-badge-wrap">
-                    <span className="cap-num">{cap.num}</span>
-                    <div className="cap-icon-box">{cap.icon}</div>
-                  </div>
-                  <h3 className="cap-title">{cap.title}</h3>
-                  <span className="cap-sub">{cap.subtitle}</span>
-                </div>
 
-                {/* Content Drawer: Expands from scale(0) to scale(1) at bottom on hover */}
-                <div className="content">
-                  <p className="desc">{cap.desc}</p>
-                  <div className="tags-row">
-                    {cap.tags.map((tag) => (
-                      <span key={tag} className="tag-pill">{tag}</span>
-                    ))}
+                <div className="card-content-wrap">
+                  {/* Top Header: Badge, Title, and Subtitle in Natural Vertical Flow */}
+                  <div className="card-top-section">
+                    <div className="cap-badge-wrap">
+                      <span className="cap-num">{cap.num}</span>
+                      <div className="cap-icon-box">{cap.icon}</div>
+                    </div>
+                    <h3 className="cap-title">{cap.title}</h3>
+                    <span className="cap-sub">{cap.subtitle}</span>
                   </div>
-                  <a href={cap.link} className="action-btn">
-                    <span>{cap.linkText}</span>
-                  </a>
+
+                  {/* Rest State Cue */}
+                  <div className="card-hint">
+                    <span>Hover to explore capability &darr;</span>
+                  </div>
+
+                  {/* Reveal Section: Expands smoothly below the title with zero overlap */}
+                  <div className="card-reveal-section">
+                    <p className="desc">{cap.desc}</p>
+                    <div className="tags-row">
+                      {cap.tags.map((tag) => (
+                        <span key={tag} className="tag-pill">{tag}</span>
+                      ))}
+                    </div>
+                    <a href={cap.link} className="action-btn">
+                      <span>{cap.linkText}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -167,11 +174,11 @@ const StyledWrapper = styled.div`
   .card {
     position: relative;
     width: 100%;
-    min-height: 330px;
+    min-height: 380px;
     background: #000;
     display: flex;
+    align-items: stretch;
     justify-content: center;
-    align-items: center;
     border-radius: 16px;
     cursor: pointer;
     overflow: visible;
@@ -179,9 +186,10 @@ const StyledWrapper = styled.div`
   }
 
   .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
   }
 
+  /* Radiant dual-tone neon gradient frame */
   .card::before {
     content: '';
     position: absolute;
@@ -193,6 +201,7 @@ const StyledWrapper = styled.div`
     background: linear-gradient(315deg, #03a9f4, #ff0058);
   }
 
+  /* Blooming ambient neon blur layer */
   .card::after {
     content: '';
     position: absolute;
@@ -203,42 +212,54 @@ const StyledWrapper = styled.div`
     border-radius: 16px;
     background: linear-gradient(315deg, #03a9f4, #ff0058);
     filter: blur(28px);
-    opacity: 0.25;
+    opacity: 0.28;
     transition: filter 0.5s ease, opacity 0.5s ease;
     z-index: 0;
   }
 
   .card:hover::after {
     filter: blur(36px);
-    opacity: 0.85;
+    opacity: 0.88;
   }
 
+  /* Solid dark frosted inner plate for maximum text contrast */
   .card b {
     position: absolute;
     inset: 4px;
-    background: rgba(7, 12, 28, 0.94);
+    background: rgba(7, 12, 28, 0.95);
     border-radius: 12px;
     z-index: 2;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
-  .card .card-visual {
-    position: absolute;
+  .card-content-wrap {
+    position: relative;
     z-index: 3;
+    width: 100%;
+    padding: 30px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 24px;
-    width: 100%;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    box-sizing: border-box;
   }
 
-  .card:hover .card-visual {
-    transform: translateY(-72px) scale(0.85);
-    opacity: 0.95;
+  .card-top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    width: 100%;
+    transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card:hover .card-top-section {
+    margin-top: 0;
+    margin-bottom: 8px;
+    transform: translateY(-4px);
   }
 
   .cap-badge-wrap {
@@ -246,12 +267,18 @@ const StyledWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .cap-badge-wrap {
+    transform: scale(0.92);
+    margin-bottom: 8px;
   }
 
   .cap-num {
     font-family: var(--font-mono);
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     font-weight: 800;
     background: linear-gradient(135deg, #03a9f4 0%, #ff0058 100%);
     -webkit-background-clip: text;
@@ -260,15 +287,16 @@ const StyledWrapper = styled.div`
   }
 
   .cap-icon-box {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
-    background: rgba(3, 169, 244, 0.12);
-    border: 1px solid rgba(3, 169, 244, 0.35);
+    background: rgba(3, 169, 244, 0.14);
+    border: 1px solid rgba(3, 169, 244, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #38bdf8;
+    box-shadow: 0 0 14px rgba(3, 169, 244, 0.2);
   }
 
   .cap-icon-box svg {
@@ -277,54 +305,77 @@ const StyledWrapper = styled.div`
   }
 
   .cap-title {
-    font-size: 1.35rem;
+    font-size: 1.32rem;
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 6px;
     letter-spacing: -0.015em;
     line-height: 1.25;
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .cap-title {
+    color: #f8fafc;
   }
 
   .cap-sub {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-family: var(--font-mono);
     color: #38bdf8;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    font-weight: 700;
   }
 
-  .card .content {
-    position: absolute;
-    z-index: 3;
-    bottom: 0;
-    left: 18px;
-    right: 18px;
+  .card-hint {
+    margin-top: 18px;
+    font-size: 0.72rem;
+    color: #64748b;
+    font-family: var(--font-mono);
+    opacity: 0.85;
+    transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+    max-height: 24px;
+    overflow: hidden;
+  }
+
+  .card:hover .card-hint {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+  }
+
+  /* Reveal Section: Smoothly expands in natural vertical sequence - ZERO collision */
+  .card-reveal-section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 0 8px;
-    transform: scale(0);
+    max-height: 0;
     opacity: 0;
+    transform: translateY(14px);
+    overflow: hidden;
     pointer-events: none;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.5s ease, opacity 0.4s ease;
+    transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.4s ease;
   }
 
-  .card:hover .content {
-    transform: scale(1);
+  .card:hover .card-reveal-section {
+    max-height: 280px;
     opacity: 1;
+    transform: translateY(0);
     pointer-events: auto;
-    bottom: 22px;
+    overflow: visible;
   }
 
-  .content .desc {
-    color: #cbd5e1;
+  .desc {
+    color: #f1f5f9;
     font-size: 0.88rem;
-    line-height: 1.55;
+    line-height: 1.58;
     margin-bottom: 12px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
 
-  .content .tags-row {
+  .tags-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -332,17 +383,18 @@ const StyledWrapper = styled.div`
     margin-bottom: 14px;
   }
 
-  .content .tag-pill {
-    font-size: 0.7rem;
+  .tag-pill {
+    font-size: 0.72rem;
     font-family: var(--font-mono);
-    padding: 3px 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-weight: 600;
+    padding: 3px 9px;
+    background: rgba(3, 169, 244, 0.12);
+    border: 1px solid rgba(3, 169, 244, 0.35);
     border-radius: 99rem;
     color: #7dd3fc;
   }
 
-  .content .action-btn {
+  .action-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -350,24 +402,30 @@ const StyledWrapper = styled.div`
     font-weight: 700;
     color: #ffffff;
     background: linear-gradient(135deg, #03a9f4, #ff0058);
-    padding: 7px 18px;
+    padding: 8px 20px;
     border-radius: 99rem;
     text-decoration: none;
-    box-shadow: 0 4px 16px rgba(255, 0, 88, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 0, 88, 0.4);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .content .action-btn:hover {
-    transform: scale(1.04);
-    box-shadow: 0 6px 22px rgba(3, 169, 244, 0.5);
+  .action-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(3, 169, 244, 0.6);
   }
 
   @media (max-width: 768px) {
     .card {
-      min-height: 310px;
+      min-height: 360px;
+    }
+    .card-content-wrap {
+      padding: 24px 18px;
     }
     .cap-title {
-      font-size: 1.2rem;
+      font-size: 1.22rem;
+    }
+    .desc {
+      font-size: 0.84rem;
     }
   }
 `;
