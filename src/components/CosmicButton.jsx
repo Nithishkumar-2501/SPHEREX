@@ -4,14 +4,19 @@ import styled from 'styled-components';
 export default function CosmicButton({ 
   children,
   href = "https://cal.com/sphere-x-5kss8s/30min", 
-  target = "_blank",
+  target = "_blank", 
   rel = "noopener noreferrer",
   onClick,
   id,
   size = "hero",
-  className = ""
+  className = "",
+  isLoading = false
 }) {
-  const content = children || (
+  const content = isLoading ? (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+      <span className="mini-spinner" /> Loading...
+    </span>
+  ) : (children || (
     size === 'navbar' ? (
       <>
         <span className="nav-book-text-full">📅 Book Meeting</span>
@@ -20,17 +25,25 @@ export default function CosmicButton({
     ) : (
       <span>📅 Book Meeting &rarr;</span>
     )
-  );
+  ));
+
+  const handleClick = (e) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick(e);
+    }
+  };
 
   return (
-    <StyledWrapper className={`cosmic-btn-container ${size} ${className}`}>
+    <StyledWrapper className={`cosmic-btn-container ${size} ${className} ${isLoading ? 'is-loading' : ''}`}>
       <a 
         href={href} 
         target={target} 
         rel={rel} 
-        onClick={onClick}
+        onClick={handleClick}
         id={id}
         className="btn-wrapper"
+        aria-busy={isLoading}
       >
         <div className="light" />
         <div className="gradient-layer" style={{animationDelay: '0s', animationDuration: '25s'}} />

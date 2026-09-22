@@ -20,8 +20,11 @@ import TechStack from './components/TechStack';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import DemoModal from './components/DemoModal';
+import PageLoader from './components/PageLoader';
+
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isBookingLoading, setIsBookingLoading] = useState(false);
 
   const handleOpenDemo = (_source = 'General') => {
     setModalOpen(true);
@@ -32,7 +35,16 @@ export default function App() {
   };
 
   const handleOpenBooking = () => {
-    window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank', 'noopener,noreferrer');
+    setIsBookingLoading(true);
+    setTimeout(() => {
+      const win = window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank', 'noopener,noreferrer');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = 'https://cal.com/sphere-x-5kss8s/30min';
+      }
+      setTimeout(() => {
+        setIsBookingLoading(false);
+      }, 600);
+    }, 1800);
   };
 
   return (
@@ -63,6 +75,7 @@ export default function App() {
       <Footer onOpenBooking={handleOpenBooking} />
 
       <DemoModal isOpen={modalOpen} onClose={handleCloseDemo} onOpenBooking={handleOpenBooking} />
+      <PageLoader isOpen={isBookingLoading} onClose={() => setIsBookingLoading(false)} />
     </div>
   );
 }

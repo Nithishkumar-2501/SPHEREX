@@ -73,6 +73,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
               rel="noopener noreferrer" 
               id="hero-primary-cta"
               size="hero"
+              onClick={onOpenBooking}
             >
               📅 Book Meeting &rarr;
             </CosmicButton>

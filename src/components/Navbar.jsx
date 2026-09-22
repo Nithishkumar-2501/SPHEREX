@@ -94,7 +94,7 @@ export default function Navbar({ onOpenBooking }) {
         </nav>
 
         <div className="nav-actions">
-          <CosmicButton size="navbar" />
+          <CosmicButton size="navbar" onClick={onOpenBooking} />
           <button 
             className="mobile-toggle" 
             id="mobile-toggle-btn" 
@@ -138,7 +138,13 @@ export default function Navbar({ onOpenBooking }) {
           target="_blank" 
           rel="noopener noreferrer"
           className="nav-link mobile-link mobile-book-cta" 
-          onClick={() => setMobileOpen(false)}
+          onClick={(e) => {
+            if (onOpenBooking) {
+              e.preventDefault();
+              onOpenBooking();
+            }
+            setMobileOpen(false);
+          }}
         >
           <span className="mobile-link-icon">📅</span>
           <span>Book Meeting</span>
