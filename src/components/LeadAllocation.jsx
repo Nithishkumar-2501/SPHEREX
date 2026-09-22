@@ -185,19 +185,19 @@ const StyledFacultyWrapper = styled.div`
   .card {
     position: relative;
     width: 100%;
-    min-height: 350px;
+    height: 410px;
     background: #000;
     display: flex;
     align-items: stretch;
     justify-content: center;
     border-radius: 16px;
     cursor: pointer;
-    overflow: visible;
-    transition: transform 0.4s ease;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease;
   }
 
   .card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   /* Radiant dual-tone neon gradient frame */
@@ -210,6 +210,7 @@ const StyledFacultyWrapper = styled.div`
     height: 100%;
     border-radius: 16px;
     background: linear-gradient(315deg, #03a9f4, #ff0058);
+    pointer-events: none;
   }
 
   /* Blooming ambient neon blur layer */
@@ -226,6 +227,7 @@ const StyledFacultyWrapper = styled.div`
     opacity: 0.28;
     transition: filter 0.5s ease, opacity 0.5s ease;
     z-index: 0;
+    pointer-events: none;
   }
 
   .card:hover::after {
@@ -242,17 +244,19 @@ const StyledFacultyWrapper = styled.div`
     z-index: 2;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    pointer-events: none;
   }
 
   .card-content-wrap {
     position: relative;
     z-index: 3;
     width: 100%;
-    padding: 26px 20px;
+    height: 100%;
+    padding: 24px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     box-sizing: border-box;
   }

@@ -160,19 +160,19 @@ const StyledCampusWrapper = styled.div`
   .card {
     position: relative;
     width: 100%;
-    min-height: 220px;
+    height: 270px;
     background: #000;
     display: flex;
     align-items: stretch;
     justify-content: center;
     border-radius: 16px;
     cursor: pointer;
-    overflow: visible;
-    transition: transform 0.4s ease;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease;
   }
 
   .card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   /* Radiant dual-tone neon gradient frame */
@@ -185,6 +185,7 @@ const StyledCampusWrapper = styled.div`
     height: 100%;
     border-radius: 16px;
     background: linear-gradient(315deg, #03a9f4, #ff0058);
+    pointer-events: none;
   }
 
   /* Blooming ambient neon blur layer */
@@ -201,6 +202,7 @@ const StyledCampusWrapper = styled.div`
     opacity: 0.25;
     transition: filter 0.5s ease, opacity 0.5s ease;
     z-index: 0;
+    pointer-events: none;
   }
 
   .card:hover::after {
@@ -217,12 +219,14 @@ const StyledCampusWrapper = styled.div`
     z-index: 2;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    pointer-events: none;
   }
 
   .card-content-wrap {
     position: relative;
     z-index: 3;
     width: 100%;
+    height: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
