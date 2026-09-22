@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import CosmicButton from './CosmicButton';
+import LiquidNavbarMenu from './LiquidNavbarMenu';
 
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('platform');
 
   useEffect(() => {
+    const sections = ['platform', 'lead-management', 'nora-ai', 'lead-assignment', 'mobile-app', 'multi-campus'];
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
+
+      const scrollPos = window.scrollY + 160;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,6 +50,7 @@ export default function Navbar({ onOpenBooking }) {
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
     setMobileOpen(false);
+    setActiveSection(targetId);
 
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
@@ -76,15 +89,8 @@ export default function Navbar({ onOpenBooking }) {
           </div>
         </a>
 
-        <nav>
-          <ul className="nav-links">
-            <li><a href="#platform" className="nav-link" onClick={(e) => handleNavClick(e, 'platform')}>Platform</a></li>
-            <li><a href="#lead-management" className="nav-link" onClick={(e) => handleNavClick(e, 'lead-management')}>Candidate Entry</a></li>
-            <li><a href="#lead-assignment" className="nav-link" onClick={(e) => handleNavClick(e, 'lead-assignment')}>Faculty Allocation</a></li>
-            <li><a href="#nora-ai" className="nav-link" style={{ color: '#c084fc' }} onClick={(e) => handleNavClick(e, 'nora-ai')}>Nora AI</a></li>
-            <li><a href="#mobile-app" className="nav-link" onClick={(e) => handleNavClick(e, 'mobile-app')}>Mobile App</a></li>
-            <li><a href="#multi-campus" className="nav-link" onClick={(e) => handleNavClick(e, 'multi-campus')}>Campuses</a></li>
-          </ul>
+        <nav className="nav-links">
+          <LiquidNavbarMenu activeSection={activeSection} onNavClick={handleNavClick} />
         </nav>
 
         <div className="nav-actions">

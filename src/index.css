@@ -321,7 +321,9 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  flex: 1;
+  margin: 0 16px;
   list-style: none;
 }
 
