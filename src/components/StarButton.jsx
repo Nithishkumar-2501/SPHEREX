@@ -1,18 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StarSvg = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    xmlSpace="preserve" 
-    version="1.1" 
-    style={{shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd'}} 
-    viewBox="0 0 784.11 815.53"
-  >
-    <path className="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" />
-  </svg>
-);
-
 export default function StarButton({
   children,
   onClick,
@@ -21,26 +9,24 @@ export default function StarButton({
   className = '',
   style = {},
   type = 'button',
-  disabled = false,
-  variant = 'default' // 'default' | 'solid' | 'tab'
+  disabled = false
 }) {
   return (
-    <StyledWrapper className={`star-btn-wrapper ${className}`}>
+    <StyledWrapper className={`sparkle-btn-wrapper ${className}`}>
       <button
         type={type}
         onClick={onClick}
         disabled={disabled}
         style={style}
-        className={`star-btn ${active ? 'is-active' : ''} size-${size} variant-${variant}`}
+        className={`button ${active ? 'is-active' : ''} size-${size}`}
       >
-        <span className="btn-label">{children}</span>
-
-        <div className="star-1"><StarSvg /></div>
-        <div className="star-2"><StarSvg /></div>
-        <div className="star-3"><StarSvg /></div>
-        <div className="star-4"><StarSvg /></div>
-        <div className="star-5"><StarSvg /></div>
-        <div className="star-6"><StarSvg /></div>
+        <div className="dots_border" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="sparkle">
+          <path className="path" strokeLinejoin="round" strokeLinecap="round" stroke="currentColor" fill="currentColor" d="M14.187 8.096L15 5.25L15.813 8.096C16.0231 8.83114 16.4171 9.50062 16.9577 10.0413C17.4984 10.5819 18.1679 10.9759 18.903 11.186L21.75 12L18.904 12.813C18.1689 13.0231 17.4994 13.4171 16.9587 13.9577C16.4181 14.4984 16.0241 15.1679 15.814 15.903L15 18.75L14.187 15.904C13.9769 15.1689 13.5829 14.4994 13.0423 13.9587C12.5016 13.4181 11.8321 13.0241 11.097 12.814L8.25 12L11.096 11.187C11.8311 10.9769 12.5006 10.5829 13.0413 10.0423C13.5819 9.50162 13.9759 8.83214 14.186 8.097L14.187 8.096Z" />
+          <path className="path" strokeLinejoin="round" strokeLinecap="round" stroke="currentColor" fill="currentColor" d="M6 14.25L5.741 15.285C5.59267 15.8785 5.28579 16.4206 4.85319 16.8532C4.42059 17.2858 3.87853 17.5927 3.285 17.741L2.25 18L3.285 18.259C3.87853 18.4073 4.42059 18.7142 4.85319 19.1468C5.28579 19.5794 5.59267 20.1215 5.741 20.715L6 21.75L6.259 20.715C6.40725 20.1216 6.71398 19.5796 7.14639 19.147C7.5788 18.7144 8.12065 18.4075 8.714 18.259L9.75 18L8.714 17.741C8.12065 17.5925 7.5788 17.2856 7.14639 16.853C6.71398 16.4204 6.40725 15.8784 6.259 15.285L6 14.25Z" />
+          <path className="path" strokeLinejoin="round" strokeLinecap="round" stroke="currentColor" fill="currentColor" d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z" />
+        </svg>
+        <span className="text_button">{children}</span>
       </button>
     </StyledWrapper>
   );
@@ -50,214 +36,207 @@ const StyledWrapper = styled.div`
   display: inline-flex;
   vertical-align: middle;
 
-  button.star-btn {
-    position: relative;
-    padding: 10px 24px;
-    background: #fec195;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #181818;
-    border: 2.5px solid #fec195;
-    border-radius: 10px;
-    box-shadow: 0 0 0 #fec1958c;
-    transition: all 0.3s ease-in-out;
+  .button {
+    --black-700: hsla(222, 40%, 8%, 0.95);
+    --border_radius: 9999px;
+    --transtion: 0.3s ease-in-out;
+    --offset: 2px;
+    --active: 0;
+
     cursor: pointer;
-    display: inline-flex;
+    position: relative;
+
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0.5rem;
+
+    transform-origin: center;
+    padding: 0.75rem 1.6rem;
+    background-color: transparent;
+
+    border: none;
+    border-radius: var(--border_radius);
+    transform: scale(calc(1 + (var(--active, 0) * 0.05)));
+
+    transition: transform var(--transtion);
     white-space: nowrap;
     user-select: none;
   }
 
-  button.star-btn .btn-label {
-    position: relative;
-    z-index: 3;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .button.size-sm {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
   }
 
-  /* Size variants */
-  button.star-btn.size-sm {
-    padding: 7px 16px;
-    font-size: 0.82rem;
-    border-width: 2px;
-    border-radius: 8px;
-  }
-
-  button.star-btn.size-md {
-    padding: 10px 22px;
+  .button.size-md {
+    padding: 0.75rem 1.6rem;
     font-size: 0.92rem;
   }
 
-  button.star-btn.size-lg {
-    padding: 12px 32px;
+  .button.size-lg {
+    padding: 0.9rem 2.2rem;
     font-size: 1.05rem;
   }
 
-  /* Tab / Inactive variant */
-  button.star-btn.variant-tab {
-    background: rgba(255, 255, 255, 0.04);
-    color: #cbd5e1;
-    border: 2px solid rgba(254, 193, 149, 0.3);
-    box-shadow: none;
+  .button.is-active {
+    --active: 1;
   }
 
-  button.star-btn.variant-tab.is-active {
-    background: #fec195;
-    color: #181818;
-    border-color: #fec195;
-    box-shadow: 0 0 20px #fec1958c;
-  }
-
-  button.star-btn.variant-default.is-active {
-    background: #fec195;
-    color: #181818;
-    border-color: #fec195;
-    box-shadow: 0 0 22px #fec1958c;
-  }
-
-  /* Star particle elements */
-  .star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
-    pointer-events: none;
-  }
-
-  .star-1 {
+  .button::before {
+    content: "";
     position: absolute;
-    top: 20%;
-    left: 20%;
-    width: 24px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
-  }
-
-  .star-2 {
-    position: absolute;
-    top: 45%;
-    left: 45%;
-    width: 14px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
-  }
-
-  .star-3 {
-    position: absolute;
-    top: 40%;
-    left: 40%;
-    width: 5px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
-  }
-
-  .star-4 {
-    position: absolute;
-    top: 20%;
-    left: 40%;
-    width: 8px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
-  }
-
-  .star-5 {
-    position: absolute;
-    top: 25%;
-    left: 45%;
-    width: 14px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
-  }
-
-  .star-6 {
-    position: absolute;
-    top: 5%;
+    top: 50%;
     left: 50%;
-    width: 5px;
-    height: auto;
-    filter: drop-shadow(0 0 0 #fffdef);
-    z-index: -5;
-    transition: all 0.8s ease;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-700);
+
+    border-radius: var(--border_radius);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+      0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+      0 0 0 calc(var(--active, 0) * 0.35rem) rgba(147, 51, 234, 0.6);
+
+    transition: all var(--transtion);
+    z-index: 0;
   }
 
-  /* Hover effect with star dispersion */
-  button.star-btn:hover {
-    background: transparent;
-    color: #fec195;
-    border-color: #fec195;
-    box-shadow: 0 0 25px #fec1958c;
-  }
-
-  button.star-btn:hover .star-1 {
+  .button::after {
+    content: "";
     position: absolute;
-    top: -80%;
-    left: -25%;
-    width: 24px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    background-color: hsla(260 97% 61% / 0.75);
+    background-image: radial-gradient(
+        at 51% 89%,
+        hsla(266, 75%, 74%, 1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 100% 100%, hsla(266, 66%, 60%, 1) 0px, transparent 50%),
+      radial-gradient(at 22% 91%, hsla(266, 66%, 60%, 1) 0px, transparent 50%);
+    background-position: top;
+
+    opacity: var(--active, 0);
+    border-radius: var(--border_radius);
+    transition: opacity var(--transtion);
     z-index: 2;
   }
 
-  button.star-btn:hover .star-2 {
-    position: absolute;
-    top: -25%;
-    left: 10%;
-    width: 14px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
-    z-index: 2;
+  .button:is(:hover, :focus-visible) {
+    --active: 1;
+  }
+  .button:active {
+    transform: scale(0.98);
   }
 
-  button.star-btn:hover .star-3 {
+  .button .dots_border {
+    --size_border: calc(100% + 2px);
+
+    overflow: hidden;
+
     position: absolute;
-    top: 55%;
-    left: 25%;
-    width: 5px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
-    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--size_border);
+    height: var(--size_border);
+    background-color: transparent;
+
+    border-radius: var(--border_radius);
+    z-index: -10;
   }
 
-  button.star-btn:hover .star-4 {
+  .button .dots_border::before {
+    content: "";
     position: absolute;
     top: 30%;
-    left: 80%;
-    width: 8px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
-    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: left;
+    transform: rotate(0deg);
+
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+
+    mask: linear-gradient(transparent 0%, white 120%);
+    -webkit-mask: linear-gradient(transparent 0%, white 120%);
+    animation: rotate 2s linear infinite;
   }
 
-  button.star-btn:hover .star-5 {
-    position: absolute;
-    top: 25%;
-    left: 110%;
-    width: 14px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
-    z-index: 2;
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  button.star-btn:hover .star-6 {
-    position: absolute;
-    top: 5%;
-    left: 60%;
-    width: 5px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #fffdef);
-    z-index: 2;
+  .button .sparkle {
+    position: relative;
+    z-index: 10;
+
+    width: 1.4rem;
+    height: 1.4rem;
   }
 
-  .fil0 {
-    fill: #fffdef;
+  .button .sparkle .path {
+    fill: currentColor;
+    stroke: currentColor;
+
+    transform-origin: center;
+
+    color: hsl(0, 0%, 100%);
+  }
+
+  .button:is(:hover, :focus, .is-active) .sparkle .path {
+    animation: path 1.5s linear 0.5s infinite;
+  }
+
+  .button .sparkle .path:nth-child(1) {
+    --scale_path_1: 1.2;
+  }
+  .button .sparkle .path:nth-child(2) {
+    --scale_path_2: 1.2;
+  }
+  .button .sparkle .path:nth-child(3) {
+    --scale_path_3: 1.2;
+  }
+
+  @keyframes path {
+    0%,
+    34%,
+    71%,
+    100% {
+      transform: scale(1);
+    }
+    17% {
+      transform: scale(var(--scale_path_1, 1));
+    }
+    49% {
+      transform: scale(var(--scale_path_2, 1));
+    }
+    83% {
+      transform: scale(var(--scale_path_3, 1));
+    }
+  }
+
+  .button .text_button {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   }
 `;
