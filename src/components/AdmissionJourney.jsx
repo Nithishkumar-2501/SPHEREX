@@ -73,7 +73,7 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
 
         <div className="journey-container">
           {/* Stepper Buttons (01 to 07 with StarButton UI) */}
-          <div className="journey-stepper" id="journey-stepper" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', margin: '24px 0' }}>
+          <div className="journey-stepper" id="journey-stepper" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', padding: '12px 8px', margin: '16px 0' }}>
             {[1, 2, 3, 4, 5, 6, 7].map((num) => {
               const labels = ['New Enquiry', 'Contacted', 'Counselling', 'Qualified', 'Application', 'Admitted', 'Payment'];
               const isActive = activeStage === num;

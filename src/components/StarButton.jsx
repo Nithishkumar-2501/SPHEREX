@@ -12,7 +12,7 @@ export default function StarButton({
   disabled = false
 }) {
   return (
-    <StyledWrapper className={`sparkle-btn-wrapper ${className}`}>
+    <StyledWrapper className={`sparkle-btn-wrapper ${active ? 'is-active-wrapper' : ''} ${className}`}>
       <button
         type={type}
         onClick={onClick}
@@ -30,6 +30,14 @@ export default function StarButton({
 const StyledWrapper = styled.div`
   display: inline-flex;
   vertical-align: middle;
+  padding: 6px 5px;
+  position: relative;
+  z-index: 1;
+
+  &:hover,
+  &.is-active-wrapper {
+    z-index: 10;
+  }
 
   .button {
     --black-700: hsla(222, 40%, 8%, 0.95);
@@ -52,7 +60,7 @@ const StyledWrapper = styled.div`
 
     border: none;
     border-radius: var(--border_radius);
-    transform: scale(calc(1 + (var(--active, 0) * 0.05)));
+    transform: scale(calc(1 + (var(--active, 0) * 0.02)));
 
     transition: transform var(--transtion);
     white-space: nowrap;
@@ -93,7 +101,7 @@ const StyledWrapper = styled.div`
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
       0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
-      0 0 0 calc(var(--active, 0) * 0.35rem) rgba(147, 51, 234, 0.6);
+      0 0 0 calc(var(--active, 0) * 0.22rem) rgba(147, 51, 234, 0.55);
 
     transition: all var(--transtion);
     z-index: 0;
