@@ -59,7 +59,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
       <div className="hero-glow-sphere"></div>
       
       {/* Hero9 Animated Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full flex flex-col items-center justify-center mx-auto">
         <Hero9
           logo={
             <div className="flex items-center gap-2">

@@ -279,7 +279,7 @@ export function Hero9({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.42 }}
-          className="mx-auto flex w-full max-w-[800px] flex-1 flex-col items-center justify-center pt-[70px] text-center sm:pt-[90px] lg:pt-[80px]"
+          className="mx-auto flex w-full max-w-[800px] flex-1 flex-col items-center justify-center self-center pt-[70px] text-center sm:pt-[90px] lg:pt-[80px]"
         >
           <motion.div
             variants={contentItem}
