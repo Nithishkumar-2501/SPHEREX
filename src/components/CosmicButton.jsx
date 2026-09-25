@@ -35,7 +35,7 @@ export default function CosmicButton({
   };
 
   return (
-    <StyledWrapper className={`cosmic-btn-container ${size} ${className} ${isLoading ? 'is-loading' : ''}`}>
+    <StyledWrapper className={`cosmic-btn-container cosmic-${size} ${className} ${isLoading ? 'is-loading' : ''}`}>
       <a 
         href={href} 
         target={target} 
@@ -263,7 +263,7 @@ const StyledWrapper = styled.div`
   }
 
   /* Specific sizing for Navbar */
-  &.navbar {
+  &.cosmic-navbar {
     .btn-wrapper {
       font-size: 0.88rem;
     }
@@ -274,7 +274,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 640px) {
-    &.navbar {
+    &.cosmic-navbar {
       .btn-wrapper {
         font-size: 0.76rem;
       }
@@ -284,7 +284,7 @@ const StyledWrapper = styled.div`
       }
     }
 
-    &.hero {
+    &.cosmic-hero {
       width: 100%;
       .btn-wrapper {
         width: 100%;
