@@ -73,7 +73,7 @@ export default function Navbar({ onOpenBooking }) {
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
-      <div className="container navbar-inner">
+      <div className="navbar-inner">
         <a 
           href="#hero" 
           className="brand-logo" 
