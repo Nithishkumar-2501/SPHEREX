@@ -55,7 +55,7 @@ const defaultAvatars: Hero9Avatar[] = [
   },
 ];
 
-const defaultBackground = '/landing-bg.jpg';
+const defaultBackground = 'https://assets.watermelon.sh/hero-9-bg.avif';
 
 const headerVariants: Variants = {
   hidden: { opacity: 0, y: -18, filter: 'blur(8px)' },
@@ -140,9 +140,9 @@ export function Hero9({
         <img
           src={backgroundImage}
           alt=""
-          className="h-full w-full object-cover object-center opacity-40 outline-1 outline-black/10"
+          className="h-full w-full object-cover object-center opacity-70 outline-1 outline-black/10"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/40 to-slate-950" />
       </motion.div>
 
       <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[1440px] flex-col px-5 py-4 sm:min-h-screen sm:px-9 lg:px-[58px]">
