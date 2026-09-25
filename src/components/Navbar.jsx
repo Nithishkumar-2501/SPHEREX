@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import CosmicButton from './CosmicButton';
 import LiquidNavbarMenu from './LiquidNavbarMenu';
 
-export default function Navbar({ onOpenBooking }) {
+export default function Navbar({ onOpenBooking, onOpenLogin }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('platform');
@@ -94,6 +94,17 @@ export default function Navbar({ onOpenBooking }) {
         </nav>
 
         <div className="nav-actions">
+          <a
+            href="/login"
+            className="nav-login-btn"
+            id="nav-login-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onOpenLogin) onOpenLogin();
+            }}
+          >
+            Portal Login
+          </a>
           <CosmicButton size="navbar" onClick={onOpenBooking} />
           <button 
             className="mobile-toggle" 
@@ -110,11 +121,11 @@ export default function Navbar({ onOpenBooking }) {
       {/* Mobile Drawer Menu */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} id="mobile-menu" aria-hidden={!mobileOpen}>
         <a href="#platform" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'platform')}>
-          <span className="mobile-link-icon">🧭</span>
+          <span className="mobile-link-icon">🌐</span>
           <span>Platform</span>
         </a>
         <a href="#lead-management" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'lead-management')}>
-          <span className="mobile-link-icon">📝</span>
+          <span className="mobile-link-icon">📋</span>
           <span>Candidate Entry</span>
         </a>
         <a href="#lead-assignment" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'lead-assignment')}>
@@ -122,7 +133,7 @@ export default function Navbar({ onOpenBooking }) {
           <span>Faculty Allocation</span>
         </a>
         <a href="#nora-ai" className="nav-link mobile-link" style={{ color: '#c084fc' }} onClick={(e) => handleNavClick(e, 'nora-ai')}>
-          <span className="mobile-link-icon">🤖</span>
+          <span className="mobile-link-icon">⚡</span>
           <span>Nora AI &amp; Cutoff</span>
         </a>
         <a href="#mobile-app" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'mobile-app')}>
@@ -132,6 +143,18 @@ export default function Navbar({ onOpenBooking }) {
         <a href="#multi-campus" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'multi-campus')}>
           <span className="mobile-link-icon">🏛️</span>
           <span>Dual Campuses</span>
+        </a>
+        <a 
+          href="/login" 
+          className="nav-link mobile-link mobile-login-cta" 
+          onClick={(e) => {
+            e.preventDefault();
+            if (onOpenLogin) onOpenLogin();
+            setMobileOpen(false);
+          }}
+        >
+          <span className="mobile-link-icon">🔐</span>
+          <span>Institutional Portal Login</span>
         </a>
         <a 
           href="https://cal.com/sphere-x-5kss8s/30min" 

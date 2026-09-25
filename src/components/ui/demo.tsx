@@ -1,9 +1,5 @@
-import { Hero9 } from '.';
+import Auth11 from '.';
 
-export default function Hero9Demo() {
-  return (
-    <div className="w-full bg-slate-950">
-      <Hero9 />
-    </div>
-  );
+export default function Auth11Demo() {
+  return <Auth11 />;
 }

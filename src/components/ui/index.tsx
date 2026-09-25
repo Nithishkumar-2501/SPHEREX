@@ -1,422 +1,294 @@
-import { useState, type ReactNode } from 'react';
-import { AnimatePresence, motion, type Variants } from 'framer-motion';
-import { FaArrowRight, FaChevronDown, FaXmark } from 'react-icons/fa6';
+'use client';
 
-export interface Hero9NavItem {
-  label: string;
-  href: string;
-  hasMenu?: boolean;
+import React, { useState } from 'react';
+import { motion, type Variants } from 'motion/react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+export { Hero9 } from './hero9';
+export type { Hero9Props, Hero9NavItem, Hero9Avatar } from './hero9';
+
+export interface Auth11Props {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  leftHeadline?: string;
+  leftImageSrc?: string;
+  buttonText?: string;
+  footerText?: React.ReactNode;
+  onLoginSuccess?: (email: string) => void;
+  onBackToHome?: () => void;
+  showBackToHome?: boolean;
 }
 
-export interface Hero9Avatar {
-  src: string;
-  alt: string;
-}
+export default function Auth11({
+  title,
+  subtitle,
+  leftHeadline = 'Move fast. Feel Free',
+  leftImageSrc = 'https://assets.watermelon.sh/auth-11.avif',
+  buttonText = 'Sign in',
+  footerText,
+  onLoginSuccess,
+  onBackToHome,
+  showBackToHome = true,
+}: Auth11Props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-export interface Hero9Props {
-  logo?: ReactNode;
-  logoText?: string;
-  navItems?: Hero9NavItem[];
-  ctaText?: string;
-  ctaHref?: string;
-  eyebrowText?: string;
-  avatars?: Hero9Avatar[];
-  title?: string;
-  description?: string;
-  emailPlaceholder?: string;
-  formAction?: string;
-  submitText?: string;
-  backgroundImage?: string;
-  onOpenBooking?: () => void;
-  renderCtaButton?: ReactNode;
-  renderSubmitButton?: ReactNode;
-  showHeader?: boolean;
-}
-
-const defaultNavItems: Hero9NavItem[] = [
-  { label: 'Platform', href: '#platform' },
-  { label: 'Candidate Entry', href: '#lead-management' },
-  { label: 'Faculty Allocation', href: '#lead-assignment' },
-  { label: 'Nora AI', href: '#nora-ai' },
-  { label: 'Dual Campuses', href: '#multi-campus' },
-];
-
-const defaultAvatars: Hero9Avatar[] = [
-  {
-    src: 'https://assets.watermelon.sh/wm_ben.png',
-    alt: 'SPHEREX user',
-  },
-  {
-    src: 'https://assets.watermelon.sh/wm_alex.png',
-    alt: 'SPHEREX user',
-  },
-  {
-    src: 'https://assets.watermelon.sh/wm_olivia.png',
-    alt: 'SPHEREX user',
-  },
-];
-
-const defaultBackground = 'https://assets.watermelon.sh/hero-9-bg.avif';
-
-const headerVariants: Variants = {
-  hidden: { opacity: 0, y: -18, filter: 'blur(8px)' },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: { type: 'spring', duration: 0.68, bounce: 0, delay: 0.4 },
-  },
-};
-
-const contentContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.12,
-      staggerChildren: 0.1,
-      delay: 0.3,
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
     },
-  },
-};
+  };
 
-const contentItem: Variants = {
-  hidden: { opacity: 0, y: 18, filter: 'blur(8px)' },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: { type: 'spring', duration: 0.72, bounce: 0 },
-  },
-};
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 24,
+      },
+    },
+  };
 
-const backgroundVariants: Variants = {
-  hidden: { opacity: 0, scale: 1.035, filter: 'blur(10px)' },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    filter: 'blur(0px)',
-    transition: { type: 'spring', duration: 1.15, bounce: 0 },
-  },
-};
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage('');
+    setSuccessMessage('');
 
-function DefaultLogo() {
-  return (
-    <div className="flex items-center gap-2">
-      <img src="/logo.png" alt="SPHEREX" className="h-8 w-8 object-contain" />
-    </div>
-  );
-}
+    if (!email.trim() || !password.trim()) {
+      setErrorMessage('Please fill in both email and password.');
+      return;
+    }
 
-export function Hero9({
-  logo,
-  logoText = 'SPHEREX',
-  navItems = defaultNavItems,
-  ctaText = 'Book Meeting',
-  ctaHref = 'https://cal.com/sphere-x-5kss8s/30min',
-  eyebrowText = 'SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027',
-  avatars = defaultAvatars,
-  title = 'Intelligent\nAdmission CRM &\nLead Management.',
-  description = 'Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony.',
-  emailPlaceholder = 'Enter your institutional email',
-  formAction = '#',
-  submitText = 'Get Started',
-  backgroundImage = defaultBackground,
-  onOpenBooking,
-  renderCtaButton,
-  renderSubmitButton,
-  showHeader = true,
-}: Hero9Props) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+    setIsLoading(true);
+
+    // Simulate login authentication
+    setTimeout(() => {
+      setIsLoading(false);
+      setSuccessMessage(`Welcome back! Authenticated as ${email}`);
+      if (onLoginSuccess) {
+        onLoginSuccess(email);
+      }
+    }, 700);
+  };
 
   return (
-    <section 
-      className="relative isolate w-full overflow-hidden font-sans text-slate-100 antialiased min-h-screen flex flex-col items-center justify-center pt-20 pb-10"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        minHeight: '100vh',
-        position: 'relative',
-        paddingTop: '80px',
-        paddingBottom: '40px'
-      }}
-    >
-      <motion.div
-        variants={backgroundVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.35 }}
-        className="absolute inset-0 will-change-transform pointer-events-none"
-        aria-hidden="true"
-      >
-        <img
-          src={backgroundImage}
-          alt=""
-          className="h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
-      </motion.div>
+    <div className="flex min-h-screen w-full flex-col bg-[#050505] font-sans text-neutral-200 antialiased selection:bg-white/20 selection:text-white lg:flex-row">
+      {/* Left Image Panel */}
+      <div className="relative hidden w-full flex-col justify-end p-4 lg:flex lg:min-h-screen lg:w-1/2">
+        {/* Background Image Wrapper */}
+        <div className="relative h-full w-full overflow-hidden rounded-[32px] border border-white/10 shadow-2xl">
+          <img
+            src={leftImageSrc}
+            alt="Serene landscape with a lone tree"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* Dark Gradient Overlay for text readability */}
+          <div
+            className="absolute inset-0 bg-gradient-to-t bg-linear-to-t from-[#050505] via-[#050505]/30 to-transparent"
+            style={{
+              background:
+                'linear-gradient(to top, #050505 0%, rgba(5,5,5,0.4) 45%, transparent 100%)',
+            }}
+          />
 
-      <div 
-        className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center justify-center px-4 py-8 sm:px-8 text-center flex-1"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          maxWidth: '1280px',
-          margin: '0 auto',
-          textAlign: 'center'
-        }}
-      >
-        {showHeader && (
-          <motion.header
-            variants={headerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.8 }}
-            className="flex h-12 w-full items-center justify-between mb-8"
-          >
-            <a
-              href="#"
-              className="inline-flex min-h-10 items-center gap-2.5 text-white transition-[opacity,transform] duration-200 ease-out hover:opacity-75 active:scale-[0.96]"
-            >
-              {logo ?? <DefaultLogo />}
-              <span className="text-lg leading-none font-semibold tracking-[-0.02em] bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">
-                {logoText}
-              </span>
-            </a>
-
-            <nav className="hidden items-center gap-[42px] lg:flex">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group inline-flex min-h-10 items-center gap-1.5 text-sm leading-none font-medium text-slate-200 transition-colors duration-200 ease-out hover:text-cyan-400"
-                >
-                  <span>{item.label}</span>
-                  {item.hasMenu ? (
-                    <FaChevronDown className="size-2.5 transition-transform duration-200 group-hover:translate-y-px" />
-                  ) : null}
-                </a>
-              ))}
-            </nav>
-
-            <div className="hidden sm:inline-flex items-center">
-              {renderCtaButton ? (
-                renderCtaButton
-              ) : (
-                <motion.a
-                  href={ctaHref}
-                  onClick={(e) => {
-                    if (onOpenBooking) {
-                      e.preventDefault();
-                      onOpenBooking();
-                    }
-                  }}
-                  whileTap={{ scale: 0.96 }}
-                  className="group inline-flex min-h-10 items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 px-5 text-sm leading-none font-medium text-cyan-300 shadow-lg backdrop-blur-md transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-cyan-500/20 hover:border-cyan-400/50"
-                >
-                  <span>{ctaText}</span>
-                  <FaArrowRight className="size-3 transition-transform duration-200 group-hover:translate-x-1" />
-                </motion.a>
-              )}
+          {/* Bottom Content within the image */}
+          <div className="absolute right-0 bottom-0 left-0 z-10 flex w-full flex-col items-center justify-center pb-12 text-center">
+            <h1 className="text-3xl font-medium tracking-tight text-balance text-white md:text-4xl lg:text-5xl">
+              {leftHeadline}
+            </h1>
+            {/* Pagination Indicators */}
+            <div className="mt-8 flex items-center justify-center gap-2">
+              <div className="h-1 w-6 rounded-full bg-white"></div>
+              <div className="h-1 w-1.5 rounded-full bg-white/40"></div>
+              <div className="h-1 w-1.5 rounded-full bg-white/40"></div>
+              <div className="h-1 w-1.5 rounded-full bg-white/40"></div>
             </div>
+          </div>
+        </div>
+      </div>
 
+      {/* Right Form Panel */}
+      <div className="relative flex w-full flex-col items-center justify-center p-6 sm:p-12 lg:w-1/2">
+        {/* Back to Home Button */}
+        {showBackToHome && (
+          <div className="absolute top-6 left-6 z-20">
             <button
               type="button"
-              aria-label="Open navigation menu"
-              onClick={() => setMobileOpen(true)}
-              className="inline-flex size-10 items-center justify-center rounded-full bg-slate-900/80 text-white border border-slate-700/50 shadow-md backdrop-blur-md transition-[background-color,transform] duration-200 ease-out hover:bg-slate-800 lg:hidden"
+              onClick={() => {
+                if (onBackToHome) {
+                  onBackToHome();
+                } else if (typeof window !== 'undefined') {
+                  window.location.href = '/';
+                }
+              }}
+              className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 hover:text-white transition-colors py-2 px-3 rounded-full border border-white/10 bg-[#0c0c0c] hover:bg-[#181818]"
             >
-              <span className="h-3.5 w-4 bg-[linear-gradient(to_bottom,currentColor_0_2px,transparent_2px_6px,currentColor_6px_8px,transparent_8px_12px,currentColor_12px_14px)]" />
+              &larr; Back to SPHEREX
             </button>
-          </motion.header>
-        )}
-
-        {showHeader && (
-          <AnimatePresence initial={false}>
-            {mobileOpen ? (
-              <motion.div
-                initial={{ opacity: 0, y: -10, filter: 'blur(8px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, y: -6, filter: 'blur(5px)' }}
-                transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
-                className="fixed inset-x-4 top-4 z-50 rounded-[28px] bg-slate-900/95 p-4 text-white shadow-2xl border border-slate-700/60 backdrop-blur-xl lg:hidden"
-              >
-                <div className="flex items-center justify-between pl-3">
-                  <a href="#" className="inline-flex items-center gap-2.5">
-                    {logo ?? <DefaultLogo />}
-                    <span className="text-base font-semibold tracking-[-0.02em]">
-                      {logoText}
-                    </span>
-                  </a>
-                  <button
-                    type="button"
-                    aria-label="Close navigation menu"
-                    onClick={() => setMobileOpen(false)}
-                    className="inline-flex size-10 items-center justify-center rounded-full text-slate-300 transition-[background-color,transform] duration-200 ease-out hover:bg-slate-800 active:scale-[0.96]"
-                  >
-                    <FaXmark className="size-4" />
-                  </button>
-                </div>
-
-                <nav className="mt-5 grid gap-1">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="inline-flex min-h-11 items-center justify-between rounded-2xl px-3 text-sm font-medium text-slate-200 transition-colors duration-200 ease-out hover:bg-slate-800"
-                    >
-                      <span>{item.label}</span>
-                      {item.hasMenu ? <FaChevronDown className="size-3" /> : null}
-                    </a>
-                  ))}
-                </nav>
-
-                <div className="mt-4">
-                  {renderCtaButton ? (
-                    renderCtaButton
-                  ) : (
-                    <motion.a
-                      href={ctaHref}
-                      onClick={(e) => {
-                        if (onOpenBooking) {
-                          e.preventDefault();
-                          onOpenBooking();
-                        }
-                        setMobileOpen(false);
-                      }}
-                      whileTap={{ scale: 0.96 }}
-                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-cyan-600 px-5 text-sm font-medium text-white transition-[background-color,transform] duration-200 ease-out hover:bg-cyan-500"
-                    >
-                      {ctaText}
-                      <FaArrowRight className="size-3" />
-                    </motion.a>
-                  )}
-                </div>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
+          </div>
         )}
 
         <motion.div
-          variants={contentContainer}
+          variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.42 }}
-          className="mx-auto flex w-full max-w-[840px] flex-col items-center justify-center text-center py-6 sm:py-10"
-          style={{
-            margin: '0 auto',
-            width: '100%',
-            maxWidth: '840px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center'
-          }}
+          animate="visible"
+          className="w-full max-w-[400px]"
         >
-          <motion.div
-            variants={contentItem}
-            className="inline-flex min-h-7 items-center justify-center gap-2 rounded-full bg-slate-900/80 border border-slate-700/60 px-3 py-1.5 text-xs leading-none font-semibold text-cyan-300 shadow-lg backdrop-blur-md text-center"
-            style={{ margin: '0 auto', display: 'inline-flex' }}
-          >
-            <span className="flex -space-x-2">
-              {avatars.map((avatar) => (
-                <img
-                  key={avatar.src}
-                  src={avatar.src}
-                  alt={avatar.alt}
-                  className="size-5 rounded-full object-cover shadow-xs outline-1 -outline-offset-1 outline-white/20"
-                />
-              ))}
-              <span className="grid size-5 -rotate-45 place-items-center rounded-full bg-cyan-500 text-slate-950">
-                <FaArrowRight className="size-2.5" />
-              </span>
-            </span>
-            <span>{eyebrowText}</span>
+          {/* Titles */}
+          <motion.div variants={itemVariants} className="mb-10 text-center">
+            <h2 className="text-3xl leading-tight font-medium tracking-tight text-balance text-white md:text-[40px]">
+              {title ?? (
+                <>
+                  Create your own AI
+                  <br />
+                  workforce{' '}
+                  <span className="font-serif font-light italic">faster.</span>
+                </>
+              )}
+            </h2>
+            {subtitle && (
+              <p className="mt-2 text-sm text-neutral-400">{subtitle}</p>
+            )}
           </motion.div>
 
-          <motion.h1
-            variants={contentItem}
-            className="mt-6 w-full max-w-[800px] text-[clamp(2.4rem,5.2vw,4.2rem)] leading-[1.08] font-bold tracking-[-0.04em] whitespace-pre-line text-white text-center mx-auto"
-            style={{
-              margin: '24px auto 0 auto',
-              textAlign: 'center',
-              width: '100%',
-              maxWidth: '800px'
-            }}
-          >
-            {title}
-          </motion.h1>
+          {/* Error Message */}
+          {errorMessage && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-4 rounded-xl border border-red-500/20 bg-red-950/40 p-3 text-center text-xs text-red-300"
+            >
+              {errorMessage}
+            </motion.div>
+          )}
 
-          <motion.p
-            variants={contentItem}
-            className="mt-5 w-full max-w-[640px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.65] font-normal whitespace-pre-line text-slate-300 text-center mx-auto"
-            style={{
-              margin: '20px auto 0 auto',
-              textAlign: 'center',
-              width: '100%',
-              maxWidth: '640px'
-            }}
-          >
-            {description}
-          </motion.p>
+          {/* Success Message */}
+          {successMessage && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/40 p-3 text-center text-xs text-emerald-300"
+            >
+              {successMessage}
+            </motion.div>
+          )}
 
-          <motion.div 
-            variants={contentItem} 
-            className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4 w-full mx-auto text-center"
-            style={{
-              margin: '32px auto 0 auto',
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              textAlign: 'center'
-            }}
-          >
-            {renderCtaButton ? (
-              renderCtaButton
-            ) : (
-              <motion.form
-                action={formAction}
-                className="flex w-full max-w-md flex-col gap-1.5 rounded-[28px] bg-slate-900/60 p-1.5 shadow-xl border border-slate-700/50 backdrop-blur-md min-[430px]:flex-row min-[430px]:rounded-full mx-auto"
-                style={{ margin: '0 auto' }}
+          {/* Form */}
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+            {/* Email */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-2">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-neutral-200"
               >
-                <label htmlFor="hero9-email" className="sr-only">
-                  Email
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                autoComplete="email"
+                required
+                className="w-full rounded-[14px] border border-white/10 bg-[#0A0A0A] px-4 py-3.5 text-sm text-white transition-colors placeholder:text-neutral-500 focus:border-neutral-500 focus:bg-[#111] focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+              />
+            </motion.div>
+
+            {/* Password */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-medium text-neutral-200"
+                >
+                  Password
                 </label>
+                <a
+                  href="#forgot"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert('Password reset link has been dispatched to administrator.');
+                  }}
+                  className="text-xs text-neutral-400 hover:text-white transition-colors"
+                >
+                  Forgot?
+                </a>
+              </div>
+              <div className="relative">
                 <input
-                  id="hero9-email"
-                  type="email"
-                  placeholder={emailPlaceholder}
-                  className="min-h-10 w-full min-w-0 flex-1 bg-transparent px-5 text-center text-sm font-medium text-white outline-none placeholder:text-slate-400 min-[430px]:text-left"
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  required
+                  className="w-full rounded-[14px] border border-white/10 bg-[#0A0A0A] px-4 py-3.5 pr-11 text-sm text-white transition-colors placeholder:text-neutral-500 focus:border-neutral-500 focus:bg-[#111] focus:ring-1 focus:ring-neutral-500 focus:outline-none"
                 />
-                {renderSubmitButton ? (
-                  renderSubmitButton
-                ) : (
-                  <motion.button
-                    type="submit"
-                    whileTap={{ scale: 0.96 }}
-                    className="group inline-flex min-h-10 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-cyan-500 px-4 text-sm font-medium text-slate-950 shadow-md transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-cyan-400 min-[430px]:w-auto"
-                  >
-                    <span>{submitText}</span>
-                    <FaArrowRight className="size-3 duration-200 group-hover:translate-x-0.5" />
-                  </motion.button>
-                )}
-              </motion.form>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white transition-colors p-1"
+                >
+                  {showPassword ? (
+                    <FiEyeOff className="text-base" />
+                  ) : (
+                    <FiEye className="text-base" />
+                  )}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Sign Up / Sign In Button */}
+            <motion.div variants={itemVariants} className="mt-4">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full rounded-full bg-[#EAEAEA] py-3.5 text-sm font-medium text-black shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-transform hover:bg-white active:scale-[0.96] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isLoading ? 'Authenticating...' : buttonText}
+              </button>
+            </motion.div>
+          </form>
+
+          {/* Footer */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-6 text-[13px] text-neutral-400 text-center"
+          >
+            {footerText ?? (
+              <>
+                Already have an account?{' '}
+                <a
+                  href="#login"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('email')?.focus();
+                  }}
+                  className="font-bold text-white hover:underline"
+                >
+                  Log in
+                </a>
+              </>
             )}
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }
+
+export { Auth11 };
