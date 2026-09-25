@@ -1,13 +1,22 @@
 import React, { useState, useRef } from 'react';
 import LightRays from './LightRays';
 import CosmicButton from './CosmicButton';
+import { Hero9 } from './ui';
 
 export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
   const [heroCampus, setHeroCampus] = useState('CAMPUS_01');
   const videoRef = useRef(null);
 
+  const heroNavItems = [
+    { label: 'Platform', href: '#platform' },
+    { label: 'Candidate Entry', href: '#lead-management' },
+    { label: 'Faculty Allocation', href: '#lead-assignment' },
+    { label: 'Nora AI', href: '#nora-ai' },
+    { label: 'Dual Campuses', href: '#multi-campus' },
+  ];
+
   return (
-    <section className="hero-section" id="hero">
+    <section className="hero-section relative isolate overflow-hidden" id="hero">
       {/* Cinematic Earth Sphere Looping Video & Mountain Sunset Backdrop */}
       <div className="hero-video-wrapper">
         <img
@@ -49,50 +58,52 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
       <div className="hero-glow-1"></div>
       <div className="hero-glow-sphere"></div>
       
-      <div className="container">
-        <div className="hero-content">
-          <div className="section-eyebrow">
-            <span className="dot"></span>
-            SPHEREX &bull; MULTI-CAMPUS ADMISSION MANAGEMENT OS &bull; 2026–2027
-          </div>
+      {/* Hero9 Animated Content */}
+      <div className="relative z-10">
+        <Hero9
+          logo={
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="SPHEREX" className="h-8 w-8 object-contain" />
+            </div>
+          }
+          logoText="SPHEREX"
+          navItems={heroNavItems}
+          eyebrowText="SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027"
+          title="Intelligent Admission CRM & Lead Management."
+          description="Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony."
+          ctaText="Book Meeting"
+          onOpenBooking={onOpenBooking}
+          renderCtaButton={
+            <div className="hero-cta-group flex flex-wrap items-center justify-center gap-4">
+              <CosmicButton 
+                href="https://cal.com/sphere-x-5kss8s/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                id="hero-primary-cta"
+                size="hero"
+                onClick={onOpenBooking}
+              >
+                📅 Book Meeting &rarr;
+              </CosmicButton>
+              <a 
+                href="#mobile-app" 
+                className="btn btn-secondary" 
+                id="hero-app-preview-cta"
+              >
+                📱 View Mobile &amp; Web App Previews
+              </a>
+            </div>
+          }
+        />
+      </div>
 
-          <h1>Intelligent Admission CRM &amp; <span className="text-accent-gradient">Lead Management.</span></h1>
-
-          <p className="hero-subheadline">
-            SPHEREX &bull; High-Performance Multi-Campus Admission CRM &bull; 2026–2027 Admissions
-          </p>
-
-          <p className="hero-desc">
-            Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured 3-sheet candidate registration with compulsory +91- mobile standard, Nora AI marksheet OCR cutoff evaluation, WebRTC voice telephony, and local SQLite + Google Firebase dual-cloud synchronization.
-          </p>
-
-          <div className="hero-cta-group">
-            <CosmicButton 
-              href="https://cal.com/sphere-x-5kss8s/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              id="hero-primary-cta"
-              size="hero"
-              onClick={onOpenBooking}
-            >
-              📅 Book Meeting &rarr;
-            </CosmicButton>
-            <a 
-              href="#mobile-app" 
-              className="btn btn-secondary" 
-              id="hero-app-preview-cta"
-            >
-              📱 View Mobile &amp; Web App Previews
-            </a>
-          </div>
-
-          <div className="hero-trust">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <path d="m9 12 2 2 4-4"></path>
-            </svg>
-            <span>On-Campus Installation &amp; Custom Deployment Conducted Directly by the SPHEREX Creator</span>
-          </div>
+      <div className="container relative z-10 -mt-16 pb-16">
+        <div className="hero-trust flex justify-center mb-8 text-center text-sm text-slate-300">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-cyan-400 inline">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span>On-Campus Installation &amp; Custom Deployment Conducted Directly by the SPHEREX Creator</span>
         </div>
 
         {/* Realistic Hero Dashboard */}

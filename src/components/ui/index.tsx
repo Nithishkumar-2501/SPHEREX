@@ -1,201 +1,354 @@
-import { motion, AnimatePresence, type Variants } from 'motion/react';
-import { ArrowRight, Blocks, Command, Sparkles, Workflow, Zap } from 'lucide-react';
-import LogoIcon from '@/assets/logo-icon';
+import { useState, type ReactNode } from 'react';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { FaArrowRight, FaChevronDown, FaXmark } from 'react-icons/fa6';
 
-interface Hero31Props {
-    logoText?: string;
-    navItems?: string[];
-    signUpText?: string;
-    title?: string;
-    subtitle?: string;
-    ctaText?: string;
-    trustedByText?: string;
-    backgroundImage?: string;
+export interface Hero9NavItem {
+  label: string;
+  href: string;
+  hasMenu?: boolean;
 }
 
-export default function Hero31({
-    logoText = "Watermelon",
-    navItems = ['Product', 'About Us', 'Features', 'FAQ', 'Contact'],
-    signUpText = "Sign up",
-    title = "Innovation that Drives Impact.",
-    subtitle = "Watermelon empowers teams to build, scale, and transform with technology that drives real results.",
-    ctaText = "Request a Demo",
-    trustedByText = "TRUSTED BY AMBITIOUS TEAMS",
-    backgroundImage = "/landing-bg.jpg",
-}: Hero31Props) {
-    // Nav: slides down from top, soft spring
-    const navContainerVariants: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-        },
-    };
-    const navItemVariants: Variants = {
-        hidden: { opacity: 0, y: -16, filter: 'blur(6px)' },
-        show: {
-            opacity: 1, y: 0, filter: 'blur(0px)',
-            transition: { type: 'spring', damping: 22, stiffness: 120, mass: 0.8 },
-        },
-    };
+export interface Hero9Avatar {
+  src: string;
+  alt: string;
+}
 
-    // Title: word-by-word stagger, rises with a gentle overshoot
-    const titleWords = title.split(' ');
-    const wordContainerVariants: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.07, delayChildren: 0.45 },
-        },
-    };
-    const wordVariants: Variants = {
-        hidden: { opacity: 0, y: 28, rotateX: 12, filter: 'blur(5px)' },
-        show: {
-            opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)',
-            transition: { type: 'spring', damping: 18, stiffness: 130 },
-        },
-    };
+export interface Hero9Props {
+  logo?: ReactNode;
+  logoText?: string;
+  navItems?: Hero9NavItem[];
+  ctaText?: string;
+  ctaHref?: string;
+  eyebrowText?: string;
+  avatars?: Hero9Avatar[];
+  title?: string;
+  description?: string;
+  emailPlaceholder?: string;
+  formAction?: string;
+  submitText?: string;
+  backgroundImage?: string;
+  onOpenBooking?: () => void;
+  renderCtaButton?: ReactNode;
+  renderSubmitButton?: ReactNode;
+}
 
-    // Body + CTA: fade+rise, delayed after title finishes
-    const bodyVariants: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.12, delayChildren: 0.85 },
-        },
-    };
-    const bodyItemVariants: Variants = {
-        hidden: { opacity: 0, y: 14, filter: 'blur(4px)' },
-        show: {
-            opacity: 1, y: 0, filter: 'blur(0px)',
-            transition: { type: 'spring', damping: 26, stiffness: 100, mass: 1 },
-        },
-    };
+const defaultNavItems: Hero9NavItem[] = [
+  { label: 'Platform', href: '#platform' },
+  { label: 'Candidate Entry', href: '#lead-management' },
+  { label: 'Faculty Allocation', href: '#lead-assignment' },
+  { label: 'Nora AI', href: '#nora-ai' },
+  { label: 'Dual Campuses', href: '#multi-campus' },
+];
 
-    // Footer logos: scale in from below with stagger
-    const logosContainerVariants: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.06, delayChildren: 1.2 },
-        },
-    };
-    const logoItemVariants: Variants = {
-        hidden: { opacity: 0, y: 10, scale: 0.94 },
-        show: {
-            opacity: 1, y: 0, scale: 1,
-            transition: { type: 'spring', damping: 20, stiffness: 140 },
-        },
-    };
+const defaultAvatars: Hero9Avatar[] = [
+  {
+    src: 'https://assets.watermelon.sh/wm_ben.png',
+    alt: 'SPHEREX user',
+  },
+  {
+    src: 'https://assets.watermelon.sh/wm_alex.png',
+    alt: 'SPHEREX user',
+  },
+  {
+    src: 'https://assets.watermelon.sh/wm_olivia.png',
+    alt: 'SPHEREX user',
+  },
+];
 
-    return (
-      <div className="relative min-h-screen w-full overflow-hidden bg-black font-sans text-white antialiased selection:bg-white/20">
-        <div className="pointer-events-none absolute inset-0 z-0 select-none">
-          <img
-            className="absolute inset-0 h-full w-full object-cover opacity-60"
-            src={backgroundImage}
-            alt="Background"
-          />
-        </div>
+const defaultBackground = '/landing-bg.jpg';
 
-        {/* Content Container */}
-        <div className="relative z-10 mx-auto flex h-full min-h-screen max-w-7xl flex-col px-6 py-8 md:px-12">
-          {/* Navigation */}
-          <AnimatePresence>
-            <motion.nav
-              variants={navContainerVariants}
-              initial="hidden"
-              animate="show"
-              className="flex items-center justify-between"
-            >
-              <motion.div variants={navItemVariants} className="flex items-center gap-2">
-                <LogoIcon className="h-8 w-8 text-white" />
-                <span className="font-serif text-2xl tracking-wide italic">{logoText}</span>
-              </motion.div>
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: -18, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring', duration: 0.68, bounce: 0, delay: 0.4 },
+  },
+};
 
-              <motion.div variants={navItemVariants} className="hidden items-center gap-10 md:flex">
-                {navItems.map((item) => (
-                  <a key={item} href="#" className="text-sm font-medium text-white/70 transition-colors hover:text-white">
-                    {item}
-                  </a>
-                ))}
-              </motion.div>
+const contentContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.12,
+      staggerChildren: 0.1,
+      delay: 0.3,
+    },
+  },
+};
 
-              <motion.div variants={navItemVariants}>
-                <button className="group flex h-10 items-center gap-2 bg-zinc-200 px-5 text-sm font-medium text-black shadow-[inset_0_2px_0px_rgba(255,255,255,1),inset_0_-2px_0px_rgba(0,0,0,0.2)] transition-transform active:scale-[0.96]">
-                  {signUpText}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              </motion.div>
-            </motion.nav>
-          </AnimatePresence>
+const contentItem: Variants = {
+  hidden: { opacity: 0, y: 18, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring', duration: 0.72, bounce: 0 },
+  },
+};
 
-          {/* Hero Main Content — title is word-by-word, body/CTA staggered after */}
-          <div className="mt-32 flex max-w-[42rem] flex-col gap-6 md:mt-40" style={{ perspective: '800px' }}>
-            {/* Word-by-word title */}
-            <motion.h1
-              variants={wordContainerVariants}
-              initial="hidden"
-              animate="show"
-              className="text-5xl font-medium tracking-tight text-white md:text-5xl lg:text-7xl lg:leading-[1.1]"
-              style={{ textWrap: 'balance' }}
-            >
-              {titleWords.map((word, i) => (
-                <motion.span key={i} variants={wordVariants} className="mr-[0.25em] inline-block last:mr-0">
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
+const backgroundVariants: Variants = {
+  hidden: { opacity: 0, scale: 1.035, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { type: 'spring', duration: 1.15, bounce: 0 },
+  },
+};
 
-            {/* Staggered body, subtitle, CTA */}
-            <motion.div
-              variants={bodyVariants}
-              initial="hidden"
-              animate="show"
-              className="flex flex-col gap-6"
-            >
-              <motion.p
-                variants={bodyItemVariants}
-                className="text-lg leading-relaxed font-light text-white/80 md:text-xl"
-                style={{ textWrap: 'pretty' }}
+function DefaultLogo() {
+  return (
+    <div className="flex items-center gap-2">
+      <img src="/logo.png" alt="SPHEREX" className="h-8 w-8 object-contain" />
+    </div>
+  );
+}
+
+export function Hero9({
+  logo,
+  logoText = 'SPHEREX',
+  navItems = defaultNavItems,
+  ctaText = 'Book Meeting',
+  ctaHref = 'https://cal.com/sphere-x-5kss8s/30min',
+  eyebrowText = 'SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027',
+  avatars = defaultAvatars,
+  title = 'Intelligent Admission CRM &\nLead Management.',
+  description = 'Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony.',
+  emailPlaceholder = 'Enter your institutional email',
+  formAction = '#',
+  submitText = 'Get Started',
+  backgroundImage = defaultBackground,
+  onOpenBooking,
+  renderCtaButton,
+  renderSubmitButton,
+}: Hero9Props) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <section className="relative isolate w-full overflow-hidden bg-slate-950 font-sans text-slate-100 antialiased min-h-screen">
+      <motion.div
+        variants={backgroundVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.35 }}
+        className="absolute inset-0 will-change-transform"
+        aria-hidden="true"
+      >
+        <img
+          src={backgroundImage}
+          alt=""
+          className="h-full w-full object-cover object-center opacity-40 outline-1 outline-black/10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950" />
+      </motion.div>
+
+      <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[1440px] flex-col px-5 py-4 sm:min-h-screen sm:px-9 lg:px-[58px]">
+        <motion.header
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          className="flex h-12 items-center justify-between"
+        >
+          <a
+            href="#"
+            className="inline-flex min-h-10 items-center gap-2.5 text-white transition-[opacity,transform] duration-200 ease-out hover:opacity-75 active:scale-[0.96]"
+          >
+            {logo ?? <DefaultLogo />}
+            <span className="text-lg leading-none font-semibold tracking-[-0.02em] bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">
+              {logoText}
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-[42px] lg:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="group inline-flex min-h-10 items-center gap-1.5 text-sm leading-none font-medium text-slate-200 transition-colors duration-200 ease-out hover:text-cyan-400"
               >
-                {subtitle}
-              </motion.p>
-              <motion.div variants={bodyItemVariants} className="mt-4">
-                <button className="group shadow-[inset_0_2px_0px_rgba(255,255,255,1),inset_0_-2px_0px_rgba(0,0,0,0.2)] bg-zinc-300 flex h-14 items-center gap-3 px-8 text-base font-medium text-black transition-transform active:scale-[0.96]">
-                  {ctaText}
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </button>
-              </motion.div>
-            </motion.div>
+                <span>{item.label}</span>
+                {item.hasMenu ? (
+                  <FaChevronDown className="size-2.5 transition-transform duration-200 group-hover:translate-y-px" />
+                ) : null}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden sm:inline-flex items-center">
+            {renderCtaButton ? (
+              renderCtaButton
+            ) : (
+              <motion.a
+                href={ctaHref}
+                onClick={(e) => {
+                  if (onOpenBooking) {
+                    e.preventDefault();
+                    onOpenBooking();
+                  }
+                }}
+                whileTap={{ scale: 0.96 }}
+                className="group inline-flex min-h-10 items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 px-5 text-sm leading-none font-medium text-cyan-300 shadow-lg backdrop-blur-md transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-cyan-500/20 hover:border-cyan-400/50"
+              >
+                <span>{ctaText}</span>
+                <FaArrowRight className="size-3 transition-transform duration-200 group-hover:translate-x-1" />
+              </motion.a>
+            )}
           </div>
 
-          {/* Footer Logos — scale in one by one */}
-          <motion.div
-            variants={logosContainerVariants}
-            initial="hidden"
-            animate="show"
-            className="mt-auto flex flex-col gap-8 pt-32 pb-8 md:flex-row md:items-center md:gap-12 lg:gap-16"
+          <button
+            type="button"
+            aria-label="Open navigation menu"
+            onClick={() => setMobileOpen(true)}
+            className="inline-flex size-10 items-center justify-center rounded-full bg-slate-900/80 text-white border border-slate-700/50 shadow-md backdrop-blur-md transition-[background-color,transform] duration-200 ease-out hover:bg-slate-800 lg:hidden"
           >
-            <motion.span variants={logoItemVariants} className="shrink-0 text-sm font-bold tracking-wide text-white/50 tabular-nums">
-              {trustedByText}
-            </motion.span>
-            <div className="flex flex-wrap items-center gap-8 md:gap-12 lg:gap-16">
-              {[
-                { icon: Command, name: 'novo', weight: 'font-bold tracking-tighter' },
-                { icon: Workflow, name: 'Telia Cygate', weight: 'font-medium tracking-tight' },
-                { icon: Blocks, name: 'customer.io', weight: 'font-bold tracking-tight' },
-                { icon: Sparkles, name: 'Fastmail', weight: 'font-medium tracking-tight' },
-                { icon: Zap, name: 'Medtronic', weight: 'font-bold tracking-tighter' },
-              ].map(({ icon: Icon, name, weight }) => (
-                <motion.div key={name} variants={logoItemVariants} className="flex items-center gap-2 opacity-60 mix-blend-screen grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
-                  <Icon className="h-6 w-6" />
-                  <span className={`text-xl ${weight}`}>{name}</span>
-                </motion.div>
+            <span className="h-3.5 w-4 bg-[linear-gradient(to_bottom,currentColor_0_2px,transparent_2px_6px,currentColor_6px_8px,transparent_8px_12px,currentColor_12px_14px)]" />
+          </button>
+        </motion.header>
+
+        <AnimatePresence initial={false}>
+          {mobileOpen ? (
+            <motion.div
+              initial={{ opacity: 0, y: -10, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -6, filter: 'blur(5px)' }}
+              transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
+              className="fixed inset-x-4 top-4 z-50 rounded-[28px] bg-slate-900/95 p-4 text-white shadow-2xl border border-slate-700/60 backdrop-blur-xl lg:hidden"
+            >
+              <div className="flex items-center justify-between pl-3">
+                <a href="#" className="inline-flex items-center gap-2.5">
+                  {logo ?? <DefaultLogo />}
+                  <span className="text-base font-semibold tracking-[-0.02em]">
+                    {logoText}
+                  </span>
+                </a>
+                <button
+                  type="button"
+                  aria-label="Close navigation menu"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex size-10 items-center justify-center rounded-full text-slate-300 transition-[background-color,transform] duration-200 ease-out hover:bg-slate-800 active:scale-[0.96]"
+                >
+                  <FaXmark className="size-4" />
+                </button>
+              </div>
+
+              <nav className="mt-5 grid gap-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="inline-flex min-h-11 items-center justify-between rounded-2xl px-3 text-sm font-medium text-slate-200 transition-colors duration-200 ease-out hover:bg-slate-800"
+                  >
+                    <span>{item.label}</span>
+                    {item.hasMenu ? <FaChevronDown className="size-3" /> : null}
+                  </a>
+                ))}
+              </nav>
+
+              <div className="mt-4">
+                {renderCtaButton ? (
+                  renderCtaButton
+                ) : (
+                  <motion.a
+                    href={ctaHref}
+                    onClick={(e) => {
+                      if (onOpenBooking) {
+                        e.preventDefault();
+                        onOpenBooking();
+                      }
+                      setMobileOpen(false);
+                    }}
+                    whileTap={{ scale: 0.96 }}
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-cyan-600 px-5 text-sm font-medium text-white transition-[background-color,transform] duration-200 ease-out hover:bg-cyan-500"
+                  >
+                    {ctaText}
+                    <FaArrowRight className="size-3" />
+                  </motion.a>
+                )}
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        <motion.div
+          variants={contentContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.42 }}
+          className="mx-auto flex w-full max-w-[800px] flex-1 flex-col items-center pt-[70px] text-center sm:pt-[90px] lg:pt-[80px]"
+        >
+          <motion.div
+            variants={contentItem}
+            className="inline-flex min-h-7 items-center gap-2 rounded-full bg-slate-900/80 border border-slate-700/60 px-2.5 py-1 text-xs leading-none font-semibold text-cyan-300 shadow-lg backdrop-blur-md"
+          >
+            <span className="flex -space-x-2">
+              {avatars.map((avatar) => (
+                <img
+                  key={avatar.src}
+                  src={avatar.src}
+                  alt={avatar.alt}
+                  className="size-5 rounded-full object-cover shadow-xs outline-1 -outline-offset-1 outline-white/20"
+                />
               ))}
-            </div>
+              <span className="grid size-5 -rotate-45 place-items-center rounded-full bg-cyan-500 text-slate-950">
+                <FaArrowRight className="size-2.5" />
+              </span>
+            </span>
+            <span>{eyebrowText}</span>
           </motion.div>
-        </div>
+
+          <motion.h1
+            variants={contentItem}
+            className="mt-6 max-w-[800px] text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.05] font-bold tracking-[-0.04em] text-balance whitespace-pre-line text-white"
+          >
+            {title}
+          </motion.h1>
+
+          <motion.p
+            variants={contentItem}
+            className="mt-5 max-w-[620px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.6] font-normal text-pretty whitespace-pre-line text-slate-300"
+          >
+            {description}
+          </motion.p>
+
+          <motion.div variants={contentItem} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+            {renderCtaButton ? (
+              renderCtaButton
+            ) : (
+              <motion.form
+                action={formAction}
+                className="flex w-full max-w-md flex-col gap-1.5 rounded-[28px] bg-slate-900/60 p-1.5 shadow-xl border border-slate-700/50 backdrop-blur-md min-[430px]:flex-row min-[430px]:rounded-full"
+              >
+                <label htmlFor="hero9-email" className="sr-only">
+                  Email
+                </label>
+                <input
+                  id="hero9-email"
+                  type="email"
+                  placeholder={emailPlaceholder}
+                  className="min-h-10 w-full min-w-0 flex-1 bg-transparent px-5 text-center text-sm font-medium text-white outline-none placeholder:text-slate-400 min-[430px]:text-left"
+                />
+                {renderSubmitButton ? (
+                  renderSubmitButton
+                ) : (
+                  <motion.button
+                    type="submit"
+                    whileTap={{ scale: 0.96 }}
+                    className="group inline-flex min-h-10 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-cyan-500 px-4 text-sm font-medium text-slate-950 shadow-md transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-cyan-400 min-[430px]:w-auto"
+                  >
+                    <span>{submitText}</span>
+                    <FaArrowRight className="size-3 duration-200 group-hover:translate-x-0.5" />
+                  </motion.button>
+                )}
+              </motion.form>
+            )}
+          </motion.div>
+        </motion.div>
       </div>
-    );
+    </section>
+  );
 }
