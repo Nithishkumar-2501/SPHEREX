@@ -345,12 +345,14 @@ export function Hero9({
 
           <motion.h1
             variants={contentItem}
-            className="mt-6 w-full max-w-[800px] text-[clamp(2.4rem,5.2vw,4.2rem)] leading-[1.08] font-bold tracking-[-0.04em] whitespace-pre-line text-white text-center mx-auto"
+            className="mt-6 w-full max-w-[800px] text-[clamp(2.4rem,5.2vw,4.2rem)] leading-[1.08] font-bold tracking-[-0.04em] whitespace-pre-line text-[#0f172a] text-center mx-auto"
             style={{
               margin: '24px auto 0 auto',
               textAlign: 'center',
               width: '100%',
-              maxWidth: '800px'
+              maxWidth: '800px',
+              color: '#0f172a',
+              textShadow: '0 1px 3px rgba(255, 255, 255, 0.65)'
             }}
           >
             {title}
@@ -358,12 +360,15 @@ export function Hero9({
 
           <motion.p
             variants={contentItem}
-            className="mt-5 w-full max-w-[640px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.65] font-normal whitespace-pre-line text-slate-300 text-center mx-auto"
+            className="mt-5 w-full max-w-[640px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.65] font-semibold whitespace-pre-line text-[#1e293b] text-center mx-auto"
             style={{
               margin: '20px auto 0 auto',
               textAlign: 'center',
               width: '100%',
-              maxWidth: '640px'
+              maxWidth: '640px',
+              color: '#1e293b',
+              fontWeight: 600,
+              textShadow: '0 1px 2px rgba(255, 255, 255, 0.75)'
             }}
           >
             {description}
