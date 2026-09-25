@@ -279,11 +279,11 @@ export function Hero9({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.42 }}
-          className="mx-auto flex w-full max-w-[800px] flex-1 flex-col items-center pt-[70px] text-center sm:pt-[90px] lg:pt-[80px]"
+          className="mx-auto flex w-full max-w-[800px] flex-1 flex-col items-center justify-center pt-[70px] text-center sm:pt-[90px] lg:pt-[80px]"
         >
           <motion.div
             variants={contentItem}
-            className="inline-flex min-h-7 items-center gap-2 rounded-full bg-slate-900/80 border border-slate-700/60 px-2.5 py-1 text-xs leading-none font-semibold text-cyan-300 shadow-lg backdrop-blur-md"
+            className="inline-flex min-h-7 items-center justify-center gap-2 rounded-full bg-slate-900/80 border border-slate-700/60 px-2.5 py-1 text-xs leading-none font-semibold text-cyan-300 shadow-lg backdrop-blur-md mx-auto text-center"
           >
             <span className="flex -space-x-2">
               {avatars.map((avatar) => (
@@ -303,19 +303,19 @@ export function Hero9({
 
           <motion.h1
             variants={contentItem}
-            className="mt-6 max-w-[800px] text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.05] font-bold tracking-[-0.04em] text-balance whitespace-pre-line text-white"
+            className="mt-6 max-w-[800px] text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.05] font-bold tracking-[-0.04em] text-balance whitespace-pre-line text-white text-center mx-auto"
           >
             {title}
           </motion.h1>
 
           <motion.p
             variants={contentItem}
-            className="mt-5 max-w-[620px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.6] font-normal text-pretty whitespace-pre-line text-slate-300"
+            className="mt-5 max-w-[620px] text-[clamp(0.95rem,1.35vw,1.15rem)] leading-[1.6] font-normal text-pretty whitespace-pre-line text-slate-300 text-center mx-auto"
           >
             {description}
           </motion.p>
 
-          <motion.div variants={contentItem} className="mt-8 flex items-center justify-center gap-4 w-full mx-auto">
+          <motion.div variants={contentItem} className="mt-8 flex items-center justify-center gap-4 w-full mx-auto text-center">
             {renderCtaButton ? (
               renderCtaButton
             ) : (
