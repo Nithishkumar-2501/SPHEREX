@@ -26,7 +26,7 @@ export interface Hero9Props {
   emailPlaceholder?: string;
   formAction?: string;
   submitText?: string;
-  backgroundImage?: string | null;
+  backgroundImage?: string;
   onOpenBooking?: () => void;
   renderCtaButton?: ReactNode;
   renderSubmitButton?: ReactNode;
@@ -55,6 +55,8 @@ const defaultAvatars: Hero9Avatar[] = [
     alt: 'SPHEREX user',
   },
 ];
+
+const defaultBackground = 'https://assets.watermelon.sh/hero-9-bg.avif';
 
 const headerVariants: Variants = {
   hidden: { opacity: 0, y: -18, filter: 'blur(8px)' },
@@ -119,7 +121,7 @@ export function Hero9({
   emailPlaceholder = 'Enter your institutional email',
   formAction = '#',
   submitText = 'Get Started',
-  backgroundImage = null,
+  backgroundImage = defaultBackground,
   onOpenBooking,
   renderCtaButton,
   renderSubmitButton,
@@ -129,7 +131,7 @@ export function Hero9({
 
   return (
     <section 
-      className="relative isolate w-full overflow-hidden bg-transparent font-sans text-slate-100 antialiased min-h-[calc(100vh-80px)] flex flex-col items-center justify-center"
+      className="relative isolate w-full overflow-hidden bg-slate-950 font-sans text-slate-100 antialiased min-h-[calc(100vh-80px)] flex flex-col items-center justify-center"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -137,27 +139,24 @@ export function Hero9({
         justifyContent: 'center',
         width: '100%',
         minHeight: 'calc(100vh - 80px)',
-        position: 'relative',
-        background: 'transparent'
+        position: 'relative'
       }}
     >
-      {backgroundImage ? (
-        <motion.div
-          variants={backgroundVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.35 }}
-          className="absolute inset-0 will-change-transform pointer-events-none"
-          aria-hidden="true"
-        >
-          <img
-            src={backgroundImage}
-            alt=""
-            className="h-full w-full object-cover object-center opacity-70 outline-1 outline-black/10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/40 to-slate-950" />
-        </motion.div>
-      ) : null}
+      <motion.div
+        variants={backgroundVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.35 }}
+        className="absolute inset-0 will-change-transform pointer-events-none"
+        aria-hidden="true"
+      >
+        <img
+          src={backgroundImage}
+          alt=""
+          className="h-full w-full object-cover object-center opacity-70 outline-1 outline-black/10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/40 to-slate-950" />
+      </motion.div>
 
       <div 
         className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center justify-center px-4 py-8 sm:px-8 text-center flex-1"
