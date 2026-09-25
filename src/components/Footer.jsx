@@ -7,7 +7,7 @@ export default function Footer({ onOpenBooking }) {
         <div className="footer-top-grid">
           <div className="footer-brand-col" style={{ maxWidth: '360px' }}>
             <div className="brand-logo" style={{ marginBottom: '12px' }}>
-              <img src="/logo.png" alt="SPHEREX" className="brand-icon-img" />
+              <img src="/logo.png?v=2" alt="SPHEREX" className="brand-icon-img" />
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <span style={{ fontSize: '1.25rem', fontWeight: 800 }}>SPHEREX</span>
                 <span style={{ fontSize: '0.7rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)' }}>

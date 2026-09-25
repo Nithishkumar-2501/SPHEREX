@@ -80,7 +80,7 @@ export default function Navbar({ onOpenBooking }) {
           id="nav-brand-logo"
           onClick={(e) => handleNavClick(e, 'hero')}
         >
-          <img src="/logo.png" alt="SPHEREX" className="brand-icon-img" />
+          <img src="/logo.png?v=2" alt="SPHEREX" className="brand-icon-img" />
           <div className="brand-title-wrap">
             <span className="brand-name">SPHEREX</span>
             <span className="brand-sub">

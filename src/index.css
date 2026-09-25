@@ -290,19 +290,20 @@ body {
 }
 
 .brand-icon-img {
-  height: clamp(44px, 3.8vw, 54px);
+  height: clamp(48px, 4.2vw, 58px);
   width: auto;
-  max-width: 84px;
-  border-radius: 10px;
+  max-width: 90px;
   object-fit: contain;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(56, 189, 248, 0.25);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
   display: block;
   flex-shrink: 0;
 }
 
 .brand-logo:hover .brand-icon-img {
-  transform: scale(1.06);
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 20px rgba(0, 240, 255, 0.35)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 .brand-title-wrap {
