@@ -59,22 +59,22 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
       <div className="hero-glow-sphere"></div>
       
       {/* Hero9 Animated Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center mx-auto">
+      <div 
+        className="relative z-10 w-full flex flex-col items-center justify-center mx-auto text-center"
+        style={{ width: '100%', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
+      >
         <Hero9
-          logo={
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="SPHEREX" className="h-8 w-8 object-contain" />
-            </div>
-          }
-          logoText="SPHEREX"
-          navItems={heroNavItems}
+          showHeader={false}
           eyebrowText="SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027"
-          title="Intelligent Admission CRM & Lead Management."
+          title={"Intelligent\nAdmission CRM &\nLead Management."}
           description="Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony."
           ctaText="Book Meeting"
           onOpenBooking={onOpenBooking}
           renderCtaButton={
-            <div className="hero-cta-group flex flex-row flex-wrap items-center justify-center gap-4 w-full mx-auto text-center">
+            <div 
+              className="hero-cta-group flex flex-row flex-wrap items-center justify-center gap-4 w-full mx-auto text-center"
+              style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', width: '100%', margin: '0 auto', textAlign: 'center' }}
+            >
               <CosmicButton 
                 href="https://cal.com/sphere-x-5kss8s/30min" 
                 target="_blank" 
@@ -89,6 +89,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
                 href="#mobile-app" 
                 className="btn btn-secondary inline-flex items-center justify-center" 
                 id="hero-app-preview-cta"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 📱 View Mobile &amp; Web App Previews
               </a>
