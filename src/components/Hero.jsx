@@ -65,6 +65,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
       >
         <Hero9
           showHeader={false}
+          backgroundImage={null}
           eyebrowText="SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027"
           title={"Intelligent\nAdmission CRM &\nLead Management."}
           description="Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony."
