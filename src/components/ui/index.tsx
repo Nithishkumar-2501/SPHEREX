@@ -131,15 +131,17 @@ export function Hero9({
 
   return (
     <section 
-      className="relative isolate w-full overflow-hidden bg-slate-950 font-sans text-slate-100 antialiased min-h-[calc(100vh-80px)] flex flex-col items-center justify-center"
+      className="relative isolate w-full overflow-hidden font-sans text-slate-100 antialiased min-h-screen flex flex-col items-center justify-center pt-20 pb-10"
       style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        minHeight: 'calc(100vh - 80px)',
-        position: 'relative'
+        minHeight: '100vh',
+        position: 'relative',
+        paddingTop: '80px',
+        paddingBottom: '40px'
       }}
     >
       <motion.div
@@ -153,9 +155,9 @@ export function Hero9({
         <img
           src={backgroundImage}
           alt=""
-          className="h-full w-full object-cover object-center opacity-70 outline-1 outline-black/10"
+          className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/40 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
       </motion.div>
 
       <div 

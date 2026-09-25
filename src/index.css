@@ -245,19 +245,25 @@ body {
    Navbar (Deep Monochrome Glass)
    ========================================================================== */
 .navbar {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
-  background: rgba(8, 8, 10, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 16px 0;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(5, 5, 7, 0.96);
+  position: fixed;
+  background: rgba(8, 8, 10, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
   border-bottom-color: rgba(255, 255, 255, 0.12);
   padding: 12px 0;
