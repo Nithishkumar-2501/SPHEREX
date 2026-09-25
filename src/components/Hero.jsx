@@ -74,7 +74,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
           ctaText="Book Meeting"
           onOpenBooking={onOpenBooking}
           renderCtaButton={
-            <div className="hero-cta-group flex flex-wrap items-center justify-center gap-4">
+            <div className="hero-cta-group flex flex-row flex-wrap items-center justify-center gap-4 w-full mx-auto text-center">
               <CosmicButton 
                 href="https://cal.com/sphere-x-5kss8s/30min" 
                 target="_blank" 
@@ -87,7 +87,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
               </CosmicButton>
               <a 
                 href="#mobile-app" 
-                className="btn btn-secondary" 
+                className="btn btn-secondary inline-flex items-center justify-center" 
                 id="hero-app-preview-cta"
               >
                 📱 View Mobile &amp; Web App Previews

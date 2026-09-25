@@ -315,7 +315,7 @@ export function Hero9({
             {description}
           </motion.p>
 
-          <motion.div variants={contentItem} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+          <motion.div variants={contentItem} className="mt-8 flex items-center justify-center gap-4 w-full mx-auto">
             {renderCtaButton ? (
               renderCtaButton
             ) : (
