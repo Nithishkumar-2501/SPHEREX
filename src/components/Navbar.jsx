@@ -1,8 +1,8 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import CosmicButton from './CosmicButton';
 import LiquidNavbarMenu from './LiquidNavbarMenu';
 
-export default function Navbar({ onOpenBooking, onOpenLogin }) {
+export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('platform');
@@ -94,17 +94,6 @@ export default function Navbar({ onOpenBooking, onOpenLogin }) {
         </nav>
 
         <div className="nav-actions">
-          <a
-            href="/login"
-            className="nav-login-btn"
-            id="nav-login-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              if (onOpenLogin) onOpenLogin();
-            }}
-          >
-            Portal Login
-          </a>
           <CosmicButton size="navbar" onClick={onOpenBooking} />
           <button 
             className="mobile-toggle" 
@@ -143,18 +132,6 @@ export default function Navbar({ onOpenBooking, onOpenLogin }) {
         <a href="#multi-campus" className="nav-link mobile-link" onClick={(e) => handleNavClick(e, 'multi-campus')}>
           <span className="mobile-link-icon">🏛️</span>
           <span>Dual Campuses</span>
-        </a>
-        <a 
-          href="/login" 
-          className="nav-link mobile-link mobile-login-cta" 
-          onClick={(e) => {
-            e.preventDefault();
-            if (onOpenLogin) onOpenLogin();
-            setMobileOpen(false);
-          }}
-        >
-          <span className="mobile-link-icon">🔐</span>
-          <span>Institutional Portal Login</span>
         </a>
         <a 
           href="https://cal.com/sphere-x-5kss8s/30min" 

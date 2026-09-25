@@ -1,6 +1,6 @@
-﻿import React from 'react';
+import React from 'react';
 
-export default function Footer({ onOpenBooking, onOpenLogin }) {
+export default function Footer({ onOpenBooking }) {
   return (
     <footer className="site-footer">
       <div className="container">
@@ -29,18 +29,6 @@ export default function Footer({ onOpenBooking, onOpenLogin }) {
               <li><a href="#multi-campus">Campus 01 (Main Campus)</a></li>
               <li><a href="#multi-campus">Campus 02 (City Campus)</a></li>
               <li><a href="#lead-assignment">16+ Faculty Portals</a></li>
-              <li>
-                <a 
-                  href="/login" 
-                  style={{ color: '#38bdf8', fontWeight: 600 }}
-                  onClick={(e) => { 
-                    e.preventDefault(); 
-                    if (onOpenLogin) onOpenLogin(); 
-                  }}
-                >
-                  🔐 Institutional Portal Login
-                </a>
-              </li>
               <li><a href="#nora-ai">TNEA Cutoff Calculator</a></li>
               <li><a href="#mobile-app">Mobile App Options</a></li>
             </ul>
@@ -79,17 +67,6 @@ export default function Footer({ onOpenBooking, onOpenLogin }) {
             &copy; 2026 SPHEREX Admission Management System &bull; All institutional rights reserved.
           </div>
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-            <a 
-              href="/login" 
-              onClick={(e) => { 
-                e.preventDefault(); 
-                if (onOpenLogin) onOpenLogin(); 
-              }}
-              style={{ color: 'var(--primary-light)', fontWeight: 600, fontSize: '0.82rem' }}
-            >
-              Sign in to Portal
-            </a>
-            <span style={{ color: 'var(--border-color)' }}>&bull;</span>
             <a 
               href="https://cal.com/sphere-x-5kss8s/30min" 
               target="_blank" 
