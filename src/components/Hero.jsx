@@ -1,63 +1,12 @@
-import React, { useState, useRef } from 'react';
-import LightRays from './LightRays';
+import React, { useState } from 'react';
 import CosmicButton from './CosmicButton';
 import { Hero9 } from './ui';
 
 export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
   const [heroCampus, setHeroCampus] = useState('CAMPUS_01');
-  const videoRef = useRef(null);
-
-  const heroNavItems = [
-    { label: 'Platform', href: '#platform' },
-    { label: 'Candidate Entry', href: '#lead-management' },
-    { label: 'Faculty Allocation', href: '#lead-assignment' },
-    { label: 'Nora AI', href: '#nora-ai' },
-    { label: 'Dual Campuses', href: '#multi-campus' },
-  ];
 
   return (
     <section className="hero-section relative isolate overflow-hidden" id="hero">
-      {/* Cinematic Earth Sphere Looping Video & Mountain Sunset Backdrop */}
-      <div className="hero-video-wrapper">
-        <img
-          className="hero-background-img"
-          src="/landing-bg.jpg"
-          alt="Landing Background"
-        />
-        <video
-          ref={videoRef}
-          className="hero-background-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/landing-bg.jpg"
-        >
-          <source src="/hero-sphere.mp4" type="video/mp4" />
-          <source src="/hero-scenic.mp4" type="video/mp4" />
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260613_180732_a54afbf6-b30d-470e-861f-669871f09f67.mp4" type="video/mp4" />
-        </video>
-        <div className="hero-video-scrim"></div>
-        <div className="hero-video-mist"></div>
-      </div>
-
-      <div className="hero-light-rays-wrapper">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#38bdf8"
-          raysSpeed={1.0}
-          lightSpread={0.9}
-          rayLength={1.4}
-          followMouse={true}
-          mouseInfluence={0.07}
-          noiseAmount={0.05}
-          distortion={0.03}
-          className="custom-rays"
-        />
-      </div>
-      <div className="hero-glow-1"></div>
-      <div className="hero-glow-sphere"></div>
-      
       {/* Hero9 Animated Content */}
       <div 
         className="relative z-10 w-full flex flex-col items-center justify-center mx-auto text-center"
@@ -65,6 +14,7 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
       >
         <Hero9
           showHeader={false}
+          backgroundImage="none"
           eyebrowText="SPHEREX • MULTI-CAMPUS ADMISSION MANAGEMENT OS • 2026–2027"
           title={"Intelligent\nAdmission CRM &\nLead Management."}
           description="Automating institutional student intake across multiple campuses. Dynamic lead allocation to 16+ department heads with batch quota tracking, structured candidate registration, Nora AI cutoff evaluation, and WebRTC voice telephony."
@@ -409,7 +359,6 @@ export default function Hero({ onOpenBooking, onOpenDemo: _onOpenDemo } = {}) {
         </div>
 
       </div>
-      <div className="hero-bottom-fade"></div>
     </section>
   );
 }

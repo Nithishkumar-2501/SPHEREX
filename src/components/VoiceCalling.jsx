@@ -20,7 +20,14 @@ export default function VoiceCalling({ onOpenBooking }) {
     window.addEventListener('resize', resizeCanvas);
 
     let phase = 0;
+    let isVisible = false;
+
     const draw = () => {
+      if (!isVisible) {
+        animationFrameId = null;
+        return;
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const bars = 48;
@@ -51,10 +58,20 @@ export default function VoiceCalling({ onOpenBooking }) {
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    draw();
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(draw);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
       window.removeEventListener('resize', resizeCanvas);
     };
   }, []);

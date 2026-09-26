@@ -56,7 +56,7 @@ const defaultAvatars: Hero9Avatar[] = [
   },
 ];
 
-const defaultBackground = 'https://assets.watermelon.sh/hero-9-bg.avif';
+const defaultBackground = '/hero-bg.webp';
 
 const headerVariants: Variants = {
   hidden: { opacity: 0, y: -18, filter: 'blur(8px)' },
@@ -144,21 +144,25 @@ export function Hero9({
         paddingBottom: '40px'
       }}
     >
-      <motion.div
-        variants={backgroundVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.35 }}
-        className="absolute inset-0 will-change-transform pointer-events-none"
-        aria-hidden="true"
-      >
-        <img
-          src={backgroundImage}
-          alt=""
-          className="h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
-      </motion.div>
+      {backgroundImage && backgroundImage !== 'none' && (
+        <motion.div
+          variants={backgroundVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          className="absolute inset-0 will-change-transform pointer-events-none"
+          aria-hidden="true"
+        >
+          <img
+            src={backgroundImage}
+            alt=""
+            className="h-full w-full object-cover object-center"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
+        </motion.div>
+      )}
 
       <div 
         className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center justify-center px-4 py-8 sm:px-8 text-center flex-1"

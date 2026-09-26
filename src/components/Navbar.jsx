@@ -9,16 +9,24 @@ export default function Navbar({ onOpenBooking }) {
 
   useEffect(() => {
     const sections = ['platform', 'lead-management', 'nora-ai', 'lead-assignment', 'mobile-app', 'multi-campus'];
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+    let ticking = false;
 
-      const scrollPos = window.scrollY + 160;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sections[i]);
-          break;
-        }
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 40);
+
+          const scrollPos = window.scrollY + 160;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i]);
+            if (el && el.offsetTop <= scrollPos) {
+              setActiveSection(sections[i]);
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });

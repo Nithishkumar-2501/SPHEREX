@@ -35,17 +35,15 @@ export default function App() {
   };
 
   const handleOpenBooking = () => {
-    setIsBookingLoading(true);
-    setTimeout(() => {
-      window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank');
-      setTimeout(() => {
-        setIsBookingLoading(false);
-      }, 400);
-    }, 1400);
+    window.open('https://cal.com/sphere-x-5kss8s/30min', '_blank');
   };
 
   return (
     <div className="app-root">
+      {/* Full-Page Unified Landscape Background (Top to Bottom) */}
+      <div className="page-fixed-background" aria-hidden="true" />
+      <div className="page-fixed-scrim" aria-hidden="true" />
+
       <Navbar onOpenBooking={handleOpenBooking} />
 
       <main>
