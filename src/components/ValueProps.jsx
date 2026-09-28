@@ -107,7 +107,7 @@ const capabilities = [
 
 export default function ValueProps() {
   return (
-    <section className="section value-props-section" id="features" style={{ background: '#000000', position: 'relative', zIndex: 1 }}>
+    <section className="section" id="features">
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">
@@ -403,17 +403,19 @@ const StyledWrapper = styled.div`
     font-size: 0.85rem;
     font-weight: 700;
     color: #ffffff;
-    background: linear-gradient(135deg, #03a9f4, #ff0058);
+    background: #000000;
+    border: 1px solid rgba(56, 189, 248, 0.45);
     padding: 8px 20px;
     border-radius: 99rem;
     text-decoration: none;
-    box-shadow: 0 4px 16px rgba(255, 0, 88, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .action-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 24px rgba(3, 169, 244, 0.6);
+    border-color: #38bdf8;
+    box-shadow: 0 6px 24px rgba(3, 169, 244, 0.4);
   }
 
   @media (max-width: 768px) {
