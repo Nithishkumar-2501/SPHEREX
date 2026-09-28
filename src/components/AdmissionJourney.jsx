@@ -59,6 +59,7 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
 
   return (
     <section className="section" id="journey">
+      <span id="admission-crm" style={{ position: 'absolute', top: '-80px', pointerEvents: 'none' }} aria-hidden="true" />
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">

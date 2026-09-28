@@ -106,6 +106,33 @@ const capabilities = [
 ];
 
 export default function ValueProps() {
+  const handleActionClick = (e, link) => {
+    e.preventDefault();
+    const targetId = link.replace('#', '');
+    let targetEl = document.getElementById(targetId);
+
+    if (!targetEl && targetId === 'admission-crm') {
+      targetEl = document.getElementById('journey');
+    }
+
+    if (targetEl) {
+      const navEl = document.getElementById('navbar');
+      const navHeight = navEl ? navEl.offsetHeight : 70;
+      const rect = targetEl.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = rect.top + scrollTop - navHeight - 16;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+
+      if (window.history.pushState) {
+        window.history.pushState(null, '', link);
+      }
+    }
+  };
+
   return (
     <section className="section" id="features">
       <div className="container">
@@ -150,7 +177,11 @@ export default function ValueProps() {
                         <span key={tag} className="tag-pill">{tag}</span>
                       ))}
                     </div>
-                    <a href={cap.link} className="action-btn">
+                    <a 
+                      href={cap.link} 
+                      className="action-btn"
+                      onClick={(e) => handleActionClick(e, cap.link)}
+                    >
                       <span>{cap.linkText}</span>
                     </a>
                   </div>
@@ -399,23 +430,31 @@ const StyledWrapper = styled.div`
   .action-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 800;
     color: #ffffff;
-    background: #000000;
-    border: 1px solid rgba(56, 189, 248, 0.45);
-    padding: 8px 20px;
+    background: linear-gradient(135deg, #00f2fe 0%, #0ea5e9 45%, #2563eb 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 24px;
     border-radius: 99rem;
     text-decoration: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(14, 165, 233, 0.45), 0 0 12px rgba(0, 242, 254, 0.3);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   }
 
   .action-btn:hover {
-    transform: scale(1.05);
-    border-color: #38bdf8;
-    box-shadow: 0 6px 24px rgba(3, 169, 244, 0.4);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 28px rgba(14, 165, 233, 0.7), 0 0 20px rgba(0, 242, 254, 0.55);
+    filter: brightness(1.08);
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+
+  .action-btn:active {
+    transform: translateY(0) scale(0.97);
   }
 
   @media (max-width: 768px) {
