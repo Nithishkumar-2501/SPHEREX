@@ -107,7 +107,7 @@ const capabilities = [
 
 export default function ValueProps() {
   return (
-    <section className="section" id="features">
+    <section className="section value-props-section" id="features" style={{ background: '#000000', position: 'relative', zIndex: 1 }}>
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">
@@ -224,15 +224,13 @@ const StyledWrapper = styled.div`
     opacity: 0.88;
   }
 
-  /* Solid dark frosted inner plate for maximum text contrast */
+  /* Solid pure black inner plate for maximum text contrast */
   .card b {
     position: absolute;
     inset: 4px;
-    background: rgba(7, 12, 28, 0.95);
+    background: #000000;
     border-radius: 12px;
     z-index: 2;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     pointer-events: none;
   }
 
