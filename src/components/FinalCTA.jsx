@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function FinalCTA({ onOpenBooking }) {
   return (
-    <section className="section" id="conversion">
+    <section className="section" id="conversion" style={{ position: 'relative' }}>
+      <span id="pricing" style={{ position: 'absolute', top: '-90px', pointerEvents: 'none' }} aria-hidden="true" />
       <div className="container">
         <div className="final-cta-card">
           <div className="section-eyebrow" style={{ marginBottom: '12px' }}>

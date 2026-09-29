@@ -34,7 +34,8 @@ const benefits = [
 
 export default function WhySpherex() {
   return (
-    <section className="section" id="why-spherex">
+    <section className="section" id="why-spherex" style={{ position: 'relative' }}>
+      <span id="about-us" style={{ position: 'absolute', top: '-90px', pointerEvents: 'none' }} aria-hidden="true" />
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">
