@@ -3,24 +3,19 @@ import React, { useState, useEffect } from 'react';
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('about-us');
+  const [activeSection, setActiveSection] = useState('platform');
+
+  const navItems = [
+    { id: 'platform', label: 'Platform', icon: '🌐' },
+    { id: 'lead-management', label: 'Candidate Entry', icon: '📋' },
+    { id: 'lead-assignment', label: 'Faculty Allocation', icon: '👥' },
+    { id: 'nora-ai', label: 'Nora AI', icon: '⚡', isAi: true },
+    { id: 'mobile-app', label: 'Mobile App', icon: '📱' },
+    { id: 'multi-campus', label: 'Campuses', icon: '🏛️' }
+  ];
 
   useEffect(() => {
-    const sectionMap = [
-      { id: 'tech-stack', navKey: 'blog' },
-      { id: 'conversion', navKey: 'pricing' },
-      { id: 'pricing', navKey: 'pricing' },
-      { id: 'mobile-app', navKey: 'features' },
-      { id: 'nora-ai', navKey: 'features' },
-      { id: 'lead-assignment', navKey: 'features' },
-      { id: 'lead-management', navKey: 'features' },
-      { id: 'features', navKey: 'features' },
-      { id: 'why-spherex', navKey: 'about-us' },
-      { id: 'about-us', navKey: 'about-us' },
-      { id: 'platform', navKey: 'about-us' },
-      { id: 'hero', navKey: 'about-us' }
-    ];
-
+    const sections = ['platform', 'lead-management', 'nora-ai', 'lead-assignment', 'mobile-app', 'multi-campus'];
     let ticking = false;
 
     const handleScroll = () => {
@@ -29,10 +24,10 @@ export default function Navbar({ onOpenBooking }) {
           setScrolled(window.scrollY > 30);
 
           const scrollPos = window.scrollY + 180;
-          for (const item of sectionMap) {
-            const el = document.getElementById(item.id);
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i]);
             if (el && el.offsetTop <= scrollPos) {
-              setActiveSection(item.navKey);
+              setActiveSection(sections[i]);
               break;
             }
           }
@@ -68,10 +63,10 @@ export default function Navbar({ onOpenBooking }) {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [mobileOpen]);
 
-  const handleNavClick = (e, targetId, navKey) => {
+  const handleNavClick = (e, targetId) => {
     e.preventDefault();
     setMobileOpen(false);
-    if (navKey) setActiveSection(navKey);
+    setActiveSection(targetId);
 
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
@@ -117,69 +112,54 @@ export default function Navbar({ onOpenBooking }) {
           <path d="M20 0H0V20C0 8.9543 8.9543 0 20 0Z" fill="#ffffff" />
         </svg>
 
-        {/* 1. Left Circular Logo Badge */}
+        {/* 1. Left Brand Badge & SPHEREX Medallion Logo */}
         <a 
           href="#hero" 
-          className="navbar-brand-badge" 
+          className="navbar-brand-wrap" 
           id="nav-brand-logo"
-          title="SPHEREX Admission Management OS"
-          aria-label="SPHEREX Admission Management OS Home"
-          onClick={(e) => handleNavClick(e, 'hero', 'about-us')}
+          title="SPHEREX - Admission Management OS"
+          aria-label="SPHEREX Home"
+          onClick={(e) => handleNavClick(e, 'hero')}
         >
-          <img 
-            src="/nav-logo-128.png" 
-            alt="SPHEREX Logo" 
-            className="navbar-badge-icon" 
-            loading="eager"
-            onError={(e) => {
-              // Fallback to standard logo if upscaled image not found
-              e.currentTarget.src = '/logo.png?v=3';
-            }}
-          />
+          <div className="navbar-brand-badge">
+            <img 
+              src="/logo.png?v=3" 
+              alt="SPHEREX" 
+              className="navbar-badge-icon" 
+              loading="eager"
+            />
+          </div>
+          <div className="navbar-brand-text">
+            <span className="navbar-brand-title">SPHEREX</span>
+            <span className="navbar-brand-subtitle">ADMISSION OS</span>
+          </div>
         </a>
 
-        {/* 2. Center Nav Links */}
+        {/* 2. Center Nav Links (Pre-update landing page content buttons) */}
         <nav className="navbar-links" aria-label="Main Navigation">
-          <a 
-            href="#why-spherex" 
-            className={`navbar-link ${activeSection === 'about-us' ? 'active' : ''}`}
-            onClick={(e) => handleNavClick(e, 'why-spherex', 'about-us')}
-          >
-            About us
-          </a>
-          <a 
-            href="#features" 
-            className={`navbar-link ${activeSection === 'features' ? 'active' : ''}`}
-            onClick={(e) => handleNavClick(e, 'features', 'features')}
-          >
-            Features
-          </a>
-          <a 
-            href="#pricing" 
-            className={`navbar-link ${activeSection === 'pricing' ? 'active' : ''}`}
-            onClick={(e) => handleNavClick(e, 'conversion', 'pricing')}
-          >
-            Pricing
-          </a>
-          <a 
-            href="#blog" 
-            className={`navbar-link ${activeSection === 'blog' ? 'active' : ''}`}
-            onClick={(e) => handleNavClick(e, 'tech-stack', 'blog')}
-          >
-            Blog
-          </a>
+          {navItems.map((item) => (
+            <a 
+              key={item.id}
+              href={`#${item.id}`} 
+              className={`navbar-link ${activeSection === item.id ? 'active' : ''} ${item.isAi ? 'link-ai' : ''}`}
+              onClick={(e) => handleNavClick(e, item.id)}
+            >
+              {item.isAi && <span className="nav-ai-dot" aria-hidden="true">✦</span>}
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        {/* 3. Right Pill Button */}
+        {/* 3. Right Pill Button from Latest UI */}
         <div className="navbar-right-group">
           <button 
             type="button" 
             className="navbar-contact-btn" 
             id="nav-contact-cta"
             onClick={onOpenBooking}
-            aria-label="Contact SPHEREX or Schedule Consultation"
+            aria-label="Book Meeting with SPHEREX Admissions Team"
           >
-            Contact
+            Book Meeting
           </button>
 
           {/* Mobile Menu Toggle Button */}
@@ -201,34 +181,17 @@ export default function Navbar({ onOpenBooking }) {
           id="mobile-menu" 
           aria-hidden={!mobileOpen}
         >
-          <a 
-            href="#why-spherex" 
-            className="navbar-mobile-link" 
-            onClick={(e) => handleNavClick(e, 'why-spherex', 'about-us')}
-          >
-            <span>About us</span>
-          </a>
-          <a 
-            href="#features" 
-            className="navbar-mobile-link" 
-            onClick={(e) => handleNavClick(e, 'features', 'features')}
-          >
-            <span>Features</span>
-          </a>
-          <a 
-            href="#pricing" 
-            className="navbar-mobile-link" 
-            onClick={(e) => handleNavClick(e, 'conversion', 'pricing')}
-          >
-            <span>Pricing</span>
-          </a>
-          <a 
-            href="#blog" 
-            className="navbar-mobile-link" 
-            onClick={(e) => handleNavClick(e, 'tech-stack', 'blog')}
-          >
-            <span>Blog</span>
-          </a>
+          {navItems.map((item) => (
+            <a 
+              key={item.id}
+              href={`#${item.id}`} 
+              className="navbar-mobile-link" 
+              onClick={(e) => handleNavClick(e, item.id)}
+            >
+              <span className="mobile-link-icon">{item.icon}</span>
+              <span>{item.label}</span>
+            </a>
+          ))}
 
           <button 
             type="button"
@@ -238,7 +201,7 @@ export default function Navbar({ onOpenBooking }) {
               if (onOpenBooking) onOpenBooking();
             }}
           >
-            Contact
+            📅 Book Meeting
           </button>
         </div>
       </div>

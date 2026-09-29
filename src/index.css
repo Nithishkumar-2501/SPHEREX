@@ -295,7 +295,7 @@ main {
 .navbar-island {
   pointer-events: auto;
   position: relative;
-  width: min(1040px, 92vw);
+  width: min(1200px, 94vw);
   background: #ffffff;
   height: 68px;
   display: flex;
@@ -325,34 +325,64 @@ main {
   right: -20px;
 }
 
-/* 1. Left Circular Logo Badge */
-.navbar-brand-badge {
+/* 1. Left Brand Badge & SPHEREX Medallion Wrap */
+.navbar-brand-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #18181b;
+  gap: 12px;
   text-decoration: none;
   flex-shrink: 0;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
-.navbar-brand-badge:hover {
-  transform: scale(1.05);
+.navbar-brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #18181b;
+  flex-shrink: 0;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.navbar-brand-wrap:hover .navbar-brand-badge {
+  transform: scale(1.06);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .navbar-badge-icon {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+}
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar-brand-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.navbar-brand-subtitle {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  font-family: var(--font-mono, monospace);
 }
 
 /* 2. Center Nav Links */
@@ -360,7 +390,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(24px, 4vw, 52px);
+  gap: clamp(14px, 2vw, 32px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -368,7 +398,7 @@ main {
 
 .navbar-link {
   color: #52525b;
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   font-weight: 500;
   text-decoration: none;
   padding: 6px 4px;
@@ -376,16 +406,37 @@ main {
   transition: color 0.18s ease;
   letter-spacing: -0.01em;
   font-family: inherit;
+  white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-link:hover {
-  color: #111827;
+  color: #0f172a;
 }
 
 .navbar-link.active {
   color: #000000;
   font-weight: 600;
+}
+
+.navbar-link.link-ai {
+  color: #7c3aed;
+}
+
+.navbar-link.link-ai:hover {
+  color: #6d28d9;
+}
+
+.nav-ai-dot {
+  font-size: 0.72rem;
+  margin-right: 4px;
+  color: #8b5cf6;
+  animation: navAiPulse 2s ease-in-out infinite;
+}
+
+@keyframes navAiPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 /* 3. Right Pill Button & Actions */
