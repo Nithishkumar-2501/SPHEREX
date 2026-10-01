@@ -6,16 +6,16 @@ export default function Navbar({ onOpenBooking }) {
   const [activeSection, setActiveSection] = useState('platform');
 
   const navItems = [
+    { id: 'about-us', label: 'About us', icon: '★' },
+    { id: 'features', label: 'Benefits', icon: '💎' },
     { id: 'platform', label: 'Platform', icon: '🌐' },
-    { id: 'lead-management', label: 'Candidate Entry', icon: '📋' },
-    { id: 'lead-assignment', label: 'Faculty Allocation', icon: '👥' },
     { id: 'nora-ai', label: 'Nora AI', icon: '⚡', isAi: true },
-    { id: 'mobile-app', label: 'Mobile App', icon: '📱' },
+    { id: 'pricing', label: 'Pricing', icon: '🏷️' },
     { id: 'multi-campus', label: 'Campuses', icon: '🏛️' }
   ];
 
   useEffect(() => {
-    const sections = ['platform', 'lead-management', 'nora-ai', 'lead-assignment', 'mobile-app', 'multi-campus'];
+    const sections = ['about-us', 'features', 'platform', 'nora-ai', 'pricing', 'multi-campus'];
     let ticking = false;
 
     const handleScroll = () => {
