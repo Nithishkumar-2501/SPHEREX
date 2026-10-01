@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ArrowDown, Play, ChevronDown } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
+import FancyShineButton from "./ui/FancyShineButton";
 
 export default function CatalisHero(props) {
     return <Hero2 {...props} />;
@@ -135,13 +136,7 @@ export function Hero2({
 
                     {/* Desktop Sign in / Meeting button */}
                     <div className="hidden md:block">
-                        <Button 
-                            variant="outline" 
-                            onClick={onOpenBooking}
-                            className="rounded-full px-7 h-10 text-sm font-medium bg-white/70 backdrop-blur-md shadow-[0_0_0_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8),0_1px_2px_rgba(0,0,0,0.04),0_2px_4px_rgba(0,0,0,0.02)] hover:bg-white hover:text-black transition-all text-slate-900 border-0"
-                        >
-                            {signInLabel}
-                        </Button>
+                        <FancyShineButton label={signInLabel} onClick={onOpenBooking} />
                     </div>
 
                     {/* Mobile Menu Toggle */}
@@ -221,13 +216,7 @@ export function Hero2({
                     </motion.p>
 
                     <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                        <Button 
-                            onClick={onOpenBooking}
-                            className="rounded-full px-8 bg-[oklch(0.6378_0.1051_172.72)] hover:brightness-105 text-white h-12 text-sm md:text-base font-medium shadow-[0_0_0_1px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.3),0_4px_16px_rgba(0,0,0,0.1)] border-0 transition-all group"
-                        >
-                            {primaryCtaLabel}
-                            <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
-                        </Button>
+                        <FancyShineButton label={primaryCtaLabel} onClick={onOpenBooking} />
 
                         <Button 
                             variant="secondary" 

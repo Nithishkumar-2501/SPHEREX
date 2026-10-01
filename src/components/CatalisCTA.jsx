@@ -1,4 +1,5 @@
 import React from 'react';
+import FancyShineButton from './ui/FancyShineButton';
 
 export default function CatalisCTA({ onOpenBooking }) {
   return (
@@ -21,13 +22,7 @@ export default function CatalisCTA({ onOpenBooking }) {
         </p>
 
         <div className="catalis-cta-actions">
-          <button 
-            type="button" 
-            className="catalis-btn-primary"
-            onClick={onOpenBooking}
-          >
-            Book Consultation
-          </button>
+          <FancyShineButton label="Book Consultation" onClick={onOpenBooking} />
           <button 
             type="button" 
             className="catalis-btn-secondary"
