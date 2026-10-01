@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedSplashButton from './ui/AnimatedSplashButton';
 
 export default function CatalisPricing({ onOpenBooking }) {
   const plans = [
@@ -89,13 +90,10 @@ export default function CatalisPricing({ onOpenBooking }) {
                 </ul>
               </div>
 
-              <button 
-                type="button" 
-                className="catalis-btn-primary w-full"
+              <AnimatedSplashButton 
+                label="Get Started"
                 onClick={onOpenBooking}
-              >
-                Get Started
-              </button>
+              />
             </div>
           ))}
         </div>
