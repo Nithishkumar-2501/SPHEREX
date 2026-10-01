@@ -28,12 +28,16 @@ export default function CatalisCTA({ onOpenBooking }) {
           >
             Book Consultation
           </button>
-          <a 
-            href="#hero" 
+          <button 
+            type="button" 
             className="catalis-btn-secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             Back to Top ↑
-          </a>
+          </button>
         </div>
       </div>
     </section>
