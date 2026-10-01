@@ -4,7 +4,7 @@ export default function CatalisPricing({ onOpenBooking }) {
   const plans = [
     {
       name: 'Starter Plan',
-      price: '$50.00',
+      price: '₹4,199',
       period: '/month',
       desc: 'Ideal for independent departments or single campus intake.',
       features: [
@@ -17,7 +17,7 @@ export default function CatalisPricing({ onOpenBooking }) {
     },
     {
       name: 'Growth Plan',
-      price: '$90.00',
+      price: '₹7,499',
       period: '/month',
       popular: true,
       desc: 'For growing colleges requiring automated quota balancing.',
@@ -31,7 +31,7 @@ export default function CatalisPricing({ onOpenBooking }) {
     },
     {
       name: 'Scale Plan',
-      price: '$150.00',
+      price: '₹12,499',
       period: '/month',
       desc: 'Full multi-campus university operating system.',
       features: [

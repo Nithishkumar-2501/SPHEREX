@@ -22,7 +22,7 @@ export default function CatalisAbout({ onOpenBooking: _onOpenBooking }) {
             <div className="stat-label">Reduction in counseling and reporting time.</div>
           </div>
           <div className="catalis-stat-item">
-            <div className="stat-big-val">$70k</div>
+            <div className="stat-big-val">₹55L</div>
             <div className="stat-label">Savings per admission cycle (approx).</div>
           </div>
           <div className="catalis-stat-item">
