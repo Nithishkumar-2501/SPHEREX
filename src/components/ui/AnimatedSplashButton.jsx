@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export function AnimatedSplashButton({ label = "Get Started", onClick }) {
+export function AnimatedSplashButton({ label = "Join Today", secondaryLabel = "Join Now", onClick, className }) {
+  const primaryText = label || "Join Today";
+  const secondaryText = secondaryLabel || "Join Now";
+
   return (
-    <StyledWrapper>
+    <StyledWrapper className={className}>
       <button className="button" onClick={onClick} type="button">
         <div className="bg" />
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 342 208" height={208} width={342} className="splash">
@@ -27,9 +30,9 @@ export function AnimatedSplashButton({ label = "Get Started", onClick }) {
           <div className="outline" />
           <div className="content">
             <span className="char state-1">
-              {label.split('').map((char, index) => (
-                <span key={index} data-label={char === ' ' ? '\u00A0' : char} style={{ '--i': index + 1 }}>
-                  {char === ' ' ? '\u00A0' : char}
+              {primaryText.split('').map((c, i) => (
+                <span key={i} data-label={c === ' ' ? '\u00A0' : c} style={{ '--i': i + 1 }}>
+                  {c === ' ' ? '\u00A0' : c}
                 </span>
               ))}
             </span>
@@ -37,9 +40,9 @@ export function AnimatedSplashButton({ label = "Get Started", onClick }) {
               <div />
             </div>
             <span className="char state-2">
-              {label.split('').map((char, index) => (
-                <span key={index} data-label={char === ' ' ? '\u00A0' : char} style={{ '--i': index + 1 }}>
-                  {char === ' ' ? '\u00A0' : char}
+              {secondaryText.split('').map((c, i) => (
+                <span key={i} data-label={c === ' ' ? '\u00A0' : c} style={{ '--i': i + 1 }}>
+                  {c === ' ' ? '\u00A0' : c}
                 </span>
               ))}
             </span>
@@ -51,32 +54,30 @@ export function AnimatedSplashButton({ label = "Get Started", onClick }) {
 }
 
 const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  width: 100%;
-  margin-top: 10px;
+  justify-content: center;
 
   .button {
-    --white: #ffffff;
-    --purple-100: #38bdf8;
-    --purple-200: #2563eb;
-    --purple-300: #1d4ed8;
-    --purple-400: #1e40af;
-    --purple-500: #1e3a8a;
+    --white: #ffe7ff;
+    --purple-100: #f4b1fd;
+    --purple-200: #d190ff;
+    --purple-300: #c389f2;
+    --purple-400: #8e26e2;
+    --purple-500: #5e2b83;
     --radius: 18px;
 
     border-radius: var(--radius);
     outline: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 19px;
     font-family: inherit;
     background: transparent;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
     border: 0;
     position: relative;
-    width: 200px;
-    height: 56px;
+    width: 220px;
+    height: 64px;
     transform: none;
   }
 
@@ -98,17 +99,17 @@ const StyledWrapper = styled.div`
     filter: blur(5px);
     transition: all 0.3s ease;
     box-shadow:
-      -4px 4px 0 0 rgb(30 58 138 / 40%),
-      -8px 8px 0 0 rgb(30 58 138 / 30%),
-      -12px 12px 4px 0 rgb(30 58 138 / 25%);
+      -5px 4px 0 0 rgb(115 75 155 / 40%),
+      -10px 8px 0 0 rgb(115 75 155 / 30%),
+      -15px 12px 4px 0 rgb(115 75 155 / 25%);
   }
 
   .wrap {
     border-radius: inherit;
     overflow: hidden;
     height: 100%;
-    transform: translate(2px, -2px);
-    padding: 2px;
+    transform: translate(4px, -4px);
+    padding: 3px;
     background: linear-gradient(
       to bottom,
       var(--purple-100) 0%,
@@ -152,7 +153,7 @@ const StyledWrapper = styled.div`
     z-index: 1;
     position: relative;
     height: 100%;
-    gap: 10px;
+    gap: 12px;
     border-radius: calc(var(--radius) * 0.85);
     font-weight: 600;
     transition: all 0.3s ease;
@@ -207,7 +208,7 @@ const StyledWrapper = styled.div`
   }
   .char.state-2 {
     position: absolute;
-    left: 45px;
+    left: 55px;
   }
   .char.state-2 span::after {
     opacity: 1;
@@ -236,7 +237,7 @@ const StyledWrapper = styled.div`
   }
   .icon div {
     position: relative;
-    width: 18px;
+    width: 20px;
     box-shadow: -2px 2px 5px var(--purple-400);
     transform: scale(0.9);
     background: linear-gradient(to bottom, var(--white), var(--purple-100));
@@ -283,8 +284,17 @@ const StyledWrapper = styled.div`
 
   /** STATES */
 
+  .button:hover .char.state-1 span::before {
+    animation: charAppear 0.7s ease calc(var(--i) * 0.03s);
+  }
+
+  .button:hover .char.state-1 span::after {
+    opacity: 1;
+    animation: charDisappear 0.7s ease calc(var(--i) * 0.03s);
+  }
+
   .button:hover .wrap {
-    transform: translate(4px, -4px);
+    transform: translate(6px, -6px);
   }
 
   .button:hover .outline {
@@ -298,12 +308,39 @@ const StyledWrapper = styled.div`
     animation-play-state: running;
   }
 
+  .button:active .bg::before {
+    filter: blur(5px);
+    opacity: 0.7;
+  }
+  .button:active .content {
+    box-shadow:
+      inset -1px 12px 8px -5px rgba(71, 0, 137, 0.4),
+      inset 0px -3px 8px 0px var(--purple-200);
+  }
+
   .button:active .wrap {
-    transform: translate(1px, -1px);
+    transform: translate(2px, -2px);
   }
 
   .button:active .splash {
     animation: splash 0.8s cubic-bezier(0.3, 0, 0, 1) forwards 0.05s;
+  }
+
+  .button:focus .path {
+    animation: path 1.6s ease forwards 0.2s;
+  }
+
+  .button:focus .icon {
+    animation: arrow 1s cubic-bezier(0.7, -0.5, 0.3, 1.5) forwards;
+  }
+
+  .char.state-2 span::after,
+  .button:focus .char.state-1 span {
+    animation: charDisappear 0.5s ease forwards calc(var(--i) * 0.03s);
+  }
+
+  .button:focus .char.state-2 span::after {
+    animation: charAppear 1s ease backwards calc(var(--i) * 0.03s);
   }
 
   @keyframes spin {
@@ -312,7 +349,7 @@ const StyledWrapper = styled.div`
   }
 
   @keyframes charAppear {
-    0% { transform: translateY(50%); opacity: 0; filter: blur(10px); }
+    0% { transform: translateY(50%); opacity: 0; filter: blur(20px); }
     20% { transform: translateY(70%); opacity: 1; }
     50% { transform: translateY(-15%); opacity: 1; filter: blur(0); }
     100% { transform: translateY(0); opacity: 1; }
@@ -351,7 +388,7 @@ const StyledWrapper = styled.div`
 
   @keyframes path {
     from { stroke: white; }
-    to { stroke-dashoffset: -480; stroke: #38bdf8; }
+    to { stroke-dashoffset: -480; stroke: #f9c6fe; }
   }
 
   @keyframes splash {
@@ -360,3 +397,4 @@ const StyledWrapper = styled.div`
 `;
 
 export default AnimatedSplashButton;
+
