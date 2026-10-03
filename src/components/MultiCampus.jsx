@@ -318,9 +318,9 @@ export default function MultiCampus() {
 const Styled3DWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 560px;
+  height: 640px;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 10px 0 20px 0;
 
   .orbit-hint {
     text-align: center;
@@ -344,19 +344,19 @@ const Styled3DWrapper = styled.div`
 
   .inner {
     --w: 240px;
-    --h: 340px;
-    --translateZ: 380px;
-    --rotateX: -14deg;
-    --perspective: 1200px;
+    --h: 330px;
+    --translateZ: 440px;
+    --rotateX: -4deg;
+    --perspective: 1400px;
     position: absolute;
     width: var(--w);
     height: var(--h);
-    top: 22%;
+    top: 13%;
     left: calc(50% - (var(--w) / 2));
     z-index: 2;
     transform-style: preserve-3d;
     transform: perspective(var(--perspective));
-    animation: rotating 28s linear infinite;
+    animation: rotating 32s linear infinite;
   }
 
   /* Hover pauses the orbit so cards can be interacted with */
@@ -382,12 +382,14 @@ const Styled3DWrapper = styled.div`
     width: var(--w);
     height: var(--h);
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     background: #0000
       radial-gradient(
         circle at 50% 20%,
         rgba(var(--color-card), 0.28) 0%,
-        rgba(15, 23, 42, 0.92) 65%,
-        rgba(7, 12, 28, 0.98) 100%
+        rgba(15, 23, 42, 0.94) 65%,
+        rgba(7, 12, 28, 0.99) 100%
       );
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--color-card), 0.25);
     backdrop-filter: blur(10px);
@@ -404,7 +406,7 @@ const Styled3DWrapper = styled.div`
   .card-body {
     width: 100%;
     height: 100%;
-    padding: 18px;
+    padding: 16px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -449,11 +451,11 @@ const Styled3DWrapper = styled.div`
   }
 
   .dept-title {
-    font-size: 0.96rem;
+    font-size: 0.94rem;
     font-weight: 700;
     color: #ffffff;
-    line-height: 1.35;
-    margin: 8px 0 6px 0;
+    line-height: 1.32;
+    margin: 6px 0 4px 0;
   }
 
   .enquiries-row {
@@ -461,7 +463,7 @@ const Styled3DWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .metric-label {
@@ -476,7 +478,7 @@ const Styled3DWrapper = styled.div`
   .stat-pills {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 8px;
   }
 
@@ -484,7 +486,7 @@ const Styled3DWrapper = styled.div`
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 6px 8px;
+    padding: 5px 8px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -549,17 +551,19 @@ const Styled3DWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 480px;
+    height: 520px;
 
     .inner {
-      --w: 190px;
-      --h: 290px;
-      --translateZ: 280px;
-      --perspective: 900px;
+      --w: 200px;
+      --h: 300px;
+      --translateZ: 310px;
+      --rotateX: -2deg;
+      --perspective: 1000px;
+      top: 10%;
     }
 
     .dept-title {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
   }
 `;
