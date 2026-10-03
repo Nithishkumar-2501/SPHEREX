@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import StarButton from './StarButton';
 
@@ -38,46 +38,22 @@ const campuses = {
 };
 
 const cardColors = [
-  '142, 249, 252', // Electric Cyan
-  '142, 252, 204', // Mint Emerald
-  '142, 252, 157', // Lime Green
-  '215, 252, 142', // Chartreuse
-  '252, 252, 142', // Sun Yellow
-  '252, 208, 142', // Amber Peach
-  '252, 142, 142', // Coral Red
-  '252, 142, 239', // Neon Pink
-  '204, 142, 252', // Royal Purple
-  '142, 202, 252'  // Sky Blue
+  '142, 249, 252',
+  '142, 252, 204',
+  '142, 252, 157',
+  '215, 252, 142',
+  '252, 252, 142',
+  '252, 208, 142',
+  '252, 142, 142',
+  '252, 142, 239',
+  '204, 142, 252',
+  '142, 202, 252'
 ];
 
 export default function MultiCampus() {
   const [activeCampus, setActiveCampus] = useState('CAMPUS_01');
-  const [viewMode, setViewMode] = useState('grid'); // Default straight grid view!
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [viewMode, setViewMode] = useState('carousel'); // 'carousel' or 'grid'
   const campus = campuses[activeCampus];
-
-  // Auto-advance for carousel mode when not hovered
-  useEffect(() => {
-    if (viewMode !== 'carousel' || isPaused) return;
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % campus.departments.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [viewMode, isPaused, campus.departments.length]);
-
-  // Reset carousel index when campus changes
-  useEffect(() => {
-    setCarouselIndex(0);
-  }, [activeCampus]);
-
-  const handlePrev = () => {
-    setCarouselIndex((prev) => (prev === 0 ? campus.departments.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCarouselIndex((prev) => (prev + 1) % campus.departments.length);
-  };
 
   return (
     <section className="section" id="multi-campus">
@@ -94,7 +70,7 @@ export default function MultiCampus() {
         </div>
 
         <div className="campus-hierarchy-box">
-          {/* Top Controls: Campus Selector Tabs & View Switcher */}
+          {/* Top Controls: Campus Selector Tabs & View Mode Switcher */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '14px 20px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <div className="campus-tabs" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', margin: 0, padding: 0 }}>
               <StarButton 
@@ -113,28 +89,8 @@ export default function MultiCampus() {
               </StarButton>
             </div>
 
-            {/* View Switcher: Straight Grid vs Straight Carousel */}
+            {/* View Switcher: 3D Orbit Carousel vs Grid View */}
             <div style={{ display: 'inline-flex', background: 'rgba(255, 255, 255, 0.05)', padding: '4px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-              <button
-                type="button"
-                onClick={() => setViewMode('grid')}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '7px',
-                  border: 'none',
-                  background: viewMode === 'grid' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
-                  color: viewMode === 'grid' ? '#ffffff' : '#94a3b8',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <span>▦</span> Straight Grid View
-              </button>
               <button
                 type="button"
                 onClick={() => setViewMode('carousel')}
@@ -153,7 +109,27 @@ export default function MultiCampus() {
                   transition: 'all 0.2s ease'
                 }}
               >
-                <span>🎠</span> Spotlight Carousel
+                <span>🎡</span> 3D Cylinder Orbit
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('grid')}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: viewMode === 'grid' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
+                  color: viewMode === 'grid' ? '#ffffff' : '#94a3b8',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span>▦</span> Grid View
               </button>
             </div>
           </div>
@@ -169,25 +145,114 @@ export default function MultiCampus() {
             </div>
           </div>
 
-          {/* VIEW MODE 1: STRAIGHT CARDS GRID VIEW */}
-          {viewMode === 'grid' && (
-            <StyledStraightGridWrapper>
+          {/* 3D ROTATING CYLINDER CAROUSEL VIEW */}
+          {viewMode === 'carousel' ? (
+            <Styled3DWrapper>
+              <div className="orbit-hint">
+                <span>✨ 3D Orbit active • Hover mouse over any card to pause rotation</span>
+              </div>
+              <div className="wrapper">
+                <div 
+                  className="inner" 
+                  style={{ 
+                    '--quantity': campus.departments.length 
+                  }}
+                >
+                  {campus.departments.map((dept, idx) => {
+                    const color = cardColors[idx % cardColors.length];
+                    return (
+                      <div 
+                        className="card" 
+                        key={idx}
+                        style={{ 
+                          '--index': idx, 
+                          '--color-card': color 
+                        }}
+                      >
+                        <div className="card-body">
+                          {/* Top Badges */}
+                          <div className="dept-badge-row">
+                            <span 
+                              className="dept-code-badge"
+                              style={{ 
+                                background: `rgba(${color}, 0.2)`, 
+                                borderColor: `rgba(${color}, 0.6)`,
+                                color: `rgb(${color})`
+                              }}
+                            >
+                              {dept.code}
+                            </span>
+                            <span className="dept-live-status">
+                              <span className="live-dot" /> Active Pipeline
+                            </span>
+                          </div>
+
+                          {/* Department Title */}
+                          <h4 className="dept-title">{dept.name}</h4>
+
+                          {/* Enquiries Metric */}
+                          <div className="enquiries-row">
+                            <span className="metric-label">Enquiries:</span>
+                            <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                          </div>
+
+                          {/* Seat Intake & Cutoff Pill Cards */}
+                          <div className="stat-pills">
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                              <span className="pill-label">Seat Intake</span>
+                              <span className="pill-value">{dept.intake} seats</span>
+                            </div>
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                              <span className="pill-label">TNEA Cutoff</span>
+                              <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
+                            </div>
+                          </div>
+
+                          {/* Quick Action Buttons */}
+                          <div className="card-footer-row">
+                            <ul className="sci">
+                              <li>
+                                <a href="#leads" title="View Department Enquiries">
+                                  <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
+                                  </svg>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#lead-assignment" title="Faculty Counselor Allocation">
+                                  <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
+                                  </svg>
+                                </a>
+                              </li>
+                            </ul>
+                            <span className="card-explore-tag">Explore &rarr;</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </Styled3DWrapper>
+          ) : (
+            /* FLAT GRID VIEW WITH MATCHING COLOR PALETTES */
+            <StyledGridWrapper>
               <div className="dept-grid">
                 {campus.departments.map((dept, idx) => {
                   const color = cardColors[idx % cardColors.length];
                   return (
                     <div 
-                      className="dept-card" 
+                      className="grid-card" 
                       key={idx}
                       style={{ '--color-card': color }}
                     >
                       <div className="card-body">
-                        {/* Top Badges */}
-                        <div className="card-top-row">
+                        <div className="dept-badge-row">
                           <span 
                             className="dept-code-badge"
                             style={{ 
-                              background: `rgba(${color}, 0.18)`, 
+                              background: `rgba(${color}, 0.2)`, 
                               borderColor: `rgba(${color}, 0.6)`,
                               color: `rgb(${color})`
                             }}
@@ -195,146 +260,23 @@ export default function MultiCampus() {
                             {dept.code}
                           </span>
                           <span className="dept-live-status">
-                            <span className="live-dot" style={{ background: `rgb(${color})`, boxShadow: `0 0 8px rgb(${color})` }} />
-                            Active Pipeline
-                          </span>
-                        </div>
-
-                        {/* Department Full Title */}
-                        <h4 className="dept-title">{dept.name}</h4>
-
-                        {/* Enquiries Metric */}
-                        <div className="dept-enquiries-row">
-                          <span className="enquiries-label">Enquiries:</span>
-                          <strong className="enquiries-count" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
-                        </div>
-
-                        {/* Seat Intake & TNEA Cutoff Pill Boxes */}
-                        <div className="dept-pills-grid">
-                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
-                            <span className="pill-label">Seat Intake</span>
-                            <span className="pill-value">{dept.intake} seats</span>
-                          </div>
-                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
-                            <span className="pill-label">TNEA Cutoff</span>
-                            <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
-                          </div>
-                        </div>
-
-                        {/* Footer Row with Quick Actions */}
-                        <div className="card-footer-row">
-                          <ul className="sci">
-                            <li>
-                              <a href="#leads" title="View Department Enquiries">
-                                <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#lead-assignment" title="Faculty Counselor Allocation">
-                                <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
-                                  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                          <span className="card-explore-tag">Explore Department &rarr;</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </StyledStraightGridWrapper>
-          )}
-
-          {/* VIEW MODE 2: STRAIGHT SPOTLIGHT CAROUSEL (CARDS FACE 100% FORWARD) */}
-          {viewMode === 'carousel' && (
-            <StyledStraightCarouselWrapper 
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {/* Carousel Navigation Bar */}
-              <div className="carousel-nav-bar">
-                <button type="button" className="carousel-nav-btn prev" onClick={handlePrev} title="Previous Department">
-                  &larr; Prev
-                </button>
-                <div className="carousel-chips">
-                  {campus.departments.map((dept, idx) => {
-                    const color = cardColors[idx % cardColors.length];
-                    const isActive = idx === carouselIndex;
-                    return (
-                      <button
-                        key={idx}
-                        type="button"
-                        className={`chip-btn ${isActive ? 'active' : ''}`}
-                        onClick={() => setCarouselIndex(idx)}
-                        style={{
-                          borderColor: isActive ? `rgb(${color})` : 'rgba(255, 255, 255, 0.1)',
-                          background: isActive ? `rgba(${color}, 0.2)` : 'transparent',
-                          color: isActive ? `rgb(${color})` : '#94a3b8'
-                        }}
-                      >
-                        {dept.code}
-                      </button>
-                    );
-                  })}
-                </div>
-                <button type="button" className="carousel-nav-btn next" onClick={handleNext} title="Next Department">
-                  Next &rarr;
-                </button>
-              </div>
-
-              {/* Straight 3-Card Stage: All cards face straight forward to user */}
-              <div className="carousel-stage">
-                {[-1, 0, 1].map((offset) => {
-                  const idx = (carouselIndex + offset + campus.departments.length) % campus.departments.length;
-                  const dept = campus.departments[idx];
-                  const color = cardColors[idx % cardColors.length];
-                  const isCenter = offset === 0;
-
-                  return (
-                    <div
-                      key={`${idx}-${offset}`}
-                      className={`straight-slide-card ${isCenter ? 'center-active' : 'flank-card'}`}
-                      style={{
-                        '--color-card': color,
-                        cursor: isCenter ? 'default' : 'pointer'
-                      }}
-                      onClick={() => !isCenter && setCarouselIndex(idx)}
-                    >
-                      <div className="card-body">
-                        <div className="card-top-row">
-                          <span 
-                            className="dept-code-badge"
-                            style={{ 
-                              background: `rgba(${color}, 0.18)`, 
-                              borderColor: `rgba(${color}, 0.6)`,
-                              color: `rgb(${color})`
-                            }}
-                          >
-                            {dept.code}
-                          </span>
-                          <span className="dept-live-status">
-                            <span className="live-dot" style={{ background: `rgb(${color})`, boxShadow: `0 0 8px rgb(${color})` }} />
-                            Active Pipeline
+                            <span className="live-dot" /> Active Pipeline
                           </span>
                         </div>
 
                         <h4 className="dept-title">{dept.name}</h4>
 
-                        <div className="dept-enquiries-row">
-                          <span className="enquiries-label">Enquiries:</span>
-                          <strong className="enquiries-count" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                        <div className="enquiries-row">
+                          <span className="metric-label">Enquiries:</span>
+                          <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
                         </div>
 
-                        <div className="dept-pills-grid">
-                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                        <div className="stat-pills">
+                          <div className="stat-pill">
                             <span className="pill-label">Seat Intake</span>
                             <span className="pill-value">{dept.intake} seats</span>
                           </div>
-                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                          <div className="stat-pill">
                             <span className="pill-label">TNEA Cutoff</span>
                             <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
                           </div>
@@ -357,18 +299,14 @@ export default function MultiCampus() {
                               </a>
                             </li>
                           </ul>
-                          <span className="card-explore-tag">Explore Department &rarr;</span>
+                          <span className="card-explore-tag">Explore &rarr;</span>
                         </div>
                       </div>
                     </div>
                   );
                 })}
               </div>
-
-              <div className="carousel-caption-hint">
-                <span>Showing Department {carouselIndex + 1} of {campus.departments.length} • Use buttons or click any card to slide</span>
-              </div>
-            </StyledStraightCarouselWrapper>
+            </StyledGridWrapper>
           )}
 
         </div>
@@ -377,61 +315,114 @@ export default function MultiCampus() {
   );
 }
 
-const StyledStraightGridWrapper = styled.div`
-  padding: 24px 20px;
+const Styled3DWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  padding: 10px 0;
 
-  .dept-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
+  .orbit-hint {
+    text-align: center;
+    padding-top: 14px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    position: relative;
+    z-index: 10;
   }
 
-  .dept-card {
+  .wrapper {
+    width: 100%;
+    height: 100%;
     position: relative;
-    border: 2px solid rgba(var(--color-card), 0.75);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .inner {
+    --w: 240px;
+    --h: 340px;
+    --translateZ: 380px;
+    --rotateX: -14deg;
+    --perspective: 1200px;
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    top: 22%;
+    left: calc(50% - (var(--w) / 2));
+    z-index: 2;
+    transform-style: preserve-3d;
+    transform: perspective(var(--perspective));
+    animation: rotating 28s linear infinite;
+  }
+
+  /* Hover pauses the orbit so cards can be interacted with */
+  .wrapper:hover .inner {
+    animation-play-state: paused;
+  }
+
+  @keyframes rotating {
+    from {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+    }
+    to {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
+    }
+  }
+
+  .card {
+    position: absolute;
+    border: 2px solid rgba(var(--color-card), 0.85);
     border-radius: 16px;
     overflow: hidden;
-    background: radial-gradient(
-      circle at 50% 18%,
-      rgba(var(--color-card), 0.24) 0%,
-      rgba(15, 23, 42, 0.94) 68%,
-      rgba(7, 12, 28, 0.98) 100%
-    );
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(var(--color-card), 0.16);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    inset: 0;
+    width: var(--w);
+    height: var(--h);
+    transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    background: #0000
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(var(--color-card), 0.28) 0%,
+        rgba(15, 23, 42, 0.92) 65%,
+        rgba(7, 12, 28, 0.98) 100%
+      );
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--color-card), 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
   }
 
-  .dept-card:hover {
-    transform: translateY(-6px);
+  .card:hover {
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 32px rgba(var(--color-card), 0.4);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(var(--color-card), 0.5);
   }
 
   .card-body {
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-    box-sizing: border-box;
     text-align: left;
   }
 
-  .card-top-row {
+  .dept-badge-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px;
   }
 
   .dept-code-badge {
     padding: 3px 8px;
     border-radius: 6px;
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 800;
     font-family: var(--font-mono);
     border: 1px solid;
@@ -440,7 +431,7 @@ const StyledStraightGridWrapper = styled.div`
   .dept-live-status {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-size: 0.65rem;
     color: #34d399;
     text-transform: uppercase;
@@ -452,48 +443,48 @@ const StyledStraightGridWrapper = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
     display: inline-block;
   }
 
   .dept-title {
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.35;
-    margin: 8px 0 10px 0;
-    min-height: 2.7em;
+    margin: 8px 0 6px 0;
   }
 
-  .dept-enquiries-row {
-    font-size: 0.82rem;
+  .enquiries-row {
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
-  .enquiries-label {
+  .metric-label {
     color: #94a3b8;
   }
 
-  .enquiries-count {
+  .metric-val {
     font-weight: 800;
     font-family: var(--font-mono);
-    font-size: 0.95rem;
   }
 
-  .dept-pills-grid {
+  .stat-pills {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 6px 8px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -508,7 +499,7 @@ const StyledStraightGridWrapper = styled.div`
   }
 
   .pill-value {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #ffffff;
     font-family: var(--font-mono);
@@ -518,14 +509,14 @@ const StyledStraightGridWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 6px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .sci {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -552,141 +543,81 @@ const StyledStraightGridWrapper = styled.div`
   }
 
   .card-explore-tag {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     color: #94a3b8;
     font-weight: 600;
-    transition: color 0.2s ease;
   }
 
-  .dept-card:hover .card-explore-tag {
-    color: #ffffff;
+  @media (max-width: 768px) {
+    height: 480px;
+
+    .inner {
+      --w: 190px;
+      --h: 290px;
+      --translateZ: 280px;
+      --perspective: 900px;
+    }
+
+    .dept-title {
+      font-size: 0.88rem;
+    }
   }
 `;
 
-const StyledStraightCarouselWrapper = styled.div`
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const StyledGridWrapper = styled.div`
+  padding: 24px 16px;
 
-  .carousel-nav-bar {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-
-  .carousel-nav-btn {
-    padding: 8px 18px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 0.84rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .carousel-nav-btn:hover {
-    background: linear-gradient(135deg, #0284c7, #2563eb);
-    border-color: transparent;
-    transform: translateY(-1px);
-  }
-
-  .carousel-chips {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .chip-btn {
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.74rem;
-    font-weight: 700;
-    font-family: var(--font-mono);
-    border: 1px solid;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .carousel-stage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
-    width: 100%;
-    max-width: 1000px;
-    min-height: 380px;
-    perspective: 1200px;
   }
 
-  /* All cards face 100% straight to the user */
-  .straight-slide-card {
-    width: 300px;
-    min-height: 350px;
-    border: 2px solid rgba(var(--color-card), 0.75);
-    border-radius: 18px;
+  .grid-card {
+    position: relative;
+    border: 2px solid rgba(var(--color-card), 0.7);
+    border-radius: 16px;
     overflow: hidden;
-    background: radial-gradient(
-      circle at 50% 18%,
-      rgba(var(--color-card), 0.25) 0%,
-      rgba(15, 23, 42, 0.94) 68%,
-      rgba(7, 12, 28, 0.98) 100%
-    );
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(var(--color-card), 0.16);
-    backdrop-filter: blur(12px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-sizing: border-box;
+    background: #0000
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(var(--color-card), 0.22) 0%,
+        rgba(15, 23, 42, 0.92) 70%,
+        rgba(7, 12, 28, 0.98) 100%
+      );
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--color-card), 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
-  .straight-slide-card.center-active {
-    transform: scale(1.06);
-    z-index: 10;
+  .grid-card:hover {
+    transform: translateY(-5px);
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(var(--color-card), 0.4);
-    opacity: 1;
-  }
-
-  .straight-slide-card.flank-card {
-    transform: scale(0.92);
-    opacity: 0.65;
-    z-index: 1;
-  }
-
-  .straight-slide-card.flank-card:hover {
-    opacity: 0.9;
-    transform: scale(0.96);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--color-card), 0.35);
   }
 
   .card-body {
-    padding: 22px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
-    text-align: left;
   }
 
-  .card-top-row {
+  .dept-badge-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .dept-code-badge {
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 6px;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 800;
     font-family: var(--font-mono);
     border: 1px solid;
@@ -695,7 +626,7 @@ const StyledStraightCarouselWrapper = styled.div`
   .dept-live-status {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-size: 0.65rem;
     color: #34d399;
     text-transform: uppercase;
@@ -707,48 +638,48 @@ const StyledStraightCarouselWrapper = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
     display: inline-block;
   }
 
   .dept-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.35;
-    margin: 8px 0 10px 0;
-    min-height: 2.7em;
+    margin: 8px 0;
   }
 
-  .dept-enquiries-row {
-    font-size: 0.84rem;
+  .enquiries-row {
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .enquiries-label {
+  .metric-label {
     color: #94a3b8;
   }
 
-  .enquiries-count {
+  .metric-val {
     font-weight: 800;
     font-family: var(--font-mono);
-    font-size: 0.96rem;
   }
 
-  .dept-pills-grid {
+  .stat-pills {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 6px 8px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -763,7 +694,7 @@ const StyledStraightCarouselWrapper = styled.div`
   }
 
   .pill-value {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #ffffff;
     font-family: var(--font-mono);
@@ -773,14 +704,14 @@ const StyledStraightCarouselWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 12px;
+    padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .sci {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -790,8 +721,8 @@ const StyledStraightCarouselWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.8);
@@ -807,25 +738,8 @@ const StyledStraightCarouselWrapper = styled.div`
   }
 
   .card-explore-tag {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     color: #94a3b8;
     font-weight: 600;
-  }
-
-  .carousel-caption-hint {
-    margin-top: 18px;
-    font-size: 0.78rem;
-    color: #64748b;
-  }
-
-  @media (max-width: 880px) {
-    .straight-slide-card.flank-card {
-      display: none;
-    }
-    .straight-slide-card.center-active {
-      width: 100%;
-      max-width: 320px;
-      transform: none;
-    }
   }
 `;
