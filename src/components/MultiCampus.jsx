@@ -37,8 +37,22 @@ const campuses = {
   }
 };
 
+const cardColors = [
+  '142, 249, 252',
+  '142, 252, 204',
+  '142, 252, 157',
+  '215, 252, 142',
+  '252, 252, 142',
+  '252, 208, 142',
+  '252, 142, 142',
+  '252, 142, 239',
+  '204, 142, 252',
+  '142, 202, 252'
+];
+
 export default function MultiCampus() {
   const [activeCampus, setActiveCampus] = useState('CAMPUS_01');
+  const [viewMode, setViewMode] = useState('carousel'); // 'carousel' or 'grid'
   const campus = campuses[activeCampus];
 
   return (
@@ -56,101 +70,502 @@ export default function MultiCampus() {
         </div>
 
         <div className="campus-hierarchy-box">
-          {/* Interactive Campus Selector Tabs (StarButton UI) */}
-          <div className="campus-tabs" style={{ display: 'flex', gap: '12px', padding: '12px 20px', flexWrap: 'wrap' }}>
-            <StarButton 
-              variant="tab"
-              active={activeCampus === 'CAMPUS_01'}
-              onClick={() => setActiveCampus('CAMPUS_01')}
-            >
-              🏛️ Main Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 01</span>
-            </StarButton>
-            <StarButton 
-              variant="tab"
-              active={activeCampus === 'CAMPUS_02'}
-              onClick={() => setActiveCampus('CAMPUS_02')}
-            >
-              🏛️ City Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 02</span>
-            </StarButton>
+          {/* Top Controls: Campus Selector Tabs & View Mode Switcher */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '14px 20px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+            <div className="campus-tabs" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', margin: 0, padding: 0 }}>
+              <StarButton 
+                variant="tab"
+                active={activeCampus === 'CAMPUS_01'}
+                onClick={() => setActiveCampus('CAMPUS_01')}
+              >
+                🏛️ Main Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 01</span>
+              </StarButton>
+              <StarButton 
+                variant="tab"
+                active={activeCampus === 'CAMPUS_02'}
+                onClick={() => setActiveCampus('CAMPUS_02')}
+              >
+                🏛️ City Campus <span className="badge-tnea-code" style={{ marginLeft: '6px' }}>Campus 02</span>
+              </StarButton>
+            </div>
+
+            {/* View Switcher: 3D Orbit Carousel vs Grid View */}
+            <div style={{ display: 'inline-flex', background: 'rgba(255, 255, 255, 0.05)', padding: '4px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <button
+                type="button"
+                onClick={() => setViewMode('carousel')}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: viewMode === 'carousel' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
+                  color: viewMode === 'carousel' ? '#ffffff' : '#94a3b8',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span>🎡</span> 3D Cylinder Orbit
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('grid')}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '7px',
+                  border: 'none',
+                  background: viewMode === 'grid' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
+                  color: viewMode === 'grid' ? '#ffffff' : '#94a3b8',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span>▦</span> Grid View
+              </button>
+            </div>
           </div>
 
           {/* Campus Header Card */}
-          <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+          <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <div>
-              <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '4px' }}>{campus.name}</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>📍 {campus.location}</p>
+              <h3 style={{ fontSize: '1.15rem', color: '#ffffff', fontWeight: 700, margin: '0 0 4px 0' }}>{campus.name}</h3>
+              <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>📍 {campus.location}</p>
             </div>
-            <div style={{ fontSize: '0.82rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: '0.82rem', color: '#38bdf8', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
               {campus.intakeStats}
             </div>
           </div>
 
-          {/* Department Cards Grid with Uiverse Neon Gradient UI */}
-          <StyledCampusWrapper>
-            <div className="dept-grid">
-              {campus.departments.map((dept, idx) => (
-                <div className="card" key={idx}>
-                  <b />
-                  <div className="card-content-wrap">
-                    {/* Top Section: Always clearly visible in resting state */}
-                    <div className="card-top-section">
-                      <div className="dept-badge-row">
-                        <span className="dept-code-badge">{dept.code}</span>
-                        <span className="dept-live-status">Active Pipeline</span>
-                      </div>
-                      <h4 className="dept-title">{dept.name}</h4>
-                      <p className="dept-sub-metric">Enquiries: <strong style={{ color: '#fff' }}>{dept.enquiries}</strong></p>
-                    </div>
+          {/* 3D ROTATING CYLINDER CAROUSEL VIEW */}
+          {viewMode === 'carousel' ? (
+            <Styled3DWrapper>
+              <div className="orbit-hint">
+                <span>✨ 3D Orbit active • Hover mouse over any card to pause rotation</span>
+              </div>
+              <div className="wrapper">
+                <div 
+                  className="inner" 
+                  style={{ 
+                    '--quantity': campus.departments.length 
+                  }}
+                >
+                  {campus.departments.map((dept, idx) => {
+                    const color = cardColors[idx % cardColors.length];
+                    return (
+                      <div 
+                        className="card" 
+                        key={idx}
+                        style={{ 
+                          '--index': idx, 
+                          '--color-card': color 
+                        }}
+                      >
+                        <div className="card-body">
+                          {/* Top Badges */}
+                          <div className="dept-badge-row">
+                            <span 
+                              className="dept-code-badge"
+                              style={{ 
+                                background: `rgba(${color}, 0.2)`, 
+                                borderColor: `rgba(${color}, 0.6)`,
+                                color: `rgb(${color})`
+                              }}
+                            >
+                              {dept.code}
+                            </span>
+                            <span className="dept-live-status">
+                              <span className="live-dot" /> Active Pipeline
+                            </span>
+                          </div>
 
-                    {/* Subtle resting cue */}
-                    <div className="card-hint">
-                      <span>Hover for intake &amp; cutoff &darr;</span>
-                    </div>
+                          {/* Department Title */}
+                          <h4 className="dept-title">{dept.name}</h4>
 
-                    {/* Expanded Detail Reveal Section on Hover */}
-                    <div className="card-reveal-section">
-                      <div className="stat-pills">
-                        <div className="stat-pill">
-                          <span className="pill-label">Seat Intake</span>
-                          <span className="pill-value">{dept.intake} seats</span>
+                          {/* Enquiries Metric */}
+                          <div className="enquiries-row">
+                            <span className="metric-label">Enquiries:</span>
+                            <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                          </div>
+
+                          {/* Seat Intake & Cutoff Pill Cards */}
+                          <div className="stat-pills">
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                              <span className="pill-label">Seat Intake</span>
+                              <span className="pill-value">{dept.intake} seats</span>
+                            </div>
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                              <span className="pill-label">TNEA Cutoff</span>
+                              <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
+                            </div>
+                          </div>
+
+                          {/* Quick Action Buttons */}
+                          <div className="card-footer-row">
+                            <ul className="sci">
+                              <li>
+                                <a href="#leads" title="View Department Enquiries">
+                                  <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
+                                  </svg>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#lead-assignment" title="Faculty Counselor Allocation">
+                                  <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
+                                  </svg>
+                                </a>
+                              </li>
+                            </ul>
+                            <span className="card-explore-tag">Explore &rarr;</span>
+                          </div>
                         </div>
-                        <div className="stat-pill">
-                          <span className="pill-label">TNEA Cutoff</span>
-                          <span className="pill-value cutoff">{dept.cutoff}</span>
-                        </div>
                       </div>
-
-                      {/* Action Links */}
-                      <ul className="sci">
-                        <li>
-                          <a href="#leads" title="View Department Enquiries">
-                            <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
-                            </svg>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#lead-assignment" title="Faculty Counselor Allocation">
-                            <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor">
-                              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
-                            </svg>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
-              ))}
-            </div>
-          </StyledCampusWrapper>
+              </div>
+            </Styled3DWrapper>
+          ) : (
+            /* FLAT GRID VIEW WITH MATCHING COLOR PALETTES */
+            <StyledGridWrapper>
+              <div className="dept-grid">
+                {campus.departments.map((dept, idx) => {
+                  const color = cardColors[idx % cardColors.length];
+                  return (
+                    <div 
+                      className="grid-card" 
+                      key={idx}
+                      style={{ '--color-card': color }}
+                    >
+                      <div className="card-body">
+                        <div className="dept-badge-row">
+                          <span 
+                            className="dept-code-badge"
+                            style={{ 
+                              background: `rgba(${color}, 0.2)`, 
+                              borderColor: `rgba(${color}, 0.6)`,
+                              color: `rgb(${color})`
+                            }}
+                          >
+                            {dept.code}
+                          </span>
+                          <span className="dept-live-status">
+                            <span className="live-dot" /> Active Pipeline
+                          </span>
+                        </div>
+
+                        <h4 className="dept-title">{dept.name}</h4>
+
+                        <div className="enquiries-row">
+                          <span className="metric-label">Enquiries:</span>
+                          <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                        </div>
+
+                        <div className="stat-pills">
+                          <div className="stat-pill">
+                            <span className="pill-label">Seat Intake</span>
+                            <span className="pill-value">{dept.intake} seats</span>
+                          </div>
+                          <div className="stat-pill">
+                            <span className="pill-label">TNEA Cutoff</span>
+                            <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
+                          </div>
+                        </div>
+
+                        <div className="card-footer-row">
+                          <ul className="sci">
+                            <li>
+                              <a href="#leads" title="View Department Enquiries">
+                                <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
+                                </svg>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#lead-assignment" title="Faculty Counselor Allocation">
+                                <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+                                  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clipRule="evenodd" />
+                                </svg>
+                              </a>
+                            </li>
+                          </ul>
+                          <span className="card-explore-tag">Explore &rarr;</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </StyledGridWrapper>
+          )}
+
         </div>
       </div>
     </section>
   );
 }
 
-const StyledCampusWrapper = styled.div`
-  padding: 24px;
+const Styled3DWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  padding: 10px 0;
+
+  .orbit-hint {
+    text-align: center;
+    padding-top: 14px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    position: relative;
+    z-index: 10;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .inner {
+    --w: 240px;
+    --h: 340px;
+    --translateZ: 380px;
+    --rotateX: -14deg;
+    --perspective: 1200px;
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    top: 22%;
+    left: calc(50% - (var(--w) / 2));
+    z-index: 2;
+    transform-style: preserve-3d;
+    transform: perspective(var(--perspective));
+    animation: rotating 28s linear infinite;
+  }
+
+  /* Hover pauses the orbit so cards can be interacted with */
+  .wrapper:hover .inner {
+    animation-play-state: paused;
+  }
+
+  @keyframes rotating {
+    from {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+    }
+    to {
+      transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
+    }
+  }
+
+  .card {
+    position: absolute;
+    border: 2px solid rgba(var(--color-card), 0.85);
+    border-radius: 16px;
+    overflow: hidden;
+    inset: 0;
+    width: var(--w);
+    height: var(--h);
+    transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    background: #0000
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(var(--color-card), 0.28) 0%,
+        rgba(15, 23, 42, 0.92) 65%,
+        rgba(7, 12, 28, 0.98) 100%
+      );
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--color-card), 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    border-color: rgba(var(--color-card), 1);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(var(--color-card), 0.5);
+  }
+
+  .card-body {
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .dept-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dept-code-badge {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    border: 1px solid;
+  }
+
+  .dept-live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.65rem;
+    color: #34d399;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
+    display: inline-block;
+  }
+
+  .dept-title {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.35;
+    margin: 8px 0 6px 0;
+  }
+
+  .enquiries-row {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .metric-label {
+    color: #94a3b8;
+  }
+
+  .metric-val {
+    font-weight: 800;
+    font-family: var(--font-mono);
+  }
+
+  .stat-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .stat-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pill-label {
+    font-size: 0.62rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .pill-value {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: var(--font-mono);
+  }
+
+  .card-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sci {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sci li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .sci li a:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    transform: scale(1.1);
+  }
+
+  .card-explore-tag {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    height: 480px;
+
+    .inner {
+      --w: 190px;
+      --h: 290px;
+      --translateZ: 280px;
+      --perspective: 900px;
+    }
+
+    .dept-title {
+      font-size: 0.88rem;
+    }
+  }
+`;
+
+const StyledGridWrapper = styled.div`
+  padding: 24px 16px;
 
   .dept-grid {
     display: grid;
@@ -158,172 +573,99 @@ const StyledCampusWrapper = styled.div`
     gap: 20px;
   }
 
-  .card {
+  .grid-card {
     position: relative;
-    width: 100%;
-    height: 270px;
-    background: #000;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+    border: 2px solid rgba(var(--color-card), 0.7);
     border-radius: 16px;
-    cursor: pointer;
     overflow: hidden;
-    transition: box-shadow 0.4s ease;
+    background: #0000
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(var(--color-card), 0.22) 0%,
+        rgba(15, 23, 42, 0.92) 70%,
+        rgba(7, 12, 28, 0.98) 100%
+      );
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--color-card), 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
-  .card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  .grid-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--color-card), 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--color-card), 0.35);
   }
 
-  /* Radiant dual-tone neon gradient frame */
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    background: linear-gradient(315deg, #03a9f4, #ff0058);
-    pointer-events: none;
-  }
-
-  /* Blooming ambient neon blur layer */
-  .card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    background: linear-gradient(315deg, #03a9f4, #ff0058);
-    filter: blur(24px);
-    opacity: 0.25;
-    transition: filter 0.5s ease, opacity 0.5s ease;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .card:hover::after {
-    filter: blur(34px);
-    opacity: 0.85;
-  }
-
-  /* Dark frosted inner plate for high text contrast */
-  .card b {
-    position: absolute;
-    inset: 4px;
-    background: rgba(7, 12, 28, 0.95);
-    border-radius: 12px;
-    z-index: 2;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    pointer-events: none;
-  }
-
-  .card-content-wrap {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
+  .card-body {
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  .card-top-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    transition: all 0.4s ease;
-    margin: auto 0;
-  }
-
-  .card:hover .card-top-section {
-    margin: 0 0 10px 0;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .dept-badge-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
   }
 
   .dept-code-badge {
-    display: inline-block;
     padding: 3px 8px;
     border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-size: 0.74rem;
+    font-weight: 800;
     font-family: var(--font-mono);
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.15);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    border: 1px solid;
   }
 
   .dept-live-status {
-    font-size: 0.68rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.65rem;
     color: #34d399;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: 700;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
+    display: inline-block;
   }
 
   .dept-title {
-    font-size: 0.98rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: #ffffff;
     line-height: 1.35;
-    margin: 0 0 6px 0;
+    margin: 8px 0;
   }
 
-  .dept-sub-metric {
+  .enquiries-row {
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  .card-hint {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.45);
-    transition: opacity 0.3s ease;
-    margin-top: 4px;
+    gap: 6px;
+    margin-bottom: 10px;
   }
 
-  .card:hover .card-hint {
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
+  .metric-label {
+    color: #94a3b8;
   }
 
-  /* Reveal section on hover - smooth height & opacity expansion */
-  .card-reveal-section {
-    display: flex;
-    flex-direction: column;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(10px);
-    transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.4s ease,
-                transform 0.4s ease;
-  }
-
-  .card:hover .card-reveal-section {
-    max-height: 200px;
-    opacity: 1;
-    overflow: visible;
-    transform: translateY(0);
-    margin-top: 8px;
+  .metric-val {
+    font-weight: 800;
+    font-family: var(--font-mono);
   }
 
   .stat-pills {
@@ -334,38 +676,42 @@ const StyledCampusWrapper = styled.div`
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 6px 8px;
     display: flex;
     flex-direction: column;
+    gap: 2px;
   }
 
   .pill-label {
-    font-size: 0.66rem;
-    color: var(--text-muted);
+    font-size: 0.62rem;
+    color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    font-weight: 600;
   }
 
   .pill-value {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #ffffff;
     font-family: var(--font-mono);
   }
 
-  .pill-value.cutoff {
-    color: #f43f5e;
+  .card-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Social/Action links (Uiverse .sci styling) */
   .sci {
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -375,21 +721,25 @@ const StyledCampusWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   .sci li a:hover {
     color: #ffffff;
-    background: linear-gradient(135deg, #03a9f4, #ff0058);
-    border-color: transparent;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
     transform: scale(1.1);
-    box-shadow: 0 4px 14px rgba(255, 0, 88, 0.4);
+  }
+
+  .card-explore-tag {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 600;
   }
 `;
