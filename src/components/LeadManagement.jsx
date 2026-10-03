@@ -282,8 +282,8 @@ export default function LeadManagement({ onOpenBooking }) {
           <div className="glass-card directory-main-card">
             <div style={{ marginBottom: '18px' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#fff' }}>Candidate Directory Options &amp; Communication Layout</h3>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Preview how counselors view student dossiers with quick action triggers</p>
+                <h3 style={{ fontSize: '1.25rem', color: '#0f172a', fontWeight: 700 }}>Candidate Directory Options &amp; Communication Layout</h3>
+                <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Preview how counselors view student dossiers with quick action triggers</p>
               </div>
             </div>
 
@@ -305,15 +305,15 @@ export default function LeadManagement({ onOpenBooking }) {
                       <div className="student-cell">
                         <div className="avatar-initial">SV</div>
                         <div>
-                          <strong style={{ color: '#fff' }}>S. Vignesh</strong>
-                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Father: K. Subramanian (Farmer)</div>
+                          <strong style={{ color: '#0f172a', fontWeight: 700 }}>S. Vignesh</strong>
+                          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>Father: K. Subramanian (Farmer)</div>
                         </div>
                       </div>
                     </td>
-                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-light)' }}>+91-9876543210</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', color: '#2563eb', fontWeight: 600 }}>+91-9876543210</td>
                     <td>AI &amp; DS &bull; Campus 01</td>
                     <td><span className="badge-range-tag">BC</span></td>
-                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>194.50</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#0284c7' }}>194.50</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
                         <a href="tel:+919876543210" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
@@ -328,15 +328,15 @@ export default function LeadManagement({ onOpenBooking }) {
                       <div className="student-cell">
                         <div className="avatar-initial" style={{ background: 'linear-gradient(135deg, #0284c7, #2563eb)' }}>KP</div>
                         <div>
-                          <strong style={{ color: '#fff' }}>K. Priyanka</strong>
-                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Mother: S. Banu (Teacher)</div>
+                          <strong style={{ color: '#0f172a', fontWeight: 700 }}>K. Priyanka</strong>
+                          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>Mother: S. Banu (Teacher)</div>
                         </div>
                       </div>
                     </td>
-                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-light)' }}>+91-9443322110</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', color: '#2563eb', fontWeight: 600 }}>+91-9443322110</td>
                     <td>CSE &bull; Campus 02</td>
                     <td><span className="badge-range-tag">MBC</span></td>
-                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>196.00</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#0284c7' }}>196.00</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
                         <a href="tel:+919443322110" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
@@ -351,8 +351,8 @@ export default function LeadManagement({ onOpenBooking }) {
                       <div className="student-cell">
                         <div className="avatar-initial" style={{ background: 'linear-gradient(135deg, #059669, #10b981)' }}>MN</div>
                         <div>
-                          <strong style={{ color: '#fff' }}>M. Naveen</strong>
-                          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Father: P. Muthu (Business)</div>
+                          <strong style={{ color: '#0f172a', fontWeight: 700 }}>M. Naveen</strong>
+                          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>Father: P. Muthu (Business)</div>
                         </div>
                       </div>
                     </td>

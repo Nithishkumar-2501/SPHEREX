@@ -3008,58 +3008,63 @@ section[id] {
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
-  background: rgba(7, 12, 30, 0.6);
+  background: #f1f5f9;
   padding: 6px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e2e8f0;
   overflow-x: auto;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .sheet-nav-item {
   flex: 1;
-  padding: 12px 16px;
+  padding: 12px 18px;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  color: var(--text-muted);
-  font-weight: 700;
+  border-radius: var(--radius-md);
+  color: #475569;
+  font-weight: 600;
   font-size: 0.88rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .sheet-nav-item:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .sheet-nav-item.active {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.45);
-  color: #ffffff;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.2);
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
 }
 
 .sheet-step-badge {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: #e2e8f0;
+  color: #475569;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
   font-family: var(--font-mono);
+  transition: all 0.2s ease;
 }
 
 .sheet-nav-item.active .sheet-step-badge {
-  background: var(--primary);
-  color: #02040a;
+  background: #2563eb;
+  color: #ffffff;
   font-weight: 800;
 }
 
@@ -3830,6 +3835,75 @@ section[id] {
 .catalis-theme .phone-input-field:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Sheet Multi-step navigation light styling */
+.catalis-theme .sheet-nav-wrapper {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.catalis-theme .sheet-nav-item {
+  color: #475569;
+}
+
+.catalis-theme .sheet-nav-item:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.catalis-theme .sheet-nav-item.active {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.catalis-theme .sheet-step-badge {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.catalis-theme .sheet-nav-item.active .sheet-step-badge {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.catalis-theme .sheet-card-body {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+/* Omnichannel Marketing Box & Channel Pills Light Theme */
+.catalis-theme .channels-flow-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.catalis-theme .channel-pill {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.catalis-theme .channel-pill:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+.catalis-theme .leads-table th {
+  background: #f8fafc;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.catalis-theme .leads-table td {
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .catalis-theme .section .container {

@@ -30,9 +30,9 @@ export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpe
 
           <div className="feature-preview-block">
             <div className="channels-flow-box">
-              <div className="widget-title">
-                <span>Multi-Source Ingestion Grid</span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>9 Official Ingestion Streams</span>
+              <div className="widget-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                <span style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.98rem' }}>Multi-Source Ingestion Grid</span>
+                <span style={{ fontSize: '0.75rem', color: '#2563eb', fontWeight: 700, background: '#eff6ff', border: '1px solid #bfdbfe', padding: '3px 8px', borderRadius: '6px' }}>9 Official Ingestion Streams</span>
               </div>
 
               <div className="channels-pills-wrap">
@@ -49,15 +49,15 @@ export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpe
 
               <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {channels.map((ch, i) => (
-                  <div key={i} style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span style={{ fontSize: '1.2rem' }}>{ch.icon}</span>
+                  <div key={i} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <span style={{ fontSize: '1.35rem' }}>{ch.icon}</span>
                       <div>
-                        <strong style={{ fontSize: '0.86rem', color: '#fff' }}>{ch.name}</strong>
-                        <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{ch.desc}</div>
+                        <strong style={{ fontSize: '0.92rem', color: '#0f172a', fontWeight: 700, display: 'block', marginBottom: '2px' }}>{ch.name}</strong>
+                        <div style={{ fontSize: '0.82rem', color: '#0f172a', fontWeight: 600, lineHeight: 1.45 }}>{ch.desc}</div>
                       </div>
                     </div>
-                    <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-light)', fontWeight: 700, fontSize: '0.9rem' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', color: '#2563eb', fontWeight: 800, fontSize: '1.05rem', marginLeft: '12px', flexShrink: 0 }}>
                       {ch.share}
                     </span>
                   </div>
