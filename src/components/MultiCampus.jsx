@@ -71,7 +71,7 @@ export default function MultiCampus() {
 
         <div className="campus-hierarchy-box">
           {/* Top Controls: Campus Selector Tabs & View Mode Switcher */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '14px 20px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '14px 20px', borderBottom: '1px solid #e2e8f0' }}>
             <div className="campus-tabs" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', margin: 0, padding: 0 }}>
               <StarButton 
                 variant="tab"
@@ -90,7 +90,7 @@ export default function MultiCampus() {
             </div>
 
             {/* View Switcher: 3D Orbit Carousel vs Grid View */}
-            <div style={{ display: 'inline-flex', background: 'rgba(255, 255, 255, 0.05)', padding: '4px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <div style={{ display: 'inline-flex', background: 'rgba(241, 245, 249, 0.9)', padding: '4px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
               <button
                 type="button"
                 onClick={() => setViewMode('carousel')}
@@ -99,7 +99,7 @@ export default function MultiCampus() {
                   borderRadius: '7px',
                   border: 'none',
                   background: viewMode === 'carousel' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
-                  color: viewMode === 'carousel' ? '#ffffff' : '#94a3b8',
+                  color: viewMode === 'carousel' ? '#ffffff' : '#64748b',
                   fontSize: '0.8rem',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -119,7 +119,7 @@ export default function MultiCampus() {
                   borderRadius: '7px',
                   border: 'none',
                   background: viewMode === 'grid' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'transparent',
-                  color: viewMode === 'grid' ? '#ffffff' : '#94a3b8',
+                  color: viewMode === 'grid' ? '#ffffff' : '#64748b',
                   fontSize: '0.8rem',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -135,12 +135,12 @@ export default function MultiCampus() {
           </div>
 
           {/* Campus Header Card */}
-          <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+          <div style={{ padding: '16px 20px', background: 'rgba(248, 250, 252, 0.7)', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <div>
-              <h3 style={{ fontSize: '1.15rem', color: '#ffffff', fontWeight: 700, margin: '0 0 4px 0' }}>{campus.name}</h3>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>📍 {campus.location}</p>
+              <h3 style={{ fontSize: '1.15rem', color: '#0f172a', fontWeight: 700, margin: '0 0 4px 0' }}>{campus.name}</h3>
+              <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>📍 {campus.location}</p>
             </div>
-            <div style={{ fontSize: '0.82rem', color: '#38bdf8', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+            <div style={{ fontSize: '0.82rem', color: '#0284c7', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
               {campus.intakeStats}
             </div>
           </div>
@@ -175,9 +175,9 @@ export default function MultiCampus() {
                             <span 
                               className="dept-code-badge"
                               style={{ 
-                                background: `rgba(${color}, 0.2)`, 
-                                borderColor: `rgba(${color}, 0.6)`,
-                                color: `rgb(${color})`
+                                background: `rgba(${color}, 0.25)`, 
+                                borderColor: `rgba(${color}, 0.8)`,
+                                color: '#0f172a'
                               }}
                             >
                               {dept.code}
@@ -193,18 +193,18 @@ export default function MultiCampus() {
                           {/* Enquiries Metric */}
                           <div className="enquiries-row">
                             <span className="metric-label">Enquiries:</span>
-                            <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                            <strong className="metric-val">{dept.enquiries}</strong>
                           </div>
 
                           {/* Seat Intake & Cutoff Pill Cards */}
                           <div className="stat-pills">
-                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.45)` }}>
                               <span className="pill-label">Seat Intake</span>
                               <span className="pill-value">{dept.intake} seats</span>
                             </div>
-                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.25)` }}>
+                            <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.45)` }}>
                               <span className="pill-label">TNEA Cutoff</span>
-                              <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
+                              <span className="pill-value cutoff">{dept.cutoff}</span>
                             </div>
                           </div>
 
@@ -252,9 +252,9 @@ export default function MultiCampus() {
                           <span 
                             className="dept-code-badge"
                             style={{ 
-                              background: `rgba(${color}, 0.2)`, 
-                              borderColor: `rgba(${color}, 0.6)`,
-                              color: `rgb(${color})`
+                              background: `rgba(${color}, 0.25)`, 
+                              borderColor: `rgba(${color}, 0.8)`,
+                              color: '#0f172a'
                             }}
                           >
                             {dept.code}
@@ -268,17 +268,17 @@ export default function MultiCampus() {
 
                         <div className="enquiries-row">
                           <span className="metric-label">Enquiries:</span>
-                          <strong className="metric-val" style={{ color: `rgb(${color})` }}>{dept.enquiries}</strong>
+                          <strong className="metric-val">{dept.enquiries}</strong>
                         </div>
 
                         <div className="stat-pills">
-                          <div className="stat-pill">
+                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.45)` }}>
                             <span className="pill-label">Seat Intake</span>
                             <span className="pill-value">{dept.intake} seats</span>
                           </div>
-                          <div className="stat-pill">
+                          <div className="stat-pill" style={{ borderColor: `rgba(${color}, 0.45)` }}>
                             <span className="pill-label">TNEA Cutoff</span>
-                            <span className="pill-value cutoff" style={{ color: `rgb(${color})` }}>{dept.cutoff}</span>
+                            <span className="pill-value cutoff">{dept.cutoff}</span>
                           </div>
                         </div>
 
@@ -326,7 +326,7 @@ const Styled3DWrapper = styled.div`
     text-align: center;
     padding-top: 14px;
     font-size: 0.8rem;
-    color: #94a3b8;
+    color: #64748b;
     position: relative;
     z-index: 10;
   }
@@ -384,23 +384,28 @@ const Styled3DWrapper = styled.div`
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: #0000
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(var(--color-card), 0.28) 0%,
-        rgba(15, 23, 42, 0.94) 65%,
-        rgba(7, 12, 28, 0.99) 100%
-      );
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--color-card), 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(var(--color-card), 0.16) 45%,
+      rgba(255, 255, 255, 0.35) 100%
+    );
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08), 0 0 22px rgba(var(--color-card), 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
     cursor: pointer;
   }
 
   .card:hover {
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(var(--color-card), 0.5);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(var(--color-card), 0.25) 45%,
+      rgba(255, 255, 255, 0.55) 100%
+    );
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.14), 0 0 35px rgba(var(--color-card), 0.45);
   }
 
   .card-body {
@@ -435,7 +440,7 @@ const Styled3DWrapper = styled.div`
     align-items: center;
     gap: 5px;
     font-size: 0.65rem;
-    color: #34d399;
+    color: #059669;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 700;
@@ -445,15 +450,15 @@ const Styled3DWrapper = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #34d399;
-    box-shadow: 0 0 8px #34d399;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
     display: inline-block;
   }
 
   .dept-title {
     font-size: 0.94rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #0f172a;
     line-height: 1.32;
     margin: 6px 0 4px 0;
   }
@@ -467,12 +472,14 @@ const Styled3DWrapper = styled.div`
   }
 
   .metric-label {
-    color: #94a3b8;
+    color: #64748b;
+    font-weight: 600;
   }
 
   .metric-val {
     font-weight: 800;
     font-family: var(--font-mono);
+    color: #0284c7;
   }
 
   .stat-pills {
@@ -483,28 +490,34 @@ const Styled3DWrapper = styled.div`
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     padding: 5px 8px;
     display: flex;
     flex-direction: column;
     gap: 2px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   }
 
   .pill-label {
     font-size: 0.62rem;
-    color: #94a3b8;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .pill-value {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #0f172a;
     font-family: var(--font-mono);
+  }
+
+  .pill-value.cutoff {
+    color: #2563eb;
   }
 
   .card-footer-row {
@@ -512,7 +525,7 @@ const Styled3DWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding-top: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .sci {
@@ -531,10 +544,11 @@ const Styled3DWrapper = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    color: #475569;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     text-decoration: none;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     transition: all 0.2s ease;
   }
 
@@ -546,8 +560,8 @@ const Styled3DWrapper = styled.div`
 
   .card-explore-tag {
     font-size: 0.72rem;
-    color: #94a3b8;
-    font-weight: 600;
+    color: #2563eb;
+    font-weight: 700;
   }
 
   @media (max-width: 768px) {
@@ -579,18 +593,18 @@ const StyledGridWrapper = styled.div`
 
   .grid-card {
     position: relative;
-    border: 2px solid rgba(var(--color-card), 0.7);
+    border: 2px solid rgba(var(--color-card), 0.75);
     border-radius: 16px;
     overflow: hidden;
-    background: #0000
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(var(--color-card), 0.22) 0%,
-        rgba(15, 23, 42, 0.92) 70%,
-        rgba(7, 12, 28, 0.98) 100%
-      );
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--color-card), 0.15);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(var(--color-card), 0.16) 45%,
+      rgba(255, 255, 255, 0.35) 100%
+    );
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06), 0 0 18px rgba(var(--color-card), 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: all 0.3s ease;
     cursor: pointer;
   }
@@ -598,7 +612,13 @@ const StyledGridWrapper = styled.div`
   .grid-card:hover {
     transform: translateY(-5px);
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--color-card), 0.35);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12), 0 0 28px rgba(var(--color-card), 0.4);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(var(--color-card), 0.25) 45%,
+      rgba(255, 255, 255, 0.55) 100%
+    );
   }
 
   .card-body {
@@ -632,7 +652,7 @@ const StyledGridWrapper = styled.div`
     align-items: center;
     gap: 5px;
     font-size: 0.65rem;
-    color: #34d399;
+    color: #059669;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 700;
@@ -642,15 +662,15 @@ const StyledGridWrapper = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #34d399;
-    box-shadow: 0 0 8px #34d399;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
     display: inline-block;
   }
 
   .dept-title {
     font-size: 1rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #0f172a;
     line-height: 1.35;
     margin: 8px 0;
   }
@@ -664,12 +684,14 @@ const StyledGridWrapper = styled.div`
   }
 
   .metric-label {
-    color: #94a3b8;
+    color: #64748b;
+    font-weight: 600;
   }
 
   .metric-val {
     font-weight: 800;
     font-family: var(--font-mono);
+    color: #0284c7;
   }
 
   .stat-pills {
@@ -680,28 +702,34 @@ const StyledGridWrapper = styled.div`
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     padding: 6px 8px;
     display: flex;
     flex-direction: column;
     gap: 2px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   }
 
   .pill-label {
     font-size: 0.62rem;
-    color: #94a3b8;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .pill-value {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #0f172a;
     font-family: var(--font-mono);
+  }
+
+  .pill-value.cutoff {
+    color: #2563eb;
   }
 
   .card-footer-row {
@@ -709,7 +737,7 @@ const StyledGridWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .sci {
@@ -728,10 +756,11 @@ const StyledGridWrapper = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    color: #475569;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     text-decoration: none;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     transition: all 0.2s ease;
   }
 
@@ -743,7 +772,7 @@ const StyledGridWrapper = styled.div`
 
   .card-explore-tag {
     font-size: 0.72rem;
-    color: #94a3b8;
-    font-weight: 600;
+    color: #2563eb;
+    font-weight: 700;
   }
 `;
