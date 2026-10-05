@@ -38,16 +38,16 @@ const campuses = {
 };
 
 const cardColors = [
-  '142, 249, 252',
-  '142, 252, 204',
-  '142, 252, 157',
-  '215, 252, 142',
-  '252, 252, 142',
-  '252, 208, 142',
-  '252, 142, 142',
-  '252, 142, 239',
-  '204, 142, 252',
-  '142, 202, 252'
+  '56, 189, 248',   // Sky Blue
+  '37, 99, 235',    // Cobalt Blue
+  '96, 165, 250',   // Light Cerulean
+  '148, 163, 184',  // Cool Slate
+  '2, 132, 199',    // Deep Ocean Blue
+  '125, 211, 252',  // Ice Blue
+  '79, 70, 229',    // Indigo Slate
+  '203, 213, 225',  // Pearl Silver Gray
+  '30, 58, 138',    // Deep Navy
+  '14, 165, 233'    // Vibrant Cyan Blue
 ];
 
 export default function MultiCampus() {
@@ -375,8 +375,9 @@ const Styled3DWrapper = styled.div`
 
   .card {
     position: absolute;
-    border: 2px solid rgba(var(--color-card), 0.85);
-    border-radius: 16px;
+    border: 1.5px solid rgba(var(--color-card), 0.55);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
     overflow: hidden;
     inset: 0;
     width: var(--w);
@@ -385,16 +386,24 @@ const Styled3DWrapper = styled.div`
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+      0 18px 40px -10px rgba(0, 0, 0, 0.5),
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 1px 0 rgba(var(--color-card), 0.2),
+      0 0 0 1px rgba(var(--color-card), 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
   }
 
   .card:hover {
-    border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+    border-color: rgba(var(--color-card), 0.9);
+    border-top-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+      0 24px 50px -8px rgba(0, 0, 0, 0.6),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+      0 0 25px -4px rgba(var(--color-card), 0.35);
   }
 
   .card-body {
@@ -573,20 +582,30 @@ const StyledGridWrapper = styled.div`
 
   .grid-card {
     position: relative;
-    border: 2px solid rgba(var(--color-card), 0.7);
-    border-radius: 16px;
+    border: 1.5px solid rgba(var(--color-card), 0.55);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
     overflow: hidden;
     background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    box-shadow: 
+      0 12px 30px -8px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 1px 0 rgba(var(--color-card), 0.2),
+      0 0 0 1px rgba(var(--color-card), 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
   }
 
   .grid-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    border-color: rgba(var(--color-card), 0.9);
+    border-top-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+      0 20px 45px -8px rgba(0, 0, 0, 0.55),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+      0 0 25px -4px rgba(var(--color-card), 0.35);
   }
 
   .card-body {
