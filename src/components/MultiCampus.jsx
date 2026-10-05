@@ -384,14 +384,8 @@ const Styled3DWrapper = styled.div`
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: #0000
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(var(--color-card), 0.28) 0%,
-        rgba(15, 23, 42, 0.94) 65%,
-        rgba(7, 12, 28, 0.99) 100%
-      );
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--color-card), 0.25);
+    background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -400,7 +394,7 @@ const Styled3DWrapper = styled.div`
 
   .card:hover {
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(var(--color-card), 0.5);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
   }
 
   .card-body {
@@ -582,14 +576,8 @@ const StyledGridWrapper = styled.div`
     border: 2px solid rgba(var(--color-card), 0.7);
     border-radius: 16px;
     overflow: hidden;
-    background: #0000
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(var(--color-card), 0.22) 0%,
-        rgba(15, 23, 42, 0.92) 70%,
-        rgba(7, 12, 28, 0.98) 100%
-      );
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--color-card), 0.15);
+    background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -598,7 +586,7 @@ const StyledGridWrapper = styled.div`
   .grid-card:hover {
     transform: translateY(-5px);
     border-color: rgba(var(--color-card), 1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--color-card), 0.35);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
   }
 
   .card-body {
