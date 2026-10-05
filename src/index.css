@@ -3689,40 +3689,42 @@ section[id] {
 
 .catalis-theme {
   --bg-page: transparent;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #ffffff;
-  --bg-surface-subtle: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.78);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.88);
+  --bg-surface-subtle: rgba(248, 250, 252, 0.7);
   
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --primary-light: #3b82f6;
-  --primary-subtle: #eff6ff;
-  --primary-border: #bfdbfe;
+  --primary-subtle: rgba(239, 246, 255, 0.8);
+  --primary-border: rgba(191, 219, 254, 0.85);
   
-  --border: #e2e8f0;
-  --border-subtle: #f1f5f9;
-  --border-hover: #cbd5e1;
+  --border: rgba(255, 255, 255, 0.85);
+  --border-subtle: rgba(226, 232, 240, 0.65);
+  --border-hover: rgba(191, 219, 254, 0.95);
   
   --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-secondary: #334155;
   --text-muted: #64748b;
   --text-dim: #94a3b8;
   
-  --shadow-card: 0 12px 32px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 20px 48px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.15);
-  --shadow-elevated: 0 24px 60px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 16px 40px -12px rgba(15, 23, 42, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  --shadow-card-hover: 0 24px 50px -10px rgba(37, 99, 235, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(191, 219, 254, 0.85);
+  --shadow-elevated: 0 25px 60px -15px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
 }
 
-/* Catalis Section Enclosure Cards */
+/* Liquid Glass Section Enclosure Panels - Frosted Glass with Soft Light Reflections */
 .catalis-theme .section {
   max-width: 1240px;
   width: 94%;
   margin: 44px auto;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
   border-radius: 40px;
   padding: 68px 36px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 24px 60px -15px rgba(15, 23, 42, 0.06), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -3747,10 +3749,12 @@ section[id] {
   margin: 0 auto;
 }
 
-/* Eyebrows in Catalis Pill Style */
+/* Eyebrows in Liquid Pill Style with Soft Specular Reflection */
 .catalis-theme .section-eyebrow {
-  background: #eff6ff;
-  border: 1px solid #dbeafe;
+  background: rgba(239, 246, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(191, 219, 254, 0.85);
   color: #2563eb;
   border-radius: 9999px;
   padding: 6px 14px;
@@ -3759,7 +3763,7 @@ section[id] {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 18px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .catalis-theme .section-eyebrow .dot {
@@ -3767,11 +3771,13 @@ section[id] {
   box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
 }
 
-/* Catalis Theme Problem Comparison Cards */
+/* Liquid Frosted Comparison Cards */
 .catalis-theme .comparison-card.card-without {
-  background: #fffafa;
-  border: 1px solid #fee2e2;
-  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.05);
+  background: rgba(255, 250, 250, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(254, 226, 226, 0.9);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.04), inset 0 1px 1px rgba(255, 255, 255, 1);
 }
 
 .catalis-theme .comparison-card.card-without h3 {
@@ -3783,9 +3789,11 @@ section[id] {
 }
 
 .catalis-theme .comparison-card.card-with {
-  background: #f0fdf4;
-  border: 2px solid #86efac;
-  box-shadow: 0 14px 36px rgba(16, 185, 129, 0.12);
+  background: rgba(240, 253, 244, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(134, 239, 172, 0.9);
+  box-shadow: 0 14px 36px rgba(16, 185, 129, 0.08), inset 0 1px 1px rgba(255, 255, 255, 1);
 }
 
 .catalis-theme .comparison-card.card-with h3 {
@@ -3796,7 +3804,7 @@ section[id] {
   color: #1e293b;
 }
 
-/* General component background polish within Catalis Theme */
+/* Layered Liquid Frosted Glass Panels across all Core Sections */
 .catalis-theme .sheet-main-card,
 .catalis-theme .lead-form-container,
 .catalis-theme .cutoff-card,
@@ -3805,10 +3813,27 @@ section[id] {
 .catalis-theme .counselor-card,
 .catalis-theme .voice-console-card,
 .catalis-theme .marketing-stat-card,
+.catalis-theme .campus-hierarchy-box,
+.catalis-theme .mobile-app-banner,
 .catalis-theme .nora-ai-grid .glass-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(226, 232, 240, 0.75);
+  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.04), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.catalis-theme .sheet-main-card:hover,
+.catalis-theme .cutoff-card:hover,
+.catalis-theme .journey-card:hover,
+.catalis-theme .counselor-card:hover,
+.catalis-theme .marketing-stat-card:hover,
+.catalis-theme .nora-ai-grid .glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -10px rgba(37, 99, 235, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(191, 219, 254, 0.9);
 }
 
 .catalis-theme .sheet-main-card h3,
