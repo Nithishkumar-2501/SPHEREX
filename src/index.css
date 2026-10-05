@@ -4645,33 +4645,32 @@ section[id] {
 
 .catalis-benefit-card {
   position: relative;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.64) 0%, rgba(240, 248, 255, 0.42) 45%, rgba(255, 255, 255, 0.58) 100%);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
   border-radius: 40px;
   padding: 44px 28px;
   display: flex;
   flex-direction: column;
   opacity: 0;
   transform: translateY(28px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   
-  /* 3D Liquid Glass Border & Specular Rim */
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-top: 2px solid rgba(255, 255, 255, 1);
-  border-bottom: 1.5px solid rgba(186, 230, 253, 0.55);
+  /* 3D Liquid Glass Transparent Border & Specular Rim */
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-top: 2px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
   box-shadow: 
-    0 24px 60px -15px rgba(15, 23, 42, 0.12),
-    0 10px 25px -5px rgba(37, 99, 235, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.7),
-    inset 0 2px 3px 0 rgba(255, 255, 255, 1),
-    inset 0 -2px 3px 0 rgba(147, 197, 253, 0.35),
-    inset 0 0 0 10px rgba(255, 255, 255, 0.22),
-    inset 0 0 22px 2px rgba(255, 255, 255, 0.4);
+    0 20px 50px -12px rgba(15, 23, 42, 0.12),
+    0 8px 20px -6px rgba(37, 99, 235, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-/* Subtle Top-Right Prismatic Caustic Refraction (matching Image 1) */
+/* Subtle Top-Right Prismatic Caustic Refraction */
 .catalis-benefit-card::before {
   content: '';
   position: absolute;
@@ -4679,22 +4678,22 @@ section[id] {
   right: -2px;
   width: 140px;
   height: 140px;
-  background: radial-gradient(circle at 85% 15%, rgba(244, 114, 182, 0.35) 0%, rgba(147, 197, 253, 0.4) 35%, rgba(125, 211, 252, 0.2) 60%, transparent 80%);
+  background: radial-gradient(circle at 85% 15%, rgba(244, 114, 182, 0.22) 0%, rgba(147, 197, 253, 0.28) 35%, rgba(125, 211, 252, 0.12) 60%, transparent 80%);
   border-radius: 0 40px 0 100%;
   pointer-events: none;
   z-index: 1;
   filter: blur(4px);
 }
 
-/* Gloss Specular Light Sweep on upper half */
+/* Fine subtle top edge gloss line */
 .catalis-benefit-card::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.04) 100%);
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
   border-radius: 40px 40px 0 0;
   pointer-events: none;
   z-index: 1;
@@ -4707,16 +4706,15 @@ section[id] {
 
 .catalis-benefit-card.is-revealed:hover {
   transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
   border-top-color: #ffffff;
   border-color: rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 32px 70px -15px rgba(15, 23, 42, 0.18),
-    0 14px 32px -5px rgba(37, 99, 235, 0.16),
-    0 0 0 1px rgba(255, 255, 255, 0.9),
-    inset 0 2.5px 3px 0 rgba(255, 255, 255, 1),
-    inset 0 -2px 3px 0 rgba(147, 197, 253, 0.45),
-    inset 0 0 0 10px rgba(255, 255, 255, 0.3),
-    inset 0 0 28px 4px rgba(255, 255, 255, 0.55);
+    0 28px 65px -12px rgba(15, 23, 42, 0.16),
+    0 12px 28px -5px rgba(37, 99, 235, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.75),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.4);
 }
 
 .catalis-benefit-card:nth-child(1) { transition-delay: 0.05s; }
@@ -4750,19 +4748,21 @@ section[id] {
   z-index: 2;
   font-family: 'Newsreader', Georgia, serif;
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   color: #0f172a;
   margin-bottom: 12px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .benefit-card-desc {
   position: relative;
   z-index: 2;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.55;
-  color: #475569;
-  font-weight: 400;
+  color: #1e293b;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .catalis-center-cta {
