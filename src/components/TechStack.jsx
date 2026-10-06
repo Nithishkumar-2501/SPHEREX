@@ -90,8 +90,6 @@ const StyledTechWrapper = styled.div`
     width: 100%;
     height: 190px;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -100,16 +98,16 @@ const StyledTechWrapper = styled.div`
     overflow: hidden;
     transition: transform 0.35s ease, box-shadow 0.4s ease, background 0.35s ease;
     box-shadow: 
-      0 20px 50px -12px rgba(15, 23, 42, 0.1),
-      0 8px 20px -6px rgba(37, 99, 235, 0.06);
+      0 12px 30px -8px rgba(15, 23, 42, 0.08),
+      0 4px 12px -4px rgba(37, 99, 235, 0.04);
   }
 
   .card:hover {
     transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.16);
     box-shadow: 
-      0 28px 65px -12px rgba(15, 23, 42, 0.16),
-      0 12px 28px -5px rgba(37, 99, 235, 0.12);
+      0 20px 45px -8px rgba(15, 23, 42, 0.12),
+      0 8px 20px -5px rgba(37, 99, 235, 0.08);
   }
 
   /* Radiant dual-tone neon gradient frame - masked border ring for transparent center */
@@ -125,29 +123,6 @@ const StyledTechWrapper = styled.div`
     mask-composite: exclude;
     pointer-events: none;
     z-index: 2;
-  }
-
-  /* Blooming ambient neon blur layer around borders */
-  .card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    padding: 2px;
-    background: linear-gradient(315deg, #03a9f4, #ff0058);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    filter: blur(10px);
-    opacity: 0.35;
-    transition: filter 0.5s ease, opacity 0.5s ease;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .card:hover::after {
-    filter: blur(16px);
-    opacity: 0.75;
   }
 
   /* Transparent liquid glass inner plate with specular highlights */
