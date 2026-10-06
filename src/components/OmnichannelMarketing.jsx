@@ -31,7 +31,7 @@ export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpe
           <div className="feature-preview-block">
             <div className="channels-flow-box">
               <div className="widget-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <span style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.98rem' }}>Multi-Source Ingestion Grid</span>
+                <span style={{ color: '#000000', fontWeight: 800, fontSize: '0.98rem' }}>Multi-Source Ingestion Grid</span>
                 <span style={{ fontSize: '0.75rem', color: '#2563eb', fontWeight: 700, background: '#eff6ff', border: '1px solid #bfdbfe', padding: '3px 8px', borderRadius: '6px' }}>9 Official Ingestion Streams</span>
               </div>
 
@@ -53,8 +53,8 @@ export default function OmnichannelMarketing({ onOpenBooking, onOpenDemo: _onOpe
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ fontSize: '1.35rem' }}>{ch.icon}</span>
                       <div>
-                        <strong style={{ fontSize: '0.92rem', color: '#0f172a', fontWeight: 700, display: 'block', marginBottom: '2px' }}>{ch.name}</strong>
-                        <div style={{ fontSize: '0.82rem', color: '#0f172a', fontWeight: 600, lineHeight: 1.45 }}>{ch.desc}</div>
+                        <strong style={{ fontSize: '0.92rem', color: '#000000', fontWeight: 800, display: 'block', marginBottom: '2px' }}>{ch.name}</strong>
+                        <div style={{ fontSize: '0.82rem', color: '#000000', fontWeight: 700, lineHeight: 1.45 }}>{ch.desc}</div>
                       </div>
                     </div>
                     <span style={{ fontFamily: 'var(--font-mono)', color: '#2563eb', fontWeight: 800, fontSize: '1.05rem', marginLeft: '12px', flexShrink: 0 }}>

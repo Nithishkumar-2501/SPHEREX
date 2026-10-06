@@ -89,7 +89,7 @@ export function Hero2({
                     {/* Brand Logo */}
                     <a href="#hero" className="flex items-center gap-2 group">
                         {typeof brand === "string" ? (
-                            <span className="relative text-slate-900 font-bold text-xl tracking-tight select-none flex items-center gap-2">
+                            <span className="relative text-black font-extrabold text-xl tracking-tight select-none flex items-center gap-2">
                                 <img src="/logo.png?v=3" alt="SPHEREX" className="w-8 h-8 object-contain" />
                                 <span>{brand}</span>
                                 <span className="absolute top-1 -right-1.5 w-1 h-1 rounded-full bg-[oklch(0.6378_0.1051_172.72)]"></span>
@@ -112,13 +112,13 @@ export function Hero2({
                                         href={link.href}
                                         onClick={(e) => handleNavClick(e, link)}
                                         className={cn(
-                                            "text-sm font-medium transition-colors flex items-center gap-1.5",
-                                            (hoveredLink === link.label || (!hoveredLink && activeLink === link.label)) ? "text-slate-900 font-semibold" : "text-slate-500"
+                                            "text-sm font-bold transition-colors flex items-center gap-1.5",
+                                            (hoveredLink === link.label || (!hoveredLink && activeLink === link.label)) ? "text-black" : "text-black/80"
                                         )}
                                     >
                                         {link.label}
                                         {link.hasDropdown && (
-                                            <ChevronDown className="w-3.5 h-3.5 opacity-50 stroke-[2.5] transition-transform duration-200 group-hover:rotate-180" />
+                                            <ChevronDown className="w-3.5 h-3.5 opacity-70 stroke-[2.5] transition-transform duration-200 group-hover:rotate-180" />
                                         )}
                                     </a>
                                     {/* Active/Hover Indicator Dot */}
@@ -170,8 +170,8 @@ export function Hero2({
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link)}
                                     className={cn(
-                                        "text-2xl font-semibold flex items-center gap-2",
-                                        activeLink === link.label ? "text-slate-900" : "text-slate-400"
+                                        "text-2xl font-bold flex items-center gap-2",
+                                        activeLink === link.label ? "text-black" : "text-black/70"
                                     )}
                                 >
                                     {link.label}
@@ -203,14 +203,14 @@ export function Hero2({
                 <div className="max-w-2xl lg:max-w-3xl">
                     <motion.h1
                         variants={itemVariants}
-                        className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-slate-900 leading-[1.08]"
+                        className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black leading-[1.08]"
                     >
                         {headline}
                     </motion.h1>
 
                     <motion.p
                         variants={itemVariants}
-                        className="mt-4 text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl whitespace-pre-line"
+                        className="mt-4 text-base md:text-lg text-black font-semibold leading-relaxed max-w-2xl whitespace-pre-line"
                     >
                         {description}
                     </motion.p>
@@ -224,10 +224,10 @@ export function Hero2({
                                 const aboutEl = document.getElementById('about-us');
                                 if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth' });
                             }}
-                            className="rounded-full px-8 bg-[#eaeff1]/80 hover:bg-[#eaeff1] backdrop-blur-sm shadow-[0_0_0_1px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_4px_rgba(0,0,0,0.02)] text-slate-900 h-12 text-sm md:text-base font-medium border-0 transition-all"
+                            className="rounded-full px-8 bg-[#eaeff1]/80 hover:bg-[#eaeff1] backdrop-blur-sm shadow-[0_0_0_1px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_4px_rgba(0,0,0,0.02)] text-black h-12 text-sm md:text-base font-bold border-0 transition-all"
                         >
                             {secondaryCtaLabel}
-                            <Play className="w-3.5 h-3.5 ml-2 fill-slate-900" />
+                            <Play className="w-3.5 h-3.5 ml-2 fill-black" />
                         </Button>
                     </motion.div>
                 </div>
@@ -246,7 +246,7 @@ export function Hero2({
                         <a
                             key={social.label}
                             href={social.href}
-                            className="text-slate-500 hover:text-slate-900 text-sm md:text-base transition-colors"
+                            className="text-black font-bold hover:opacity-75 text-sm md:text-base transition-colors"
                         >
                             {social.label}
                         </a>
@@ -259,7 +259,7 @@ export function Hero2({
                         const aboutEl = document.getElementById('about-us');
                         if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="flex items-center gap-2 text-slate-500 text-sm md:text-base cursor-pointer group w-full md:w-auto justify-start md:justify-end"
+                    className="flex items-center gap-2 text-black font-bold text-sm md:text-base cursor-pointer group w-full md:w-auto justify-start md:justify-end"
                 >
                     <span>Scroll to Discover</span>
                     <motion.span

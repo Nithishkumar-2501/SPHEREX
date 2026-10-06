@@ -113,17 +113,17 @@ export default function VoiceCalling({ onOpenBooking }) {
               <canvas className="call-waveform-canvas" ref={canvasRef}></canvas>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '14px 0', padding: '10px 14px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: '0.8rem', color: '#fff' }}>
+                <div style={{ fontSize: '0.8rem', color: '#000000', fontWeight: 700 }}>
                   📞 <strong>Telephony Mode:</strong> WebRTC P2P Voice Gateway
                 </div>
                 <span className="badge-range-tag">Signal Port 5000</span>
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)', padding: '12px', marginBottom: '16px' }}>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                <div style={{ fontSize: '0.72rem', color: '#000000', fontWeight: 800, textTransform: 'uppercase', marginBottom: '4px' }}>
                   Counselor Note Preview &bull; Dr. K. Arulmurugan (HOD CSE)
                 </div>
-                <div style={{ fontSize: '0.84rem', color: '#fff', lineHeight: 1.5 }}>
+                <div style={{ fontSize: '0.84rem', color: '#000000', fontWeight: 600, lineHeight: 1.5 }}>
                   Student verified with 194.5 TNEA cutoff. Father K. Subramanian requested hostel fee concession details. Provisional admission offer dispatched.
                 </div>
               </div>

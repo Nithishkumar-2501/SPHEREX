@@ -455,8 +455,8 @@ const Styled3DWrapper = styled.div`
 
   .dept-title {
     font-size: 0.94rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
+    color: #000000;
     line-height: 1.32;
     margin: 6px 0 4px 0;
   }
@@ -470,7 +470,8 @@ const Styled3DWrapper = styled.div`
   }
 
   .metric-label {
-    color: #64748b;
+    color: #000000;
+    font-weight: 600;
   }
 
   .metric-val {
@@ -497,16 +498,16 @@ const Styled3DWrapper = styled.div`
 
   .pill-label {
     font-size: 0.62rem;
-    color: #64748b;
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .pill-value {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
+    color: #000000;
     font-family: var(--font-mono);
   }
 
@@ -535,7 +536,7 @@ const Styled3DWrapper = styled.div`
     height: 28px;
     border-radius: 6px;
     background: rgba(15, 23, 42, 0.05);
-    color: #334155;
+    color: #000000;
     border: 1px solid rgba(15, 23, 42, 0.1);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -549,8 +550,8 @@ const Styled3DWrapper = styled.div`
 
   .card-explore-tag {
     font-size: 0.72rem;
-    color: #64748b;
-    font-weight: 600;
+    color: #000000;
+    font-weight: 700;
   }
 
   @media (max-width: 768px) {
@@ -656,8 +657,8 @@ const StyledGridWrapper = styled.div`
 
   .dept-title {
     font-size: 1rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #000000;
     line-height: 1.35;
     margin: 8px 0;
   }
@@ -671,7 +672,8 @@ const StyledGridWrapper = styled.div`
   }
 
   .metric-label {
-    color: #94a3b8;
+    color: #000000;
+    font-weight: 600;
   }
 
   .metric-val {
@@ -687,8 +689,8 @@ const StyledGridWrapper = styled.div`
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 8px;
     padding: 6px 8px;
     display: flex;
@@ -698,16 +700,16 @@ const StyledGridWrapper = styled.div`
 
   .pill-label {
     font-size: 0.62rem;
-    color: #94a3b8;
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .pill-value {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 800;
+    color: #000000;
     font-family: var(--font-mono);
   }
 

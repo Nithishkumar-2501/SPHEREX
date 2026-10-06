@@ -306,8 +306,8 @@ const StyledFacultyWrapper = styled.div`
 
   .faculty-name {
     font-size: 1.15rem;
-    font-weight: 800;
-    color: #0f172a;
+    font-weight: 900;
+    color: #000000;
     margin-bottom: 4px;
     letter-spacing: -0.01em;
   }
@@ -322,16 +322,17 @@ const StyledFacultyWrapper = styled.div`
 
   .faculty-dept {
     font-size: 0.82rem;
-    color: #64748b;
-    font-weight: 500;
+    color: #000000;
+    font-weight: 600;
   }
 
   .card-hint {
     margin-top: 14px;
     font-size: 0.72rem;
-    color: #94a3b8;
+    color: #000000;
     font-family: var(--font-mono);
-    opacity: 0.85;
+    opacity: 0.95;
+    font-weight: 600;
     transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
     max-height: 24px;
     overflow: hidden;
@@ -367,7 +368,8 @@ const StyledFacultyWrapper = styled.div`
 
   .meta-info {
     font-size: 0.76rem;
-    color: #64748b;
+    color: #000000;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -401,7 +403,8 @@ const StyledFacultyWrapper = styled.div`
 
   .quota-text {
     font-size: 0.74rem;
-    color: #64748b;
+    color: #000000;
+    font-weight: 600;
     font-family: var(--font-mono);
   }
 

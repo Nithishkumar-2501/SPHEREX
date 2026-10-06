@@ -58,7 +58,7 @@ export default function NoraAISection({ onOpenBooking }) {
                 <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#2563eb', textTransform: 'uppercase', fontWeight: 700 }}>
                   Live TNEA Engineering Cutoff Engine
                 </span>
-                <h3 style={{ fontSize: '1.2rem', color: '#0f172a', fontWeight: 700 }}>Official 200-Mark Formula</h3>
+                <h3 style={{ fontSize: '1.2rem', color: '#000000', fontWeight: 800 }}>Official 200-Mark Formula</h3>
               </div>
               <span className="badge-tnea-code" style={{ background: '#eff6ff', color: '#1d4ed8', border: '1px solid #bfdbfe' }}>Formula: M + P/2 + C/2</span>
             </div>
@@ -132,7 +132,7 @@ export default function NoraAISection({ onOpenBooking }) {
                 🤖
               </div>
               <div>
-                <h4 style={{ fontSize: '1.15rem', color: '#0f172a', margin: 0, fontWeight: 700 }}>Nora AI Viability Analysis</h4>
+                <h4 style={{ fontSize: '1.15rem', color: '#000000', margin: 0, fontWeight: 800 }}>Nora AI Viability Analysis</h4>
                 <span style={{ fontSize: '0.74rem', color: '#2563eb', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>Propensity Engine &bull; SPHEREX Admissions</span>
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function NoraAISection({ onOpenBooking }) {
             </div>
 
             <div style={{ marginBottom: '12px' }}>
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#1e293b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#000000', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                 Recommended SPHEREX Engineering Branches:
               </span>
             </div>
@@ -154,8 +154,8 @@ export default function NoraAISection({ onOpenBooking }) {
               {eligibleBranches.map((b, idx) => (
                 <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-sm)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <strong style={{ fontSize: '0.86rem', color: '#0f172a', display: 'block' }}>{b.name}</strong>
-                    <span style={{ fontSize: '0.72rem', color: '#64748b' }}>{b.campus}</span>
+                    <strong style={{ fontSize: '0.86rem', color: '#000000', fontWeight: 800, display: 'block' }}>{b.name}</strong>
+                    <span style={{ fontSize: '0.72rem', color: '#000000', fontWeight: 600 }}>{b.campus}</span>
                   </div>
                   <span style={{ fontSize: '0.72rem', background: '#eff6ff', color: '#2563eb', border: '1px solid #bfdbfe', padding: '3px 8px', borderRadius: '4px', fontWeight: 700 }}>
                     {b.status}

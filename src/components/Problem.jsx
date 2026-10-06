@@ -21,8 +21,8 @@ export default function Problem() {
             <div className="comparison-header">
               <div className="comparison-icon icon-cross">&times;</div>
               <div>
-                <h3>WITHOUT SPHEREX</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>The fragmented legacy struggle</p>
+                <h3 style={{ color: '#000000', fontWeight: 'bold' }}>WITHOUT SPHEREX</h3>
+                <p style={{ color: '#000000', fontWeight: 'bold', fontSize: '0.85rem' }}>The fragmented legacy struggle</p>
               </div>
             </div>
             <ul className="comparison-list">

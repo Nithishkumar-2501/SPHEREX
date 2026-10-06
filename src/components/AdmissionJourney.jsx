@@ -120,10 +120,10 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
               <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: '#000000', fontWeight: 'bold', marginBottom: '8px' }}>
                 SYSTEM AUTOMATION TRIGGER
               </div>
-              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff', marginBottom: '6px' }}>
+              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#000000', marginBottom: '6px' }}>
                 {currentData.triggerTitle}
               </div>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '0.85rem', color: '#000000', fontWeight: 600, lineHeight: 1.5 }}>
                 {currentData.triggerDesc}
               </p>
             </div>

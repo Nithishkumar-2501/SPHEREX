@@ -70,7 +70,7 @@ export default function TechStack() {
           </div>
         </StyledTechWrapper>
 
-        <p className="tech-supporting-text" style={{ marginTop: '28px', textAlign: 'center' }}>
+        <p className="tech-supporting-text" style={{ marginTop: '28px', textAlign: 'center', color: '#000000', fontWeight: 600 }}>
           Dual-Persistence: Local-First <strong>SQLite (Prisma)</strong> for rapid transaction speed + Background <strong>Firebase Dual-Sync</strong> for real-time live replication across all counselor smartphones and desk PCs.
         </p>
       </div>
@@ -181,8 +181,8 @@ const StyledTechWrapper = styled.div`
 
   .tech-name {
     font-size: 1.05rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
+    color: #000000;
     line-height: 1.3;
     margin: 0;
   }
@@ -192,7 +192,9 @@ const StyledTechWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: #000000;
+    font-weight: 600;
+    opacity: 0.95;
     transition: opacity 0.3s ease;
     margin-top: 4px;
   }
@@ -227,7 +229,8 @@ const StyledTechWrapper = styled.div`
 
   .tech-desc {
     font-size: 0.8rem;
-    color: #475569;
+    color: #000000;
+    font-weight: 600;
     line-height: 1.5;
     margin: 0 0 10px 0;
   }
