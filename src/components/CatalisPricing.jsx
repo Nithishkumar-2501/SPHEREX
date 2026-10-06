@@ -5,7 +5,7 @@ export default function CatalisPricing({ onOpenBooking }) {
   const plans = [
     {
       name: 'Basic Plan',
-      price: '₹4,199',
+      price: '₹15,000',
       period: '/month',
       desc: 'Ideal for independent departments or single campus intake without Nora AI.',
       features: [
@@ -19,7 +19,7 @@ export default function CatalisPricing({ onOpenBooking }) {
     },
     {
       name: 'Premium Plan',
-      price: '₹7,499',
+      price: '₹20,000',
       period: '/month',
       popular: true,
       desc: 'Full multi-campus admission operating system with complete Nora AI automation.',
