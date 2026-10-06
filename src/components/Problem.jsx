@@ -41,8 +41,8 @@ export default function Problem() {
             <div className="comparison-header">
               <div className="comparison-icon icon-check">&#10003;</div>
               <div>
-                <h3 className="text-accent-gradient">WITH SPHEREX</h3>
-                <p style={{ color: 'var(--accent-cyan)', fontSize: '0.85rem' }}>The modern admission operating system</p>
+                <h3 style={{ color: '#000000', fontWeight: 'bold' }}>WITH SPHEREX</h3>
+                <p style={{ color: '#000000', fontWeight: 'bold', fontSize: '0.85rem' }}>The modern admission operating system</p>
               </div>
             </div>
             <ul className="comparison-list">
