@@ -89,63 +89,79 @@ const StyledTechWrapper = styled.div`
     position: relative;
     width: 100%;
     height: 190px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
     display: flex;
     align-items: stretch;
     justify-content: center;
     border-radius: 16px;
     cursor: pointer;
     overflow: hidden;
-    transition: box-shadow 0.4s ease;
+    transition: transform 0.35s ease, box-shadow 0.4s ease, background 0.35s ease;
+    box-shadow: 
+      0 20px 50px -12px rgba(15, 23, 42, 0.1),
+      0 8px 20px -6px rgba(37, 99, 235, 0.06);
   }
 
   .card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 
+      0 28px 65px -12px rgba(15, 23, 42, 0.16),
+      0 12px 28px -5px rgba(37, 99, 235, 0.12);
   }
 
-  /* Radiant dual-tone neon gradient frame */
+  /* Radiant dual-tone neon gradient frame - masked border ring for transparent center */
   .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     border-radius: 16px;
+    padding: 2px;
     background: linear-gradient(315deg, #03a9f4, #ff0058);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
+    z-index: 2;
   }
 
-  /* Blooming ambient neon blur layer */
+  /* Blooming ambient neon blur layer around borders */
   .card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     border-radius: 16px;
+    padding: 2px;
     background: linear-gradient(315deg, #03a9f4, #ff0058);
-    filter: blur(24px);
-    opacity: 0.25;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: blur(10px);
+    opacity: 0.35;
     transition: filter 0.5s ease, opacity 0.5s ease;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
   }
 
   .card:hover::after {
-    filter: blur(32px);
-    opacity: 0.85;
+    filter: blur(16px);
+    opacity: 0.75;
   }
 
-  /* Solid white inner plate */
+  /* Transparent liquid glass inner plate with specular highlights */
   .card b {
     position: absolute;
-    inset: 4px;
-    background: #ffffff;
-    border-radius: 12px;
-    z-index: 2;
+    inset: 2px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.12) 100%);
+    border-radius: 14px;
+    z-index: 1;
     pointer-events: none;
+    box-shadow: 
+      inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
 
   .card-content-wrap {
