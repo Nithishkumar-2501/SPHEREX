@@ -4,43 +4,32 @@ import AnimatedSplashButton from './ui/AnimatedSplashButton';
 export default function CatalisPricing({ onOpenBooking }) {
   const plans = [
     {
-      name: 'Starter Plan',
+      name: 'Basic Plan',
       price: '₹4,199',
       period: '/month',
-      desc: 'Ideal for independent departments or single campus intake.',
+      desc: 'Ideal for independent departments or single campus intake without Nora AI.',
       features: [
-        'Basic admission analytics tools',
-        'Up to 3 counselor accounts',
-        'Real-time cutoff monitoring',
-        'Monthly candidate intake reports',
-        'Email & WhatsApp support'
+        { text: 'Basic admission analytics tools', included: true },
+        { text: 'Up to 3 counselor accounts', included: true },
+        { text: 'Real-time cutoff monitoring', included: true },
+        { text: 'Monthly candidate intake reports', included: true },
+        { text: 'Email & WhatsApp outreach support', included: true },
+        { text: 'Nora AI Cutoff OCR & Marksheet Scanner (Not Supported)', included: false }
       ]
     },
     {
-      name: 'Growth Plan',
+      name: 'Premium Plan',
       price: '₹7,499',
       period: '/month',
       popular: true,
-      desc: 'For growing colleges requiring automated quota balancing.',
+      desc: 'Full multi-campus admission operating system with complete Nora AI automation.',
       features: [
-        'Advanced cutoff analytics & Nora AI',
-        'Up to 10 department accounts',
-        'Dynamic faculty allocation matrix',
-        'Real-time dual-campus sync',
-        'Priority counselor support'
-      ]
-    },
-    {
-      name: 'Scale Plan',
-      price: '₹12,499',
-      period: '/month',
-      desc: 'Full multi-campus university operating system.',
-      features: [
-        'Unlimited counselor accounts',
-        'Full WebRTC telephony integration',
-        'On-campus custom installation',
-        'Dedicated SQLite + Cloud database',
-        '24/7 Priority SLA & system training'
+        { text: 'Full Nora AI OCR Marksheet Scanner & Cutoff Evaluation', included: true },
+        { text: 'Advanced cutoff analytics & viability scoring', included: true },
+        { text: 'Unlimited counselor & department accounts', included: true },
+        { text: 'Dynamic faculty allocation matrix & quota balancing', included: true },
+        { text: 'Real-time multi-campus synchronization', included: true },
+        { text: 'WebRTC voice telephony & 24/7 priority support', included: true }
       ]
     }
   ];
@@ -62,7 +51,7 @@ export default function CatalisPricing({ onOpenBooking }) {
           Choose a plan that fits your institutional needs and admission scale.
         </p>
 
-        {/* 3 Pricing Cards */}
+        {/* 2 Pricing Cards */}
         <div className="catalis-pricing-grid">
           {plans.map((p) => (
             <div key={p.name} className={`catalis-pricing-card ${p.popular ? 'is-popular' : ''}`}>
@@ -81,17 +70,24 @@ export default function CatalisPricing({ onOpenBooking }) {
               <div className="pricing-features-wrap">
                 <span className="pricing-features-title">Features:</span>
                 <ul className="pricing-feature-list">
-                  {p.features.map((f, i) => (
-                    <li key={i} className="pricing-feature-item">
-                      <span className="pricing-check-icon">✓</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
+                  {p.features.map((f, i) => {
+                    const isExcluded = typeof f === 'object' && f.included === false;
+                    const text = typeof f === 'object' ? f.text : f;
+                    return (
+                      <li key={i} className={`pricing-feature-item ${isExcluded ? 'is-excluded' : ''}`}>
+                        <span className={`pricing-check-icon ${isExcluded ? 'is-excluded-icon' : ''}`}>
+                          {isExcluded ? '✕' : '✓'}
+                        </span>
+                        <span>{text}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
               <AnimatedSplashButton 
                 label="Get Started"
+                secondaryLabel="Join Now"
                 onClick={onOpenBooking}
               />
             </div>
