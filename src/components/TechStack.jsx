@@ -89,7 +89,7 @@ const StyledTechWrapper = styled.div`
     position: relative;
     width: 100%;
     height: 190px;
-    background: #000;
+    background: #ffffff;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -100,7 +100,7 @@ const StyledTechWrapper = styled.div`
   }
 
   .card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
 
   /* Radiant dual-tone neon gradient frame */
@@ -138,15 +138,13 @@ const StyledTechWrapper = styled.div`
     opacity: 0.85;
   }
 
-  /* Dark frosted inner plate for high text contrast */
+  /* Solid white inner plate */
   .card b {
     position: absolute;
     inset: 4px;
-    background: rgba(7, 12, 28, 0.95);
+    background: #ffffff;
     border-radius: 12px;
     z-index: 2;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     pointer-events: none;
   }
 
@@ -185,15 +183,15 @@ const StyledTechWrapper = styled.div`
     font-size: 0.7rem;
     font-weight: 600;
     font-family: var(--font-mono);
-    color: #38bdf8;
-    background: rgba(56, 189, 248, 0.12);
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.1);
+    border: 1px solid rgba(2, 132, 199, 0.25);
   }
 
   .tech-name {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #0f172a;
     line-height: 1.3;
     margin: 0;
   }
@@ -203,7 +201,7 @@ const StyledTechWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: #94a3b8;
     transition: opacity 0.3s ease;
     margin-top: 4px;
   }
@@ -238,7 +236,7 @@ const StyledTechWrapper = styled.div`
 
   .tech-desc {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: #475569;
     line-height: 1.5;
     margin: 0 0 10px 0;
   }
@@ -260,9 +258,9 @@ const StyledTechWrapper = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.05);
+    color: #334155;
+    border: 1px solid rgba(15, 23, 42, 0.1);
     text-decoration: none;
     transition: all 0.3s ease;
   }

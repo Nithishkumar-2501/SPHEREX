@@ -385,12 +385,12 @@ const Styled3DWrapper = styled.div`
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
+    background: #ffffff;
     box-shadow: 
-      0 18px 40px -10px rgba(0, 0, 0, 0.5),
-      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+      0 18px 40px -10px rgba(15, 23, 42, 0.12),
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
       inset 0 -1px 1px 0 rgba(var(--color-card), 0.2),
-      0 0 0 1px rgba(var(--color-card), 0.15);
+      0 0 0 1px rgba(var(--color-card), 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -401,9 +401,9 @@ const Styled3DWrapper = styled.div`
     border-color: rgba(var(--color-card), 0.9);
     border-top-color: rgba(255, 255, 255, 0.95);
     box-shadow: 
-      0 24px 50px -8px rgba(0, 0, 0, 0.6),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
-      0 0 25px -4px rgba(var(--color-card), 0.35);
+      0 24px 50px -8px rgba(15, 23, 42, 0.18),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+      0 0 25px -4px rgba(var(--color-card), 0.25);
   }
 
   .card-body {
@@ -456,7 +456,7 @@ const Styled3DWrapper = styled.div`
   .dept-title {
     font-size: 0.94rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #0f172a;
     line-height: 1.32;
     margin: 6px 0 4px 0;
   }
@@ -470,7 +470,7 @@ const Styled3DWrapper = styled.div`
   }
 
   .metric-label {
-    color: #94a3b8;
+    color: #64748b;
   }
 
   .metric-val {
@@ -486,8 +486,8 @@ const Styled3DWrapper = styled.div`
   }
 
   .stat-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 8px;
     padding: 5px 8px;
     display: flex;
@@ -497,7 +497,7 @@ const Styled3DWrapper = styled.div`
 
   .pill-label {
     font-size: 0.62rem;
-    color: #94a3b8;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
@@ -506,7 +506,7 @@ const Styled3DWrapper = styled.div`
   .pill-value {
     font-size: 0.82rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #0f172a;
     font-family: var(--font-mono);
   }
 
@@ -515,7 +515,7 @@ const Styled3DWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding-top: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .sci {
@@ -534,9 +534,9 @@ const Styled3DWrapper = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.05);
+    color: #334155;
+    border: 1px solid rgba(15, 23, 42, 0.1);
     text-decoration: none;
     transition: all 0.2s ease;
   }
@@ -549,7 +549,7 @@ const Styled3DWrapper = styled.div`
 
   .card-explore-tag {
     font-size: 0.72rem;
-    color: #94a3b8;
+    color: #64748b;
     font-weight: 600;
   }
 
@@ -586,12 +586,12 @@ const StyledGridWrapper = styled.div`
     border-top: 1.5px solid rgba(255, 255, 255, 0.75);
     border-radius: 18px;
     overflow: hidden;
-    background: linear-gradient(180deg, #111827 0%, #0f172a 60%, #080d1a 100%);
+    background: #ffffff;
     box-shadow: 
-      0 12px 30px -8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+      0 12px 30px -8px rgba(15, 23, 42, 0.12),
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
       inset 0 -1px 1px 0 rgba(var(--color-card), 0.2),
-      0 0 0 1px rgba(var(--color-card), 0.15);
+      0 0 0 1px rgba(var(--color-card), 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -603,9 +603,9 @@ const StyledGridWrapper = styled.div`
     border-color: rgba(var(--color-card), 0.9);
     border-top-color: rgba(255, 255, 255, 0.95);
     box-shadow: 
-      0 20px 45px -8px rgba(0, 0, 0, 0.55),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
-      0 0 25px -4px rgba(var(--color-card), 0.35);
+      0 20px 45px -8px rgba(15, 23, 42, 0.18),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+      0 0 25px -4px rgba(var(--color-card), 0.25);
   }
 
   .card-body {

@@ -186,7 +186,7 @@ const StyledFacultyWrapper = styled.div`
     position: relative;
     width: 100%;
     height: 410px;
-    background: #000;
+    background: #ffffff;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -197,7 +197,7 @@ const StyledFacultyWrapper = styled.div`
   }
 
   .card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
 
   /* Radiant dual-tone neon gradient frame */
@@ -235,15 +235,13 @@ const StyledFacultyWrapper = styled.div`
     opacity: 0.88;
   }
 
-  /* Solid dark frosted inner plate for high text contrast */
+  /* Solid white inner plate */
   .card b {
     position: absolute;
     inset: 4px;
-    background: rgba(7, 12, 28, 0.95);
+    background: #ffffff;
     border-radius: 12px;
     z-index: 2;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     pointer-events: none;
   }
 
@@ -319,28 +317,29 @@ const StyledFacultyWrapper = styled.div`
   .faculty-name {
     font-size: 1.15rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 4px;
     letter-spacing: -0.01em;
   }
 
   .faculty-role {
     font-size: 0.76rem;
-    color: var(--primary-light);
+    color: #2563eb;
     font-family: var(--font-mono);
     margin-bottom: 4px;
+    font-weight: 600;
   }
 
   .faculty-dept {
     font-size: 0.82rem;
-    color: var(--text-muted);
+    color: #64748b;
     font-weight: 500;
   }
 
   .card-hint {
     margin-top: 14px;
     font-size: 0.72rem;
-    color: #64748b;
+    color: #94a3b8;
     font-family: var(--font-mono);
     opacity: 0.85;
     transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
@@ -378,7 +377,7 @@ const StyledFacultyWrapper = styled.div`
 
   .meta-info {
     font-size: 0.76rem;
-    color: var(--text-secondary);
+    color: #64748b;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -387,7 +386,7 @@ const StyledFacultyWrapper = styled.div`
 
   .phone-num {
     font-family: var(--font-mono);
-    color: var(--primary-light);
+    color: #2563eb;
     font-weight: 600;
   }
 
@@ -407,19 +406,19 @@ const StyledFacultyWrapper = styled.div`
     background: rgba(3, 169, 244, 0.12);
     border: 1px solid rgba(3, 169, 244, 0.35);
     border-radius: 6px;
-    color: #38bdf8;
+    color: #0284c7;
   }
 
   .quota-text {
     font-size: 0.74rem;
-    color: var(--text-muted);
+    color: #64748b;
     font-family: var(--font-mono);
   }
 
   .progress-track {
     width: 100%;
     height: 6px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.08);
     border-radius: 99rem;
     overflow: hidden;
     margin-bottom: 14px;
@@ -448,9 +447,9 @@ const StyledFacultyWrapper = styled.div`
   .sci li a {
     position: relative;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #334155;
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.1);
     width: 34px;
     height: 34px;
     display: flex;
