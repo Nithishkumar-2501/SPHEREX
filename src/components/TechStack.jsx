@@ -19,6 +19,7 @@ const technologies = [
 export default function TechStack() {
   return (
     <section className="section" id="tech-stack" style={{ padding: '80px 0', position: 'relative' }}>
+      <span id="architecture" style={{ position: 'absolute', top: '-90px', pointerEvents: 'none' }} aria-hidden="true" />
       <span id="blog" style={{ position: 'absolute', top: '-90px', pointerEvents: 'none' }} aria-hidden="true" />
       <div className="container">
         <div className="section-header" style={{ marginBottom: '40px' }}>

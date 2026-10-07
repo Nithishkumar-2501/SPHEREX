@@ -212,7 +212,7 @@ export default function MultiCampus() {
                           <div className="card-footer-row">
                             <ul className="sci">
                               <li>
-                                <a href="#leads" title="View Department Enquiries">
+                                <a href="#lead-management" title="View Department Enquiries">
                                   <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
                                   </svg>
@@ -285,7 +285,7 @@ export default function MultiCampus() {
                         <div className="card-footer-row">
                           <ul className="sci">
                             <li>
-                              <a href="#leads" title="View Department Enquiries">
+                              <a href="#lead-management" title="View Department Enquiries">
                                 <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
                                   <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.633 13.067 13.067 0 0 1-6.761 1.87 13.067 13.067 0 0 1-6.76-1.87.75.75 0 0 1-.364-.633l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.66.75.75 0 0 0 .424-.672v-.002c0-2.67-1.92-4.88-4.496-5.328a6.388 6.388 0 0 1-.754 6.558Z" />
                                 </svg>

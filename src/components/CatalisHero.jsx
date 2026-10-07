@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, ArrowDown, Play, ChevronDown } from "lucide-react";
+import React from "react";
+import { motion } from "motion/react";
+import { ArrowDown, Play } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import FancyShineButton from "./ui/FancyShineButton";
@@ -12,15 +12,8 @@ export default function CatalisHero(props) {
 }
 
 export function Hero2({
-    brand = "SPHEREX",
-    navLinks = [
-        { label: "About us", href: "#about-us" },
-        { label: "Benefits", href: "#features" },
-        { label: "Platform", href: "#platform" },
-        { label: "Nora AI", href: "#nora-ai" },
-        { label: "Pricing", href: "#pricing" },
-        { label: "Campuses", href: "#multi-campus" }
-    ],
+    brand: _brand = "SPHEREX",
+    navLinks: _navLinks,
     headline = (
         <>
             Build and <span className="italic font-medium font-serif text-[oklch(0.6378_0.1051_172.72)]">Growth</span> with<br />
@@ -35,15 +28,11 @@ export function Hero2({
         { label: "Instagram", href: "#" },
         { label: "Behance", href: "#" }
     ],
-    signInLabel = "Book Meeting",
+    signInLabel: _signInLabel = "Book Meeting",
     className,
     onOpenBooking,
-    onOpenDemo
+    onOpenDemo: _onOpenDemo
 }) {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [hoveredLink, setHoveredLink] = useState(null);
-    const [activeLink, setActiveLink] = useState(navLinks[0]?.label || null);
-
     const itemVariants = {
         hidden: { opacity: 0, y: 15 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -54,21 +43,9 @@ export function Hero2({
         visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
     };
 
-    const handleNavClick = (e, link) => {
-        if (link.href && link.href.startsWith('#')) {
-            e.preventDefault();
-            const targetId = link.href.replace('#', '');
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        setActiveLink(link.label);
-        setIsMobileMenuOpen(false);
-    };
-
     return (
         <section
+            id="hero"
             className={cn(
                 "relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-slate-50 selection:bg-emerald-100 selection:text-emerald-900",
                 className
@@ -83,122 +60,12 @@ export function Hero2({
                 />
             </div>
 
-            {/* Header / Navbar */}
-            <div className="w-full max-w-[1440px] mx-auto relative z-50">
-                <header className="flex items-center justify-between px-6 md:px-10 lg:px-16 xl:px-24 py-6 md:py-8">
-                    {/* Brand Logo */}
-                    <a href="#hero" className="flex items-center gap-2 group">
-                        {typeof brand === "string" ? (
-                            <span className="relative text-black font-extrabold text-xl tracking-tight select-none flex items-center gap-2">
-                                <img src="/logo.png?v=3" alt="SPHEREX" className="w-8 h-8 object-contain" />
-                                <span>{brand}</span>
-                                <span className="absolute top-1 -right-1.5 w-1 h-1 rounded-full bg-[oklch(0.6378_0.1051_172.72)]"></span>
-                            </span>
-                        ) : (
-                            brand
-                        )}
-                    </a>
-
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:block">
-                        <ul className="flex items-center gap-8 lg:gap-12" onMouseLeave={() => setHoveredLink(null)}>
-                            {navLinks.map((link) => (
-                                <li
-                                    key={link.label}
-                                    className="relative py-2 flex flex-col items-center group"
-                                    onMouseEnter={() => setHoveredLink(link.label)}
-                                >
-                                    <a
-                                        href={link.href}
-                                        onClick={(e) => handleNavClick(e, link)}
-                                        className={cn(
-                                            "text-sm font-bold transition-colors flex items-center gap-1.5",
-                                            (hoveredLink === link.label || (!hoveredLink && activeLink === link.label)) ? "text-black" : "text-black/80"
-                                        )}
-                                    >
-                                        {link.label}
-                                        {link.hasDropdown && (
-                                            <ChevronDown className="w-3.5 h-3.5 opacity-70 stroke-[2.5] transition-transform duration-200 group-hover:rotate-180" />
-                                        )}
-                                    </a>
-                                    {/* Active/Hover Indicator Dot */}
-                                    {(hoveredLink === link.label || (!hoveredLink && activeLink === link.label)) && (
-                                        <motion.span
-                                            layoutId="activeDot"
-                                            className="absolute -bottom-1.5 w-1 h-1 rounded-full bg-[oklch(0.6378_0.1051_172.72)]"
-                                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                        />
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-
-                    {/* Desktop Sign in / Meeting button */}
-                    <div className="hidden md:block">
-                        <FancyShineButton label={signInLabel} onClick={onOpenBooking} />
-                    </div>
-
-                    {/* Mobile Menu Toggle */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden z-50 p-2"
-                        aria-label="Toggle Menu"
-                    >
-                        <div className="w-5 flex flex-col gap-1.5">
-                            <span className={cn("h-0.5 bg-slate-900 transition-transform", isMobileMenuOpen ? "rotate-45 translate-y-2" : "")} />
-                            <span className={cn("h-0.5 bg-slate-900 transition-opacity", isMobileMenuOpen ? "opacity-0" : "")} />
-                            <span className={cn("h-0.5 bg-slate-900 transition-transform", isMobileMenuOpen ? "-rotate-45 -translate-y-2" : "")} />
-                        </div>
-                    </button>
-                </header>
-            </div>
-
-            {/* Mobile Navigation Drawer */}
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute inset-0 bg-white z-40 flex flex-col pt-24 px-6 pb-6 h-screen"
-                    >
-                        <nav className="flex flex-col gap-6">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    onClick={(e) => handleNavClick(e, link)}
-                                    className={cn(
-                                        "text-2xl font-bold flex items-center gap-2",
-                                        activeLink === link.label ? "text-black" : "text-black/70"
-                                    )}
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
-                        </nav>
-                        <div className="mt-auto">
-                            <Button 
-                                onClick={() => {
-                                    setIsMobileMenuOpen(false);
-                                    if (onOpenBooking) onOpenBooking();
-                                }}
-                                className="w-full rounded-full bg-[oklch(0.6378_0.1051_172.72)] hover:opacity-90 text-white h-12 text-base"
-                            >
-                                {signInLabel}
-                            </Button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
             {/* Main Content Area */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-12 md:py-20"
+                className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pt-28 md:pt-36 pb-12 md:pb-20"
             >
                 <div className="max-w-2xl lg:max-w-3xl">
                     <motion.h1
@@ -246,6 +113,11 @@ export function Hero2({
                         <a
                             key={social.label}
                             href={social.href}
+                            onClick={(e) => {
+                                if (social.href === '#') {
+                                    e.preventDefault();
+                                }
+                            }}
                             className="text-black font-bold hover:opacity-75 text-sm md:text-base transition-colors"
                         >
                             {social.label}

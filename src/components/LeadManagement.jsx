@@ -13,7 +13,8 @@ export default function LeadManagement({ onOpenBooking }) {
   const [selectedDistrict, setSelectedDistrict] = useState('Karur');
 
   return (
-    <section className="section" id="lead-management">
+    <section className="section" id="lead-management" style={{ position: 'relative' }}>
+      <span id="leads" style={{ position: 'absolute', top: '-90px', pointerEvents: 'none' }} aria-hidden="true" />
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">
