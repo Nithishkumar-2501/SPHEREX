@@ -84,7 +84,7 @@ export function Hero2({
 
                     <motion.div 
                         variants={itemVariants} 
-                        className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+                        className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
                         style={{ marginTop: 'calc(2rem + 0.5cm)' }}
                     >
                         <FancyShineButton label={primaryCtaLabel} onClick={onOpenBooking} />
