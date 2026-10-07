@@ -248,24 +248,23 @@ const StyledWrapper = styled.div`
   /* Variant White: Pure white capsule/box with bold black letters */
   .button.variant-white::before {
     background-color: #ffffff;
-    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    border: 1.5px solid #000000;
     box-shadow:
-      0 3px 10px rgba(0, 0, 0, 0.06),
-      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 3px 10px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.05),
       inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 
   .button.variant-white.is-active::before {
     background-color: #ffffff;
-    border: 2px solid #000000;
+    border: 1.5px solid #000000;
     box-shadow:
-      0 4px 14px rgba(0, 0, 0, 0.14),
-      0 0 0 1px #000000;
+      0 4px 14px rgba(0, 0, 0, 0.12);
   }
 
   .button.variant-white:hover::before {
-    border-color: rgba(0, 0, 0, 0.35);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+    border-color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
 
   .button.variant-white::after {

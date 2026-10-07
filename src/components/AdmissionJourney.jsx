@@ -78,11 +78,44 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
             {[1, 2, 3, 4, 5, 6, 7].map((num) => {
               const labels = ['New Enquiry', 'Contacted', 'Counselling', 'Qualified', 'Application', 'Admitted', 'Payment'];
               const isActive = activeStage === num;
+              const isNewEnquiry = num === 1;
+
+              if (isNewEnquiry) {
+                return (
+                  <StarButton
+                    key={num}
+                    size="sm"
+                    variant="white"
+                    active={isActive}
+                    onClick={() => setActiveStage(num)}
+                    style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                  >
+                    <span style={{ 
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '22px',
+                      height: '22px',
+                      borderRadius: '50%',
+                      background: '#e2e8f0',
+                      color: '#000000',
+                      border: '1px solid #000000',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 800,
+                      fontSize: '0.72rem'
+                    }}>
+                      01
+                    </span>
+                    <span style={{ color: '#000000', fontWeight: 800 }}>New Enquiry</span>
+                  </StarButton>
+                );
+              }
+
               return (
                 <StarButton
                   key={num}
                   size="sm"
-                  variant="white"
+                  variant="tab"
                   active={isActive}
                   onClick={() => setActiveStage(num)}
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
@@ -94,16 +127,15 @@ export default function AdmissionJourney({ onOpenBooking, onOpenDemo: _onOpenDem
                     width: '22px',
                     height: '22px',
                     borderRadius: '50%',
-                    background: isActive ? '#e2e8f0' : '#f8fafc',
-                    color: '#000000',
-                    border: isActive ? '2px solid #000000' : '1px solid #cbd5e1',
+                    background: isActive ? '#181818' : 'rgba(254, 193, 149, 0.2)',
+                    color: isActive ? '#fec195' : '#fff',
                     fontFamily: 'var(--font-mono)',
-                    fontWeight: 800,
+                    fontWeight: 700,
                     fontSize: '0.72rem'
                   }}>
                     {String(num).padStart(2, '0')}
                   </span>
-                  <span style={{ color: '#000000', fontWeight: isActive ? 800 : 700 }}>{labels[num - 1]}</span>
+                  <span>{labels[num - 1]}</span>
                 </StarButton>
               );
             })}
