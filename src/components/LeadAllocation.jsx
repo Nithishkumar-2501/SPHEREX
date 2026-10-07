@@ -52,6 +52,13 @@ const teachers = [
   }
 ];
 
+const avatarThemes = [
+  { bg: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)', color: '#1e40af' },
+  { bg: 'linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%)', color: '#c2410c' },
+  { bg: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)', color: '#7e22ce' },
+  { bg: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)', color: '#15803d' }
+];
+
 export default function LeadAllocation({ onOpenBooking }) {
   return (
     <section className="section" id="lead-assignment">
@@ -97,9 +104,10 @@ export default function LeadAllocation({ onOpenBooking }) {
         {/* 4 Featured Faculty Cards Grid with Uiverse Glow & Drawer UI */}
         <StyledFacultyWrapper>
           <div className="faculty-grid">
-            {teachers.map((teacher) => {
+            {teachers.map((teacher, idx) => {
               const percent = Math.min(100, Math.round((teacher.assigned / teacher.quota) * 100));
               const initials = teacher.name.split(' ').map(n => n[0]).join('').slice(0, 2);
+              const theme = avatarThemes[idx % avatarThemes.length];
 
               return (
                 <div className="card" key={teacher.id}>
@@ -109,7 +117,15 @@ export default function LeadAllocation({ onOpenBooking }) {
                     {/* Top Identity: Avatar, Name, Role */}
                     <div className="card-top-section">
                       <div className="avatar-wrap">
-                        <div className="avatar-circle">{initials}</div>
+                        <div 
+                          className="avatar-circle"
+                          style={{
+                            background: theme.bg,
+                            color: theme.color
+                          }}
+                        >
+                          {initials}
+                        </div>
                         <span className="status-badge">{teacher.status}</span>
                       </div>
                       <h4 className="faculty-name">{teacher.name}</h4>
@@ -263,39 +279,56 @@ const StyledFacultyWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 12px;
     position: relative;
   }
 
   .avatar-circle {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #03a9f4 0%, #ff0058 100%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 1.15rem;
-    color: #fff;
-    box-shadow: 0 4px 18px rgba(3, 169, 244, 0.35);
-    transition: transform 0.4s ease;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    border: 2.5px solid #ffffff;
+    box-shadow: 
+      0 4px 12px rgba(15, 23, 42, 0.08),
+      0 1px 3px rgba(15, 23, 42, 0.04);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   }
 
   .card:hover .avatar-circle {
-    transform: scale(0.92);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 
+      0 8px 18px rgba(15, 23, 42, 0.12),
+      0 2px 4px rgba(15, 23, 42, 0.06);
   }
 
   .status-badge {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     font-family: var(--font-mono);
-    background: rgba(52, 211, 153, 0.16);
-    color: #34d399;
-    padding: 2px 8px;
+    background: rgba(220, 252, 231, 0.9);
+    color: #15803d;
+    padding: 3px 9px;
     border-radius: 99rem;
-    border: 1px solid rgba(52, 211, 153, 0.35);
+    border: 1px solid rgba(134, 239, 172, 0.8);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 1px 3px rgba(22, 163, 74, 0.08);
+  }
+
+  .status-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16a34a;
   }
 
   .faculty-name {
