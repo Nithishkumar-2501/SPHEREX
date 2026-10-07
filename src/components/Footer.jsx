@@ -26,23 +26,23 @@ export default function Footer({ onOpenBooking }) {
           <div className="footer-col">
             <h4>Institutional Campuses</h4>
             <ul>
-              <li><a href="#multi-campus">Campus 01 (Main Campus)</a></li>
-              <li><a href="#multi-campus">Campus 02 (City Campus)</a></li>
-              <li><a href="#lead-assignment">16+ Faculty Portals</a></li>
-              <li><a href="#nora-ai">TNEA Cutoff Calculator</a></li>
-              <li><a href="#mobile-app">Mobile App Options</a></li>
+              <li><a href="#multi-campus" style={{ color: '#ffffff' }}>Campus 01 (Main Campus)</a></li>
+              <li><a href="#multi-campus" style={{ color: '#ffffff' }}>Campus 02 (City Campus)</a></li>
+              <li><a href="#lead-assignment" style={{ color: '#ffffff' }}>16+ Faculty Portals</a></li>
+              <li><a href="#nora-ai" style={{ color: '#ffffff' }}>TNEA Cutoff Calculator</a></li>
+              <li><a href="#mobile-app" style={{ color: '#ffffff' }}>Mobile App Options</a></li>
             </ul>
           </div>
 
           <div className="footer-col">
             <h4>System Modules</h4>
             <ul>
-              <li><a href="#lead-management">3-Sheet Candidate Entry</a></li>
-              <li><a href="#lead-assignment">Batch Quota Splitting</a></li>
-              <li><a href="#marketing">Omnichannel Marketing</a></li>
-              <li><a href="#voice-calling">WebRTC Telephony (Port 5000)</a></li>
-              <li><a href="#nora-ai">Nora AI OCR Engine</a></li>
-              <li><a href="#tech-stack">Prisma SQLite &amp; Firebase</a></li>
+              <li><a href="#lead-management" style={{ color: '#ffffff' }}>3-Sheet Candidate Entry</a></li>
+              <li><a href="#lead-assignment" style={{ color: '#ffffff' }}>Batch Quota Splitting</a></li>
+              <li><a href="#marketing" style={{ color: '#ffffff' }}>Omnichannel Marketing</a></li>
+              <li><a href="#voice-calling" style={{ color: '#ffffff' }}>WebRTC Telephony (Port 5000)</a></li>
+              <li><a href="#nora-ai" style={{ color: '#ffffff' }}>Nora AI OCR Engine</a></li>
+              <li><a href="#tech-stack" style={{ color: '#ffffff' }}>Prisma SQLite &amp; Firebase</a></li>
             </ul>
           </div>
 

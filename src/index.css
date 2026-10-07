@@ -2810,19 +2810,22 @@ section[id] {
   gap: 12px;
 }
 
-.footer-col a {
-  color: rgba(255, 255, 255, 0.88);
+.footer-col a,
+.footer-col ul li a {
+  color: #ffffff !important;
   text-decoration: none;
   font-size: 0.88rem;
-  transition: color 0.2s ease;
+  font-weight: 500;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-.footer-col a:hover {
-  color: #38bdf8;
+.footer-col a:hover,
+.footer-col ul li a:hover {
+  color: #38bdf8 !important;
 }
 
 .footer-col strong {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .footer-bottom {
