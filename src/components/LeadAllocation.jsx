@@ -341,10 +341,10 @@ const StyledFacultyWrapper = styled.div`
 
   .faculty-role {
     font-size: 0.76rem;
-    color: #2563eb;
+    color: #000000;
     font-family: var(--font-mono);
     margin-bottom: 4px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .faculty-dept {
@@ -405,8 +405,8 @@ const StyledFacultyWrapper = styled.div`
 
   .phone-num {
     font-family: var(--font-mono);
-    color: #2563eb;
-    font-weight: 600;
+    color: #000000;
+    font-weight: 700;
   }
 
   .range-row {
@@ -422,16 +422,16 @@ const StyledFacultyWrapper = styled.div`
     font-family: var(--font-mono);
     font-weight: 700;
     padding: 3px 8px;
-    background: rgba(3, 169, 244, 0.12);
-    border: 1px solid rgba(3, 169, 244, 0.35);
+    background: rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.15);
     border-radius: 6px;
-    color: #0284c7;
+    color: #000000;
   }
 
   .quota-text {
     font-size: 0.74rem;
     color: #000000;
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-mono);
   }
 
@@ -446,7 +446,7 @@ const StyledFacultyWrapper = styled.div`
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #03a9f4, #ff0058);
+    background: #000000;
     border-radius: 99rem;
   }
 
@@ -467,9 +467,9 @@ const StyledFacultyWrapper = styled.div`
   .sci li a {
     position: relative;
     text-decoration: none;
-    color: #334155;
-    background: rgba(15, 23, 42, 0.04);
-    border: 1px solid rgba(15, 23, 42, 0.1);
+    color: #000000;
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.15);
     width: 34px;
     height: 34px;
     display: flex;
