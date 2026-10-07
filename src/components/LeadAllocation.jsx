@@ -187,39 +187,33 @@ const StyledFacultyWrapper = styled.div`
     width: 100%;
     height: 410px;
     background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
     display: flex;
     align-items: stretch;
     justify-content: center;
     border-radius: 16px;
     cursor: pointer;
     overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.4s ease, background 0.35s ease;
+    transition: transform 0.35s ease, box-shadow 0.4s ease, background 0.35s ease, border-color 0.35s ease;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-top: 2px solid rgba(255, 255, 255, 0.95);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
     box-shadow: 
-      0 12px 30px -8px rgba(15, 23, 42, 0.08),
-      0 4px 12px -4px rgba(37, 99, 235, 0.04);
+      0 18px 45px -10px rgba(15, 23, 42, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.45),
+      inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.25);
   }
 
   .card:hover {
     transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.95);
     box-shadow: 
-      0 20px 45px -8px rgba(15, 23, 42, 0.12),
-      0 8px 20px -5px rgba(37, 99, 235, 0.08);
-  }
-
-  /* Radiant dual-tone neon gradient frame - masked border ring for transparent center */
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    padding: 2px;
-    background: linear-gradient(315deg, #03a9f4, #ff0058);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 2;
+      0 24px 50px -10px rgba(37, 99, 235, 0.14),
+      0 0 0 1px rgba(255, 255, 255, 0.75),
+      inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
   }
 
   /* Transparent crystal inner plate with specular highlights (no blur) */
