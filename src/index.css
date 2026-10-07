@@ -3262,7 +3262,7 @@ section[id] {
   gap: 12px;
 }
 
-/* Quick Action Buttons for Leads */
+/* Quick Action Buttons for Leads (Deactivated preview layout) */
 .action-btn-pill {
   padding: 6px 12px;
   border-radius: var(--radius-full);
@@ -3271,43 +3271,35 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid transparent;
-  cursor: pointer;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #000000 !important;
+  cursor: default;
   transition: all 0.2s ease;
   text-decoration: none;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.action-btn-call {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.35);
+.action-btn-call,
+.action-btn-wa,
+.action-btn-ai,
+.action-btn-deactive {
+  background: #ffffff;
+  color: #000000 !important;
+  border-color: #cbd5e1;
+  cursor: default;
+  pointer-events: none;
 }
 
-.action-btn-call:hover {
-  background: #38bdf8;
-  color: #02040a;
-}
-
-.action-btn-wa {
-  background: rgba(37, 211, 102, 0.15);
-  color: #25d366;
-  border-color: rgba(37, 211, 102, 0.35);
-}
-
-.action-btn-wa:hover {
-  background: #25d366;
-  color: #02040a;
-}
-
-.action-btn-ai {
-  background: rgba(168, 85, 247, 0.15);
-  color: #c084fc;
-  border-color: rgba(168, 85, 247, 0.35);
-}
-
-.action-btn-ai:hover {
-  background: #a855f7;
-  color: #ffffff;
+.action-btn-call:hover,
+.action-btn-wa:hover,
+.action-btn-ai:hover,
+.action-btn-deactive:hover {
+  background: #ffffff;
+  color: #000000 !important;
+  border-color: #cbd5e1;
 }
 
 /* ==========================================================================

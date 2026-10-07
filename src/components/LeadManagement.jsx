@@ -317,9 +317,9 @@ export default function LeadManagement({ onOpenBooking }) {
                     <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#0284c7' }}>194.50</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <a href="tel:+919876543210" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
-                        <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
-                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
+                        <span className="action-btn-pill action-btn-call" title="Native Call (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>📞 Native Call</span>
+                        <span className="action-btn-pill action-btn-wa" title="WhatsApp Message (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>💬 WhatsApp</span>
+                        <span className="action-btn-pill action-btn-ai" title="AI Marksheet Review (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>🤖 Nora AI Review</span>
                       </div>
                     </td>
                   </tr>
@@ -340,9 +340,9 @@ export default function LeadManagement({ onOpenBooking }) {
                     <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#0284c7' }}>196.00</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <a href="tel:+919443322110" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
-                        <a href="https://wa.me/919443322110" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
-                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
+                        <span className="action-btn-pill action-btn-call" title="Native Call (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>📞 Native Call</span>
+                        <span className="action-btn-pill action-btn-wa" title="WhatsApp Message (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>💬 WhatsApp</span>
+                        <span className="action-btn-pill action-btn-ai" title="AI Marksheet Review (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>🤖 Nora AI Review</span>
                       </div>
                     </td>
                   </tr>
@@ -357,15 +357,15 @@ export default function LeadManagement({ onOpenBooking }) {
                         </div>
                       </div>
                     </td>
-                    <td style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-light)' }}>+91-9442211009</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', color: '#2563eb', fontWeight: 600 }}>+91-9442211009</td>
                     <td>ECE &bull; Campus 01</td>
                     <td><span className="badge-range-tag">SC</span></td>
-                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#00f0ff' }}>188.50</td>
+                    <td style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#0284c7' }}>188.50</td>
                     <td>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <a href="tel:+919442211009" className="action-btn-pill action-btn-call" title="Initiate Call" style={{ textDecoration: 'none', cursor: 'pointer' }}>📞 Native Call</a>
-                        <a href="https://wa.me/919442211009" target="_blank" rel="noopener noreferrer" className="action-btn-pill action-btn-wa" title="WhatsApp Message" style={{ textDecoration: 'none', cursor: 'pointer' }}>💬 WhatsApp</a>
-                        <a href="#nora-ai" className="action-btn-pill action-btn-ai" title="AI Marksheet Review" style={{ textDecoration: 'none', cursor: 'pointer' }}>🤖 Nora AI Review</a>
+                        <span className="action-btn-pill action-btn-call" title="Native Call (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>📞 Native Call</span>
+                        <span className="action-btn-pill action-btn-wa" title="WhatsApp Message (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>💬 WhatsApp</span>
+                        <span className="action-btn-pill action-btn-ai" title="AI Marksheet Review (Deactivated)" style={{ textDecoration: 'none', cursor: 'default', color: '#000000' }}>🤖 Nora AI Review</span>
                       </div>
                     </td>
                   </tr>
