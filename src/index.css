@@ -3011,14 +3011,15 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(52, 211, 153, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #34d399;
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  color: #000000;
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 3px 8px;
   border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* 3-Sheet Entry System Styles */

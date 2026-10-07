@@ -420,12 +420,13 @@ const StyledFacultyWrapper = styled.div`
   .badge-range-tag {
     font-size: 0.72rem;
     font-family: var(--font-mono);
-    font-weight: 700;
+    font-weight: 800;
     padding: 3px 8px;
-    background: rgba(15, 23, 42, 0.06);
-    border: 1px solid rgba(15, 23, 42, 0.15);
+    background: #ffffff;
+    border: 1.5px solid #000000;
     border-radius: 6px;
     color: #000000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
   .quota-text {
