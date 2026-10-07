@@ -135,12 +135,12 @@ export default function MultiCampus() {
           </div>
 
           {/* Campus Header Card */}
-          <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+          <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.04)', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <div>
-              <h3 style={{ fontSize: '1.15rem', color: '#ffffff', fontWeight: 700, margin: '0 0 4px 0' }}>{campus.name}</h3>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>📍 {campus.location}</p>
+              <h3 style={{ fontSize: '1.15rem', color: '#000000', fontWeight: 800, margin: '0 0 4px 0' }}>{campus.name}</h3>
+              <p style={{ fontSize: '0.8rem', color: '#000000', fontWeight: 600, margin: 0 }}>📍 {campus.location}</p>
             </div>
-            <div style={{ fontSize: '0.82rem', color: '#38bdf8', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+            <div style={{ fontSize: '0.82rem', color: '#1d4ed8', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
               {campus.intakeStats}
             </div>
           </div>
