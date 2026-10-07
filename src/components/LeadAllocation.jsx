@@ -68,28 +68,28 @@ export default function LeadAllocation({ onOpenBooking }) {
         </div>
 
         {/* Workflow Showcase Box */}
-        <div className="glass-card" style={{ padding: '28px', marginBottom: '32px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+        <div className="glass-card" style={{ padding: '28px', marginBottom: '32px', border: '1.5px solid rgba(255, 255, 255, 0.75)', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', boxShadow: '0 4px 16px rgba(37, 99, 235, 0.06)' }}>
           <div style={{ marginBottom: '16px' }}>
             <div>
-              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--primary-light)', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#2563eb', textTransform: 'uppercase', fontWeight: 700 }}>
                 Batch Splitting Architecture
               </span>
-              <h3 style={{ fontSize: '1.2rem', color: '#fff', margin: '4px 0 0 0' }}>How Administrators Split Leads in SPHEREX</h3>
+              <h3 style={{ fontSize: '1.2rem', color: '#000000', fontWeight: 800, margin: '4px 0 0 0' }}>How Administrators Split Leads in SPHEREX</h3>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-            <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
-              <strong style={{ color: 'var(--primary-light)', fontSize: '0.9rem', display: 'block', marginBottom: '4px' }}>1. Batch Ranges</strong>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>Assign contact ranges (e.g. #1–#100, #101–#200) so faculty counselors never overlap.</p>
+            <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1.5px solid rgba(255, 255, 255, 0.75)' }}>
+              <strong style={{ color: '#1d4ed8', fontSize: '0.9rem', display: 'block', marginBottom: '4px', fontWeight: 800 }}>1. Batch Ranges</strong>
+              <p style={{ fontSize: '0.8rem', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>Assign contact ranges (e.g. #1–#100, #101–#200) so faculty counselors never overlap.</p>
             </div>
-            <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
-              <strong style={{ color: '#34d399', fontSize: '0.9rem', display: 'block', marginBottom: '4px' }}>2. Quota Balancer</strong>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>Set maximum lead limits (100–1,000) per professor to prevent counseling burnout.</p>
+            <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1.5px solid rgba(255, 255, 255, 0.75)' }}>
+              <strong style={{ color: '#059669', fontSize: '0.9rem', display: 'block', marginBottom: '4px', fontWeight: 800 }}>2. Quota Balancer</strong>
+              <p style={{ fontSize: '0.8rem', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>Set maximum lead limits (100–1,000) per professor to prevent counseling burnout.</p>
             </div>
-            <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
-              <strong style={{ color: '#c084fc', fontSize: '0.9rem', display: 'block', marginBottom: '4px' }}>3. Dual-Cloud Live</strong>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>Allocated leads sync immediately to faculty smartphones via Firebase Firestore.</p>
+            <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1.5px solid rgba(255, 255, 255, 0.75)' }}>
+              <strong style={{ color: '#7c3aed', fontSize: '0.9rem', display: 'block', marginBottom: '4px', fontWeight: 800 }}>3. Dual-Cloud Live</strong>
+              <p style={{ fontSize: '0.8rem', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>Allocated leads sync immediately to faculty smartphones via Firebase Firestore.</p>
             </div>
           </div>
         </div>
