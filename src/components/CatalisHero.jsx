@@ -67,7 +67,7 @@ export function Hero2({
                 animate="visible"
                 className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pt-28 md:pt-36 pb-12 md:pb-20"
             >
-                <div className="max-w-2xl lg:max-w-3xl">
+                <div className="max-w-2xl lg:max-w-3xl" style={{ marginLeft: '1cm' }}>
                     <motion.h1
                         variants={itemVariants}
                         className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black leading-[1.08]"
