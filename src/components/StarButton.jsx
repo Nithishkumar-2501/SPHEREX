@@ -6,19 +6,21 @@ export default function StarButton({
   onClick,
   active = false,
   size = 'md',
+  variant = 'default',
   className = '',
   style = {},
   type = 'button',
   disabled = false
 }) {
+  const isWhite = variant === 'white' || variant === 'light';
   return (
-    <StyledWrapper className={`sparkle-btn-wrapper ${active ? 'is-active-wrapper' : ''} ${className}`}>
+    <StyledWrapper className={`sparkle-btn-wrapper ${active ? 'is-active-wrapper' : ''} ${isWhite ? 'variant-white-wrapper' : ''} ${className}`}>
       <button
         type={type}
         onClick={onClick}
         disabled={disabled}
         style={style}
-        className={`button ${active ? 'is-active' : ''} size-${size}`}
+        className={`button ${active ? 'is-active' : ''} ${isWhite ? 'variant-white' : ''} size-${size}`}
       >
         <div className="dots_border" />
         <span className="text_button">{children}</span>
@@ -241,5 +243,42 @@ const StyledWrapper = styled.div`
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Variant White: Pure white capsule/box with bold black letters */
+  .button.variant-white::before {
+    background-color: #ffffff;
+    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0 3px 10px rgba(0, 0, 0, 0.06),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  .button.variant-white.is-active::before {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.14),
+      0 0 0 1px #000000;
+  }
+
+  .button.variant-white:hover::before {
+    border-color: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+  }
+
+  .button.variant-white::after {
+    display: none !important;
+  }
+
+  .button.variant-white .dots_border {
+    display: none !important;
+  }
+
+  .button.variant-white .text_button {
+    color: #000000 !important;
+    font-weight: 700;
+    text-shadow: none !important;
   }
 `;
