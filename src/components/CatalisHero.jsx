@@ -112,7 +112,10 @@ export function Hero2({
                 className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pb-8 md:pb-12 gap-y-8 gap-x-6"
             >
                 {/* Social Links */}
-                <div className="flex items-center gap-8 lg:gap-14 w-full md:w-auto justify-center md:justify-start">
+                <div 
+                    className="flex items-center gap-8 lg:gap-14 w-full md:w-auto justify-start"
+                    style={{ marginLeft: '1cm' }}
+                >
                     {socialLinks.map((social) => (
                         <a
                             key={social.label}
