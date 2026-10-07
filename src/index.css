@@ -2754,7 +2754,7 @@ section[id] {
   background: rgba(8, 14, 28, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #94a3b8;
+  color: #ffffff;
   border-top: 1px solid rgba(56, 189, 248, 0.16);
   padding: 80px 0 36px 0;
   margin-top: auto;
@@ -2787,7 +2787,7 @@ section[id] {
 }
 
 .footer-brand-col p {
-  color: #94a3b8;
+  color: #ffffff;
   font-size: 0.9rem;
   margin-top: 14px;
   max-width: 320px;
@@ -2811,26 +2811,30 @@ section[id] {
 }
 
 .footer-col a {
-  color: #94a3b8;
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
   font-size: 0.88rem;
   transition: color 0.2s ease;
 }
 
 .footer-col a:hover {
-  color: #60a5fa;
+  color: #38bdf8;
+}
+
+.footer-col strong {
+  color: #ffffff;
 }
 
 .footer-bottom {
   padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
   font-size: 0.82rem;
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ==========================================================================
