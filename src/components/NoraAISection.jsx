@@ -64,7 +64,7 @@ export default function NoraAISection({ onOpenBooking }) {
             </div>
 
             {/* Live Cutoff Result */}
-            <div className="cutoff-result-box" style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%)', border: '1px solid #bfdbfe', borderRadius: 'var(--radius-lg)', padding: '24px', textAlign: 'center', marginBottom: '24px', boxShadow: '0 4px 16px rgba(37, 99, 235, 0.08)' }}>
+            <div className="cutoff-result-box" style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1.5px solid rgba(255, 255, 255, 0.75)', borderRadius: 'var(--radius-lg)', padding: '24px', textAlign: 'center', marginBottom: '24px', boxShadow: '0 4px 16px rgba(37, 99, 235, 0.08)' }}>
               <div style={{ fontSize: '0.78rem', color: '#1d4ed8', fontWeight: 700, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 Calculated TNEA Cutoff Score
               </div>
@@ -126,7 +126,7 @@ export default function NoraAISection({ onOpenBooking }) {
           </div>
 
           {/* Right Column: Nora AI Prediction & Branch Viability */}
-          <div className="glass-card" style={{ padding: '28px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-xl)', boxShadow: '0 10px 30px rgba(15, 23, 42, 0.04)' }}>
+          <div className="glass-card" style={{ padding: '28px', borderRadius: 'var(--radius-xl)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
               <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #2563eb, #38bdf8)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.2rem' }}>
                 🤖
@@ -137,10 +137,10 @@ export default function NoraAISection({ onOpenBooking }) {
               </div>
             </div>
 
-            <div style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%)', border: '1px solid #bfdbfe', borderRadius: 'var(--radius-sm)', padding: '16px', marginBottom: '20px', boxShadow: '0 4px 16px rgba(37, 99, 235, 0.06)' }}>
+            <div style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1.5px solid rgba(255, 255, 255, 0.75)', borderRadius: 'var(--radius-sm)', padding: '16px', marginBottom: '20px', boxShadow: '0 4px 16px rgba(37, 99, 235, 0.06)' }}>
               <div style={{ fontSize: '0.8rem', color: '#1d4ed8', fontWeight: 700, marginBottom: '6px' }}>AI Insight for Score {cutoff}:</div>
-              <p style={{ fontSize: '0.88rem', color: '#1e40af', lineHeight: 1.6, margin: 0 }}>
-                Candidate has strong quantitative aptitude with {maths} in Maths. High propensity for <strong style={{ color: '#1d4ed8', fontWeight: 700 }}>B.Tech AI &amp; DS</strong> or <strong style={{ color: '#1d4ed8', fontWeight: 700 }}>B.E. CSE</strong>. Eligible for First Graduate scholarship benefits and immediate seat reservation across campuses.
+              <p style={{ fontSize: '0.88rem', color: '#1e40af', lineHeight: 1.6, margin: 0, fontWeight: 600 }}>
+                Candidate has strong quantitative aptitude with {maths} in Maths. High propensity for <strong style={{ color: '#1d4ed8', fontWeight: 800 }}>B.Tech AI &amp; DS</strong> or <strong style={{ color: '#1d4ed8', fontWeight: 800 }}>B.E. CSE</strong>. Eligible for First Graduate scholarship benefits and immediate seat reservation across campuses.
               </p>
             </div>
 
@@ -152,12 +152,12 @@ export default function NoraAISection({ onOpenBooking }) {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {eligibleBranches.map((b, idx) => (
-                <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-sm)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1.5px solid rgba(255, 255, 255, 0.75)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <strong style={{ fontSize: '0.86rem', color: '#000000', fontWeight: 800, display: 'block' }}>{b.name}</strong>
                     <span style={{ fontSize: '0.72rem', color: '#000000', fontWeight: 600 }}>{b.campus}</span>
                   </div>
-                  <span style={{ fontSize: '0.72rem', background: '#eff6ff', color: '#2563eb', border: '1px solid #bfdbfe', padding: '3px 8px', borderRadius: '4px', fontWeight: 700 }}>
+                  <span style={{ fontSize: '0.72rem', background: 'rgba(239, 246, 255, 0.7)', color: '#2563eb', border: '1px solid rgba(191, 219, 254, 0.85)', padding: '3px 8px', borderRadius: '4px', fontWeight: 700 }}>
                     {b.status}
                   </span>
                 </div>
