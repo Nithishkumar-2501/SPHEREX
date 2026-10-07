@@ -3954,23 +3954,35 @@ section[id] {
 
 /* Omnichannel Marketing Box & Channel Pills Light Theme */
 .catalis-theme .channels-flow-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-top: 2px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 18px 45px -10px rgba(15, 23, 42, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.25);
 }
 
 .catalis-theme .channel-pill {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   color: #000000;
-  font-weight: 700;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
 }
 
 .catalis-theme .channel-pill:hover {
-  background: #eff6ff;
-  border-color: #93c5fd;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(37, 99, 235, 0.6);
   color: #1d4ed8;
+  transform: translateY(-2px);
 }
 
 .catalis-theme .leads-table th {
