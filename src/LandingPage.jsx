@@ -18,7 +18,6 @@ import DashboardShowcase from './components/DashboardShowcase';
 import WhoIsItFor from './components/WhoIsItFor';
 import HowItWorks from './components/HowItWorks';
 import WhySpherex from './components/WhySpherex';
-import TechStack from './components/TechStack';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import DemoModal from './components/DemoModal';
@@ -63,7 +62,6 @@ export default function LandingPage() {
         <WhoIsItFor />
         <HowItWorks />
         <WhySpherex />
-        <TechStack />
         <FinalCTA onOpenBooking={handleOpenBooking} />
       </main>
 

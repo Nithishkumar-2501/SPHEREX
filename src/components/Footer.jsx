@@ -60,7 +60,7 @@ export default function Footer({ onOpenBooking }) {
               <li><a href="#marketing" style={{ color: '#ffffff' }}>Omnichannel Marketing</a></li>
               <li><a href="#voice-calling" style={{ color: '#ffffff' }}>WebRTC Telephony (Port 5000)</a></li>
               <li><a href="#nora-ai" style={{ color: '#ffffff' }}>Nora AI OCR Engine</a></li>
-              <li><a href="#tech-stack" style={{ color: '#ffffff' }}>Prisma SQLite &amp; Firebase</a></li>
+              <li><a href="#pricing" style={{ color: '#ffffff' }}>Institutional Plans</a></li>
             </ul>
           </div>
 
