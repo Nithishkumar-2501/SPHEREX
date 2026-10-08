@@ -11,11 +11,12 @@ export default function Navbar({ onOpenBooking }) {
     { id: 'platform', label: 'Platform', icon: '🌐' },
     { id: 'nora-ai', label: 'Nora AI', icon: '⚡', isAi: true },
     { id: 'pricing', label: 'Pricing', icon: '🏷️' },
-    { id: 'multi-campus', label: 'Campuses', icon: '🏛️' }
+    { id: 'multi-campus', label: 'Campuses', icon: '🏛️' },
+    { id: 'faq', label: 'FAQ', icon: '❓' }
   ];
 
   useEffect(() => {
-    const sections = ['about-us', 'features', 'platform', 'nora-ai', 'pricing', 'multi-campus'];
+    const sections = ['about-us', 'features', 'platform', 'nora-ai', 'pricing', 'multi-campus', 'faq'];
     let ticking = false;
 
     const handleScroll = () => {

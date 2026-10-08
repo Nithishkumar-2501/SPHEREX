@@ -13,7 +13,7 @@ import MobileAppSection from './components/MobileAppSection';
 import OmnichannelMarketing from './components/OmnichannelMarketing';
 import CatalisPricing from './components/CatalisPricing';
 import CatalisTestimonials from './components/CatalisTestimonials';
-import CatalisCTA from './components/CatalisCTA';
+import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import DemoModal from './components/DemoModal';
 import PageLoader from './components/PageLoader';
@@ -102,8 +102,8 @@ export default function App() {
         {/* 14. Catalis Testimonial Marquee Loop */}
         <CatalisTestimonials />
 
-        {/* 15. Final Catalis Cloud Frame Onboarding CTA */}
-        <CatalisCTA onOpenBooking={handleOpenBooking} />
+        {/* 15. Frequently Asked Questions (FAQ) Section */}
+        <FAQSection onOpenBooking={handleOpenBooking} />
       </main>
 
       <Footer onOpenBooking={handleOpenBooking} />

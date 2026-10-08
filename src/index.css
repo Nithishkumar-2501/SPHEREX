@@ -5268,59 +5268,216 @@ section[id] {
   font-weight: 700;
 }
 
-/* Final CTA Card */
-.catalis-cta-section {
-  padding: 60px 0 100px 0;
+/* FAQ Section (Replacing Catalis CTA) */
+.catalis-faq-section {
+  padding: 40px 0 90px 0;
 }
 
-.catalis-cta-card {
-  max-width: 1240px;
+.catalis-faq-card {
+  max-width: 1160px;
   width: 94%;
   margin: 0 auto;
   border-radius: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px) saturate(150%);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  border-top: 2px solid rgba(255, 255, 255, 0.95);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-top: 2px solid rgba(255, 255, 255, 0.98);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
   box-shadow: 
-    0 30px 80px -20px rgba(15, 23, 42, 0.14),
+    0 30px 80px -20px rgba(15, 23, 42, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.5),
-    inset 0 2px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.95),
     inset 0 -1.5px 2px 0 rgba(147, 197, 253, 0.3);
-  padding: 64px 36px;
-  text-align: center;
+  padding: 64px 44px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
 
-.catalis-cta-title {
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: clamp(2.4rem, 4.8vw, 4rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: #000000;
-  margin: 0 auto 20px auto;
-  max-width: 760px;
+.catalis-faq-sky-glow {
+  position: absolute;
+  top: -40%;
+  left: 20%;
+  width: 60%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(186, 230, 253, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
 }
 
-.catalis-cta-desc {
-  max-width: 600px;
+.faq-category-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin: 0 auto 36px auto;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #000000;
-  font-weight: 700;
+  max-width: 760px;
+  position: relative;
+  z-index: 2;
 }
 
-.catalis-cta-actions {
+.faq-category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faq-category-btn:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.faq-category-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+}
+
+.faq-category-btn.active .faq-category-icon {
+  color: #38bdf8;
+}
+
+.faq-accordion-list {
+  max-width: 860px;
+  margin: 0 auto 44px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.faq-accordion-item {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 18px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  overflow: hidden;
+}
+
+.faq-accordion-item:hover {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.faq-accordion-item.is-open {
+  background: #ffffff;
+  border-color: #94a3b8;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  font-family: inherit;
+}
+
+.faq-question-text {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #09090b;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.faq-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(241, 245, 249, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  flex-shrink: 0;
+  color: #0f172a;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.faq-icon-bubble.rotated {
+  background: #0f172a;
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+.faq-answer-panel {
+  transition: max-height 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  overflow: hidden;
+}
+
+.faq-answer-content {
+  padding: 0 22px 20px 22px;
+  color: #1e293b;
+  font-size: 0.93rem;
+  line-height: 1.68;
+  font-weight: 500;
+}
+
+.faq-bottom-cta {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(226, 232, 240, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.faq-bottom-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.faq-bottom-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #09090b;
+  margin-bottom: 5px;
+  letter-spacing: -0.01em;
+}
+
+.faq-bottom-desc {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+}
+
+.faq-bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* Responsive adjustments */
@@ -5355,11 +5512,11 @@ section[id] {
   .catalis-benefits-grid {
     grid-template-columns: 1fr;
   }
-  .catalis-hero-card, .catalis-about-section, .catalis-cta-card {
+  .catalis-hero-card, .catalis-about-section, .catalis-cta-card, .catalis-faq-card {
     padding: 36px 18px;
     border-radius: 28px;
   }
-  .catalis-hero-actions, .catalis-cta-actions {
+  .catalis-hero-actions, .catalis-cta-actions, .faq-bottom-actions {
     flex-direction: column;
     width: 100%;
   }
