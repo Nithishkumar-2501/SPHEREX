@@ -37,7 +37,6 @@ export default function Footer({ onOpenBooking }) {
           <div className="footer-col">
             <h4>System Modules</h4>
             <ul>
-              <li><a href="#lead-management" style={{ color: '#ffffff' }}>3-Sheet Candidate Entry</a></li>
               <li><a href="#lead-assignment" style={{ color: '#ffffff' }}>Batch Quota Splitting</a></li>
               <li><a href="#marketing" style={{ color: '#ffffff' }}>Omnichannel Marketing</a></li>
               <li><a href="#voice-calling" style={{ color: '#ffffff' }}>WebRTC Telephony (Port 5000)</a></li>

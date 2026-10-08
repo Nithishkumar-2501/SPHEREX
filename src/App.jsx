@@ -4,7 +4,6 @@ import CatalisHero from './components/CatalisHero';
 import CatalisAbout from './components/CatalisAbout';
 import CatalisBenefits from './components/CatalisBenefits';
 import Problem from './components/Problem';
-import LeadManagement from './components/LeadManagement';
 import NoraAISection from './components/NoraAISection';
 import LeadAllocation from './components/LeadAllocation';
 import MultiCampus from './components/MultiCampus';
@@ -77,10 +76,7 @@ export default function App() {
         {/* 4. Core Platform Challenge vs SPHEREX */}
         <Problem />
 
-        {/* 5. Lead Management & Candidate Entry Engine */}
-        <LeadManagement onOpenBooking={handleOpenBooking} />
-
-        {/* 6. Nora AI Cutoff Evaluator */}
+        {/* 5. Nora AI Cutoff Evaluator */}
         <NoraAISection onOpenBooking={handleOpenBooking} />
 
         {/* 7. Smart Faculty Allocation & Quota Tracking */}

@@ -37,18 +37,6 @@ const teachers = [
     assigned: 100,
     range: 'Contacts #201 to #300',
     status: 'ACTIVE'
-  },
-  {
-    id: 'gayathri.it@spherex.edu',
-    name: 'Dr. Gayathri',
-    role: 'HOD & Professor',
-    dept: 'Information Technology',
-    campus: 'Main Campus (Campus 01)',
-    phone: '+91-9443322114',
-    quota: 200,
-    assigned: 100,
-    range: 'Contacts #301 to #400',
-    status: 'ACTIVE'
   }
 ];
 
