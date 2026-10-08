@@ -6,11 +6,30 @@ export default function Footer({ onOpenBooking }) {
       <div className="container">
         <div className="footer-top-grid">
           <div className="footer-brand-col" style={{ maxWidth: '360px' }}>
-            <div className="brand-logo" style={{ marginBottom: '12px' }}>
-              <img src="/logo.png?v=3" alt="SPHEREX" className="brand-icon-img" />
+            <div className="brand-logo" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                background: '#18181b',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '2px',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.4)'
+              }}>
+                <img 
+                  src="/logo.png?v=3" 
+                  alt="SPHEREX" 
+                  className="brand-icon-img" 
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+                />
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>SPHEREX</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)' }}>
+                <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1 }}>SPHEREX</span>
+                <span style={{ fontSize: '0.65rem', color: 'var(--primary-light)', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '0.06em' }}>
                   ADMISSION MANAGEMENT OS
                 </span>
               </div>
@@ -65,12 +84,26 @@ export default function Footer({ onOpenBooking }) {
           <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
             &copy; 2026 SPHEREX Admission Management System &bull; All institutional rights reserved.
           </div>
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <a 
               href="https://cal.com/sphere-x-5kss8s/30min" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '0.82rem' }}
+              className="footer-demo-btn"
+              style={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '5px 14px',
+                fontSize: '0.74rem',
+                fontWeight: 600,
+                borderRadius: '9999px',
+                background: 'rgba(56, 189, 248, 0.08)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                color: '#38bdf8',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
             >
               Institutional Demo
             </a>

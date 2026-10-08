@@ -26,8 +26,8 @@ const StyledWrapper = styled.div`
     --fancy-button-shine-top: #e9d1ff;
     --fancy-button-shine-bottom: #adfff9;
     font-weight: 600;
-    font-size: 15px;
-    line-height: 21px;
+    font-size: 13.5px;
+    line-height: 19px;
     text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
     padding: 0;
     margin: 0;
@@ -99,7 +99,7 @@ const StyledWrapper = styled.div`
 
   .btn span {
     display: block;
-    padding: 12px 28px;
+    padding: 9px 22px;
     border-radius: inherit;
     overflow: hidden;
     position: relative;

@@ -463,10 +463,10 @@ main {
   justify-content: center;
   background: #18181b;
   color: #ffffff;
-  font-size: 0.94rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  padding: 0 28px;
-  height: 44px;
+  padding: 0 20px;
+  height: 38px;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -2766,6 +2766,22 @@ section[id] {
   color: #ffffff;
 }
 
+.brand-icon-img,
+.site-footer .brand-icon-img {
+  width: 42px;
+  height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-demo-btn:hover {
+  background: rgba(56, 189, 248, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
+  transform: translateY(-1px);
+}
+
 .footer-top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -4186,9 +4202,9 @@ section[id] {
   justify-content: center;
   background: #ffffff;
   color: #0f172a;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 13px 32px;
+  padding: 9px 22px;
   border-radius: 9999px;
   border: 1px solid #cbd5e1;
   cursor: pointer;

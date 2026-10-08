@@ -91,7 +91,7 @@ export function Hero2({
                                 const aboutEl = document.getElementById('about-us');
                                 if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth' });
                             }}
-                            className="rounded-full px-8 bg-[#eaeff1]/80 hover:bg-[#eaeff1] backdrop-blur-sm shadow-[0_0_0_1px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_4px_rgba(0,0,0,0.02)] text-black h-12 text-sm md:text-base font-bold border-0 transition-all"
+                            className="rounded-full px-6 bg-[#eaeff1]/80 hover:bg-[#eaeff1] backdrop-blur-sm shadow-[0_0_0_1px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_4px_rgba(0,0,0,0.02)] text-black h-10 text-sm font-bold border-0 transition-all"
                         >
                             {secondaryCtaLabel}
                             <Play className="w-3.5 h-3.5 ml-2 fill-black" />
