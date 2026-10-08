@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import FancyShineButton from "./ui/FancyShineButton";
@@ -23,11 +23,7 @@ export function Hero2({
     description = "Easily adapt to changes and scale your operations with our flexible infrastructure, designed to support your institutional growth.",
     primaryCtaLabel = "Get Started",
     secondaryCtaLabel = "Learn More",
-    socialLinks = [
-        { label: "Linkedin", href: "#" },
-        { label: "Instagram", href: "#" },
-        { label: "Behance", href: "#" }
-    ],
+    socialLinks: _socialLinks,
     signInLabel: _signInLabel = "Book Meeting",
     className,
     onOpenBooking,
@@ -47,7 +43,7 @@ export function Hero2({
         <section
             id="hero"
             className={cn(
-                "relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-slate-50 selection:bg-emerald-100 selection:text-emerald-900",
+                "relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-slate-50 selection:bg-emerald-100 selection:text-emerald-900",
                 className
             )}
         >
@@ -101,52 +97,6 @@ export function Hero2({
                             <Play className="w-3.5 h-3.5 ml-2 fill-black" />
                         </Button>
                     </motion.div>
-                </div>
-            </motion.div>
-
-            {/* Bottom Section */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pb-8 md:pb-12 gap-y-8 gap-x-6"
-            >
-                {/* Social Links */}
-                <div 
-                    className="flex items-center gap-8 lg:gap-14 w-full md:w-auto justify-start"
-                    style={{ marginLeft: '1cm' }}
-                >
-                    {socialLinks.map((social) => (
-                        <a
-                            key={social.label}
-                            href={social.href}
-                            onClick={(e) => {
-                                if (social.href === '#') {
-                                    e.preventDefault();
-                                }
-                            }}
-                            className="text-black font-bold hover:opacity-75 text-sm md:text-base transition-colors"
-                        >
-                            {social.label}
-                        </a>
-                    ))}
-                </div>
-
-                {/* Scroll Indicator */}
-                <div 
-                    onClick={() => {
-                        const aboutEl = document.getElementById('about-us');
-                        if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="flex items-center gap-2 text-black font-bold text-sm md:text-base cursor-pointer group w-full md:w-auto justify-start md:justify-end"
-                >
-                    <span>Scroll to Discover</span>
-                    <motion.span
-                        animate={{ y: [0, 4, 0] }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    >
-                        <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" strokeWidth={1.5} />
-                    </motion.span>
                 </div>
             </motion.div>
         </section>
